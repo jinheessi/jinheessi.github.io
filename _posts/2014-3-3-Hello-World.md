@@ -4,7 +4,7 @@ title: 기업프로젝트 SW 개발자
 ---
 
 <h1>자바스크립트를 이용한 영상 처리</h1>
-
+<hr>
 
 <strong>1. 화소점 처리(밝게, 어둡게, 반전)</strong><br><br>
 ![화소점처리](https://user-images.githubusercontent.com/78345425/232698237-96c8c260-e56d-4589-a983-333e28bacd5a.JPG)<br><br>
