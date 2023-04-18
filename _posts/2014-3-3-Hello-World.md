@@ -8,9 +8,7 @@ title: 기업프로젝트 SW 개발자
 
 <strong>1. 화소점 처리(밝게, 어둡게, 반전)</strong><br><br>
 ![화소점처리](https://user-images.githubusercontent.com/78345425/232698237-96c8c260-e56d-4589-a983-333e28bacd5a.JPG)<br><br>
-<iframe src="https://youtu.be/NAJMhFl3SnQ" width="500" height="500">
-</iframe><br><br>
-<iframe width="956" height="538" src="https://www.youtube.com/embed/ozv4q2ov3Mk" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+<video src="https://user-images.githubusercontent.com/78345425/232704229-9944a9fd-e3a8-473d-9790-5f2fc0b84bbc.mp4" width="500" height="500" autoplay></video>
 <p><strong>화소 점의 값을 하나하나 더하거나 빼서 밝게, 어둡게, 반전시켜 영상을 변환하였다.</strong></p><br>
 
 
