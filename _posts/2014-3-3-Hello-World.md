@@ -5,7 +5,7 @@ title: You're up and running!
 
 Next you can update your site name, avatar and other options using the _config.yml file in the root of your repository (shown below).
 
-![_config.yml]({{ site.baseurl }}/images/config.png)
+
 
 1. 화소점 처리(밝게, 어둡게, 반전)
 
