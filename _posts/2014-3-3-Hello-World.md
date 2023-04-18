@@ -10,12 +10,15 @@ title: 기업프로젝트 SW 개발자
 1. 화소점 처리(밝게, 어둡게, 반전)
 
 (https://jinheessi.github.io/images/화소점처리.mp4)
+
 2. 기하학 처리(축소, 확대, 회전)
 
 (https://jinheessi.github.io/images/기하학처리.mp4)
+
 3. 화소영역 처리(엠보싱, 블러링, 샤프닝)
 
 (https://jinheessi.github.io/images/화소영역처리.mp4)
+
 4. 히스토그램 처리(엔드인 탐색, 평활화)
 
 (https://jinheessi.github.io/images/히스토그램처리.mp4)
