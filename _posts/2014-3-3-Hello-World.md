@@ -1,9 +1,9 @@
 ---
 layout: post
-title: You're up and running!
+title: 기업프로젝트 SW 개발자
 ---
 
-Next you can update your site name, avatar and other options using the _config.yml file in the root of your repository (shown below).
+자바스크립트를 이용한 영상 처리
 
 
 
