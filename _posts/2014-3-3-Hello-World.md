@@ -16,7 +16,7 @@ title: 기업프로젝트 SW 개발자
 
 
 4. 히스토그램 처리(엔드인 탐색, 평활화)
-<img src="/images/히스토그램처리.jpg" width="50%" height="50%">
+![히스토그램처리](https://user-images.githubusercontent.com/78345425/232697554-c9eed311-8e06-49d4-a9cf-8e8901cbc329.JPG)
 
 
 
