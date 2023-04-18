@@ -25,7 +25,7 @@ title: 기업프로젝트 SW 개발자
 
 <strong>4. 히스토그램 처리(엔드인 탐색, 평활화)</strong><br><br>
 ![히스토그램처리](https://user-images.githubusercontent.com/78345425/232697554-c9eed311-8e06-49d4-a9cf-8e8901cbc329.JPG)<br><br>
-<video src="https://user-images.githubusercontent.com/78345425/232698644-e5132032-b7ce-4d88-8b9f-639b1b186d48.mp4" width="300 height="300" controls></video><br><br>
+<video src="https://user-images.githubusercontent.com/78345425/232698644-e5132032-b7ce-4d88-8b9f-639b1b186d48.mp4" width="300" height="300" controls></video><br><br>
 <p><strong>이미지에 히스토그램 처리를 하여 불분명한 이미지를 분명하게 처리하였다.</strong></p>
 
 
