@@ -1,0 +1,299 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+  <head><script src="../assets/js/color-modes.js"></script>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+	<link href="/css/bootstrap.min.css" rel="stylesheet">
+	
+	    <style>
+	      .bd-placeholder-img {
+	        font-size: 1.125rem;
+	        text-anchor: middle;
+	        -webkit-user-select: none;
+	        -moz-user-select: none;
+	        user-select: none;
+	      }
+	
+	      @media (min-width: 768px) {
+	        .bd-placeholder-img-lg {
+	          font-size: 3.5rem;
+	        }
+	      }
+	
+	      .b-example-divider {
+	        width: 100%;
+	        height: 3rem;
+	        background-color: rgba(0, 0, 0, .1);
+	        border: solid rgba(0, 0, 0, .15);
+	        border-width: 1px 0;
+	        box-shadow: inset 0 .5em 1.5em rgba(0, 0, 0, .1), inset 0 .125em .5em rgba(0, 0, 0, .15);
+	      }
+	
+	      .b-example-vr {
+	        flex-shrink: 0;
+	        width: 1.5rem;
+	        height: 100vh;
+	      }
+	
+	      .bi {
+	        vertical-align: -.125em;
+	        fill: currentColor;
+	      }
+	
+	      .nav-scroller {
+	        position: relative;
+	        z-index: 2;
+	        height: 2.75rem;
+	        overflow-y: hidden;
+	      }
+	
+	      .nav-scroller .nav {
+	        display: flex;
+	        flex-wrap: nowrap;
+	        padding-bottom: 1rem;
+	        margin-top: -1px;
+	        overflow-x: auto;
+	        text-align: center;
+	        white-space: nowrap;
+	        -webkit-overflow-scrolling: touch;
+	      }
+	
+	      .btn-bd-primary {
+	        --bd-violet-bg: #712cf9;
+	        --bd-violet-rgb: 112.520718, 44.062154, 249.437846;
+	
+	        --bs-btn-font-weight: 600;
+	        --bs-btn-color: var(--bs-white);
+	        --bs-btn-bg: var(--bd-violet-bg);
+	        --bs-btn-border-color: var(--bd-violet-bg);
+	        --bs-btn-hover-color: var(--bs-white);
+	        --bs-btn-hover-bg: #6528e0;
+	        --bs-btn-hover-border-color: #6528e0;
+	        --bs-btn-focus-shadow-rgb: var(--bd-violet-rgb);
+	        --bs-btn-active-color: var(--bs-btn-hover-color);
+	        --bs-btn-active-bg: #5a23c8;
+	        --bs-btn-active-border-color: #5a23c8;
+	      }
+	      .bd-mode-toggle {
+	        z-index: 1500;
+	      }
+	    </style>
+		<script>
+		window.onload = () => {
+			// 쿠키 값이 존재하면 쿠키 값을 불러옴
+			const hospital_id = getCookie('hospital_id');
+			const password = getCookie('password');
+			const authKey = getCookie('authKey');
+			
+			// 로그인 화면 로드 시 자동으로 체크 표시 & 아이디 출력
+			// userid 쿠키가 존재하면
+			if(document.querySelector("#rememberUserid").checked === true){
+				document.querySelector("#userid").value = userid;
+			}
+			// userid 쿠키 없으면 체크 해제
+			else document.querySelector("#userid").value = "";
+			
+			// password 쿠키가 존재하면
+
+			if(document.querySelector("#rememberPassword").checked === true){
+	
+				document.querySelector("#password").value = password;
+			}
+			// password 쿠키 없으면 체크 해제
+			else document.querySelector("#password").value = "";
+			
+			if(document.querySelector("#rememberMe").checked === true){
+				if(authKey === <%= authKeySession%>){
+					document.location.href="/board/list?pageNum=1&searchType=&searchText=";
+				}
+			}
+			else {
+				document.querySelector("#userid").value="";
+				document.querySelector("#password").value="";
+			}
+					
+		}
+
+		
+		// 자동 로그인 체크 관리
+		const checkRememberMe = () => {
+			if(document.querySelector("#rememberMe").checked){
+				document.querySelector("#rememberUserid").checked = false;
+				document.querySelector("#rememberPassword").checked = false;
+			}
+		}
+		// 아이디 체크 관리
+		const checkRememberUserid = () => {
+			if(document.querySelector("#rememberUserid").checked){
+				document.querySelector("#rememberMe").checked = false;
+			}
+		}
+		const checkRememberPassword = () => {
+			if(document.querySelector("#rememberPassword").checked){
+				document.querySelector("#rememberMe").checked = false;
+			}
+		}
+		
+		
+		// name 매개변수를 통해 쿠키 값 가져오는 함수
+		const getCookie = (name) => {
+			const cookies = document.cookie.split("; ").map((el) => el.split("="));
+			let getItem = [];
+			for(let i = 0; i < cookies.length; i++){
+				if(cookies[i][0] === name){
+					getItem.push(cookies[i][1]);
+					break;
+				}
+			}
+			if(getItem.length > 0) return decodeURIComponent(getItem[0]);
+		}
+		
+		
+		
+		// 로그인 비동기 처리
+		const login = async() => {
+			// form 데이터로 userid, password, authKey 넘겨줌
+			
+			let hospital_id = document.querySelector("#hospital_id").value;
+			let password = document.querySelector("#password").value;
+			let authKey = document.querySelector("#authKey").value;
+			// 아이디 유효성 검사
+			if(hospital_id === '' || hospital_id === null){
+				alert("아이디를 입력하세요");
+				document.querySelector("#hospital_id").focus();
+				return false;
+			}
+			// 패스워드 유효성 검사
+			if(password === '' || password === null){
+				alert("패스워드를 입력하세요");
+				document.querySelector("#password").focus();
+				return false;
+			}
+			// 로그인 화면 로드 시 자동 로그인 처리(백엔드)
+			// 자동 로그인 체크박스 체크 되어있으면
+			// 폼 데이터 만들기
+			if(rememberMe.checked === true){
+				//authKey 값이 없으면
+				if(authKey === '' || authKey === null){
+					url = '/user/login?autologin=NEW';
+					var formData = new FormData();
+					formData.append("hospital_id", hospital_id);
+					formData.append("password", password);
+					// PASS: 이미 쿠키가 생성되어 있는 상태에서 로그인
+					// fetch: 비동기식 데이터 전송 시 url로 데이터 전송
+					// 클라이언트가 지정한 url로 폼 데이터 전송 =>
+					// NEW: 로그인하면서 쿠키 새로생성
+					await fetch(url, {
+						method:'POST',
+						body: formData
+						}).then((response) => response.json())
+						// 클라이언트에서 변환된 json 파일을 처리
+						  .then((data) => {
+							if(data.message === 'good'){ // 받은 json 파일의 message 내용이 good이면
+								cookieManage(hospital_id, password, data.authKey);
+								document.location.href = '/kids/list';
+							}else if(data.message === 'ID_NOT_FOUND'){
+								// 받은 json 파일의 message 내용이 ID_NOT_FOUND이면
+								msg.innerHTML = "존재하지 않는 아이디입니다.";
+							}else if(data.message === 'PASSWORD_NOT_FOUND'){// 받은 json 파일의 message 내용이 PASSWORD_NOT_FOUND이면
+								msg.innerHTML = "잘못된 패스워드입니다.";
+							}
+							else{ // 받은 json 파일의 message 내용이 위의 내용과 다른 내용이면
+								alert("시스템 장애로 로그인이 실패했습니다.");
+							}
+							}).catch((error) => {
+								console.log("error= " + error); // 에러 발생 시 콘솔에 에러명 출력
+							});
+				}
+					
+				// authKey 값이 존재하면
+				else{
+	
+					url = '/user/login?autologin=PASS';
+					var formData = new FormData();
+					formData.append("hospital_id", hospital_id);
+					formData.append("password", password);
+					formData.append("authKey", authKey);
+								
+					await fetch(url, {
+						method:'POST',
+						body: formData
+						}).then((response) => response.json())
+						  .then((data) => {
+							if(data.message === 'good') {
+								cookieManage(userid, password, authKey);
+								document.location.href="/kids/list";
+							} else {
+								alert("시스템 장애로 자동 로그인이 실패 했습니다.");
+							}
+						}).catch((error) => {
+							console.log("error = " + error);
+						});
+				}
+			}
+			else{
+				url = '/user/login?autologin=NONE';
+				formData.append("hospital_id", hospital_id);
+				formData.append("password", password);
+				formData.append("authKey", authKey);
+							
+				await fetch(url, {
+					method:'POST',
+					body: formData
+					}).then((response) => response.json())
+					  .then((data) => {
+						if(data.message === 'good') {
+							cookieManage(userid, password, data.authKey);
+							document.location.href="/kids/list";
+						} else {
+							alert("시스템 장애로 로그인이 실패 했습니다.");
+						}
+					}).catch((error) => {
+						console.log("error = " + error);
+					});
+			}
+		
+		}
+			
+		// 엔터키 입력시 로그인 처리
+		const press = () => {
+			if(event.keyCode === 13){
+				login();
+			}
+		}
+		
+		// 쿠키 관리 => 쿠키 생성, 쿠키 삭제
+		const cookieManage = (userid, password, authKey) => {
+			// 자동 로그인 쿠키 관리
+			document.cookie = "userid=" + userid + "; path=/; expires= Sun, 31, Dec 2023 23:59:59 GMT";
+			document.cookie = "password=" + password + "; path=/; expires= Sun, 31, Dec 2023 23:59:59 GMT";
+			document.cookie = "authKey=" + authKey + "; path=/; expires= Sun, 31, Dec 2023 23:59:59 GMT";
+			
+		
+		
+		</script>
+	    
+	    <!-- Custom styles for this template -->
+	    <link href="/css/sign-in.css" rel="stylesheet">
+	</head>
+	<body class="text-center">
+		<main class="form-signin w-100 m-auto">
+		    <img class="mb-4" src="/images/doctor.png" alt="" width="100" height="100">
+		    <h5><strong>소아과 / 응급실 예약 플랫폼 
+		    	<br>-응애응애-</strong>
+		    </h5>
+			<br>
+			<form class="row g-3 justify-content-center">
+			  <div class="col-md-9">
+			    <input type="text" class="form-control" id="hospital_id" placeholder="아이디를 입력해주세요" style="text-align: center;">
+			    <input type="password" class="form-control" id="password" placeholder="패스워드를 입력해주세요" style="text-align: center;">
+			  </div>
+			  <div class="d-flex justify-content-center">
+			    <button type="submit" class="btn btn-outline-dark" onclick="login();">로그인</button>
+			    &nbsp;&nbsp;
+			    <a th:href="@{/master/searchIDPW}"class="btn btn-outline-dark">ID/PW 찾기</a>
+			  </div>
+			</form>
+		</main>
+	</body>
+</html>

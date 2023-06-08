@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+	<head>
+		<meta charset="UTF-8">
+		<link href="/css/bootstrap.min.css" rel="stylesheet">
+		<title>Insert title here</title>
+	</head>
+	<body>
+		<div class="d-flex justify-content-center">
+			<div class="card text-center" style="margin-top:10%; width: 18rem;">
+			  <div class="card-body">
+			    <h5 class="card-title">회원가입 요청 완료!</h5>
+			    <br>
+			    <div>
+			    	<p th:text="|아이디: ${hospital_id}|"></p>
+			    	<p th:text="|병원명: ${hospital_name}|"></p>
+			    	<p th:text="|전화번호: ${hospital_telno}|"></p>
+			    </div>
+			    <br>
+			    <p class="card-text">승인까지 하루~이틀 소요<br>자세한 안내 사항은<br>이메일 확인</p>
+			    <a th:href="@{/master/login}" class="btn btn-outline-dark">홈으로 이동</a>
+			  </div>
+			</div>
+		</div>
+	</body>
+</html>

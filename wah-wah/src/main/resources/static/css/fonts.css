@@ -1,0 +1,11 @@
+@font-face{
+
+		font-family :'BMHANNA_11yrs';
+		
+		src : local('BMHANNA_11yrs'),
+		
+		url('/vendor/bootstrap-icons/fonts/BMHANNA_11yrs.ttf') format('truetype'),
+		
+		url('/vendor/bootstrap-icons/fonts/BMHANNA_11yrs.otf') format('opentype');
+
+}
