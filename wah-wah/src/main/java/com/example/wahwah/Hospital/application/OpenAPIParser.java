@@ -63,7 +63,7 @@ public class OpenAPIParser {
         } else if (name.equals("dutyTime3c")) {
             builder.dutyTime3c(value);
         } else if (name.equals("dutyTime3s")) {
-            builder.dutyTime1s(value);
+            builder.dutyTime3s(value);
         } else if (name.equals("dutyTime4c")) {
             builder.dutyTime4c(value);
         } else if (name.equals("dutyTime4s")) {

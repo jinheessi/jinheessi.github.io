@@ -1,6 +1,6 @@
 package com.example.wahwah.member.dto;
 
-import com.example.wahwah.member.entity.HospitalEntity;
+import com.example.wahwah.Hospital.domain.HospitalEntity;
 import com.example.wahwah.member.entity.MasterEntity;
 
 import lombok.AllArgsConstructor;

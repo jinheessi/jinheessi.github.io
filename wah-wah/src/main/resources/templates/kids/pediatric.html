@@ -1,0 +1,1203 @@
+<!DOCTYPE html>
+
+<!-- =========================================================
+* Sneat - Bootstrap 5 HTML Admin Template - Pro | v1.0.0
+==============================================================
+
+* Product Page: https://themeselection.com/products/sneat-bootstrap-html-admin-template/
+* Created by: ThemeSelection
+* License: You must have a valid license purchased in order to legally use the theme for your project.
+* Copyright ThemeSelection (https://themeselection.com)
+
+=========================================================
+ -->
+<!-- beautify ignore:start -->
+<html
+  lang="en"
+  class="light-style layout-menu-fixed"
+  dir="ltr"
+  data-theme="theme-default"
+  data-assets-path="../assets/"
+  data-template="vertical-menu-template-free"
+  xmlns:th="http://www.thymeleaf.org"
+>
+  <head>
+    <meta charset="utf-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1.0, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0"
+    />
+
+    <title>Dashboard - Analytics | Sneat - Bootstrap 5 HTML Admin Template - Pro</title>
+
+    <meta name="description" content="" />
+
+    <!-- Icons. Uncomment required icon fonts -->
+    <link rel="stylesheet" href="/assets/vendor/fonts/boxicons.css" />
+
+    <!-- Core CSS -->
+    <link rel="stylesheet" href="/assets/vendor/css/core.css" class="template-customizer-core-css" />
+    <link rel="stylesheet" href="/assets/vendor/css/theme-default.css" class="template-customizer-theme-css" />
+    <link rel="stylesheet" href="/assets/css/demo.css" />
+
+    <!-- Vendors CSS -->
+    <link rel="stylesheet" href="/assets/vendor/libs/perfect-scrollbar/perfect-scrollbar.css" />
+
+    <link rel="stylesheet" href="/assets/vendor/libs/apex-charts/apex-charts.css" />
+
+    <!-- Page CSS -->
+
+    <!-- Helpers -->
+    <script src="/assets/vendor/js/helpers.js"></script>
+
+    <!--! Template customizer & Theme config files MUST be included after core stylesheets and helpers.js in the <head> section -->
+    <!--? Config:  Mandatory theme config file contain global vars & default theme options, Set your preferred theme option in this file.  -->
+    <script src="/assets/js/config.js"></script>
+    <style>
+	    @font-face {
+	    	font-family: 'GODOM';
+	    	src: url('/vendor/bootstrap-icons/fonts/GODOM.ttf') format('truetype');
+		}
+		
+		body,h1,h2,h3,h4,h5,h6,p,div p,a,div,span,small{
+			font-family: 'GODOM';
+		}
+		.map_wrap, .map_wrap * {margin:0;padding:0;font-family:'Malgun Gothic',dotum,'돋움',sans-serif;font-size:12px;}
+		.map_wrap a, .map_wrap a:hover, .map_wrap a:active{color:#000;text-decoration: none;}
+		.map_wrap {position:relative;width:100%;height:500px;display:block;}
+		#menu_wrap {width:100%;margin:10px 0 30px 10px;padding:5px;overflow-y:auto;background:rgba(255, 255, 255, 0.7);z-index: 1;font-size:12px;border-radius: 10px;}
+		.bg_white {background:#fff;}
+		#menu_wrap hr {display: block; height: 1px;border: 0; border-top: 2px solid #5F5F5F;margin:3px 0;}
+		#menu_wrap .option{text-align: center;}
+		#menu_wrap .option p {margin:10px 0;}  
+		#menu_wrap .option button {margin-left:5px;}
+		.map_wrap2, .map_wrap2 * {margin:0;padding:0;font-family:'Malgun Gothic',dotum,'돋움',sans-serif;font-size:12px;}
+		.map_wrap2 a, .map_wrap2 a:hover, .map_wrap2 a:active{color:#000;text-decoration: none;}
+		.map_wrap2 {position:relative;width:100%;height:500px;display:block;}
+		#menu_wrap2 {width:100%;margin:10px 0 30px 10px;padding:5px;overflow-y:auto;background:rgba(255, 255, 255, 0.7);z-index: 1;font-size:12px;border-radius: 10px;}
+		.bg_white {background:#fff;}
+		#menu_wrap2 hr {display: block; height: 1px;border: 0; border-top: 2px solid #5F5F5F;margin:3px 0;}
+		#menu_wrap2 .option{text-align: center;}
+		#menu_wrap2 .option p {margin:10px 0;}  
+		#menu_wrap2 .option button {margin-left:5px;}
+		
+		#placesList li {list-style: none;}
+		#placesList .item {position:relative;border-bottom:1px solid #888;overflow: hidden;cursor: pointer;min-height: 65px;}
+		#placesList .item span {display: block;margin-top:4px;}
+		#placesList .item h5, #placesList .item .info {text-overflow: ellipsis;overflow: hidden;white-space: nowrap;}
+		#placesList .item .info{padding:10px 0 10px 55px;}
+		#placesList .info .gray {color:#8a8a8a;}
+		#placesList .info .jibun {padding-left:26px;background:url(https://t1.daumcdn.net/localimg/localimages/07/mapapidoc/places_jibun.png) no-repeat;}
+		#placesList .info .tel {color:#009900;}
+		#placesList .item .markerbg {float:left;position:absolute;width:36px; height:37px;margin:10px 0 0 10px;background:url(https://t1.daumcdn.net/localimg/localimages/07/mapapidoc/marker_number_blue.png) no-repeat;}
+		#placesList .item .marker_1 {background-position: 0 -10px;}
+		#placesList .item .marker_2 {background-position: 0 -56px;}
+		#placesList .item .marker_3 {background-position: 0 -102px}
+		#placesList .item .marker_4 {background-position: 0 -148px;}
+		#placesList .item .marker_5 {background-position: 0 -194px;}
+		#placesList .item .marker_6 {background-position: 0 -240px;}
+		#placesList .item .marker_7 {background-position: 0 -286px;}
+		#placesList .item .marker_8 {background-position: 0 -332px;}
+		#placesList .item .marker_9 {background-position: 0 -378px;}
+		#placesList .item .marker_10 {background-position: 0 -423px;}
+		#placesList .item .marker_11 {background-position: 0 -470px;}
+		#placesList .item .marker_12 {background-position: 0 -516px;}
+		#placesList .item .marker_13 {background-position: 0 -562px;}
+		#placesList .item .marker_14 {background-position: 0 -608px;}
+		#placesList .item .marker_15 {background-position: 0 -654px;}
+		#pagination {margin:10px auto;text-align: center;}
+		#pagination a {display:inline-block;margin-right:10px;}
+		#pagination .on {font-weight: bold; cursor: default;color:#777;}
+	    .title {font-weight:bold;display:block;}
+	    .hAddr {position:absolute;left:10px;top:10px;border-radius: 2px;background:#fff;background:rgba(255,255,255,0.8);z-index:1;padding:5px;}
+	    #centerAddr {display:block;margin-top:2px;font-weight: normal;}
+	    .bAddr {padding:5px;text-overflow: ellipsis;overflow: hidden;white-space: nowrap;}
+	    .info {position:relative;top:5px;left:5px;border-radius:6px;border: 1px solid #ccc;border-bottom:2px solid #ddd;font-size:12px;padding:5px;background:#fff;list-style:none;margin:0;} 
+		.info:nth-of-type(n) {border:0; box-shadow:0px 1px 2px #888;}    
+		.info .label {display:inline-block;width:50px;}
+		.number {font-weight:bold;color:#00a0e9;}
+		table{
+			table-layout:fixed;
+		}
+		th, td{
+			word-wrap: break-word;
+			text-align:center;
+			padding:5px;
+		}
+		.menu-inner{
+			font-weight:bold;
+			font-size:14pt;
+			color:#454545;
+		}
+		select, option{
+			font-weight:bold;
+			color:#454545;
+		}
+		i{
+			color:#1977CC;
+			font-weight:bold;
+		}
+    </style>
+    
+  </head>
+
+  <body style="background-color:white;">
+    <!-- Layout wrapper -->
+    <div class="layout-wrapper layout-content-navbar">
+      <div class="layout-container">
+        <!-- Menu -->
+
+        <aside id="layout-menu" class="layout-menu menu-vertical menu bg-menu-theme">
+          <div class="app-brand demo">
+          	<br>
+          	<p style="font-weight:bold; font-size:30pt; color:black; margin-top:20%; margin-bottom:10%;">응애응애</p>
+
+            <a href="javascript:void(0);" class="layout-menu-toggle menu-link text-large ms-auto d-block d-xl-none">
+              <i class="bx bx-chevron-left bx-sm align-middle"></i>
+            </a>
+          </div>
+
+          <div class="menu-inner-shadow"></div>
+		  <br><br>
+          <ul class="menu-inner py-1">
+            <!-- Dashboard -->
+            <li class="menu-item">
+              <a th:href="@{/kids/home}" class="menu-link">
+                <i class="menu-icon tf-icons bx bx-home-circle"></i>
+                <div data-i18n="Analytics" style="color:black;">홈 페이지</div>
+              </a>
+            </li>
+
+            <!-- Layouts -->
+            <li class="menu-item active">
+              <a href="javascript:void(0);" class="menu-link menu-toggle">
+                <i class="menu-icon tf-icons bx bx-layout"></i>
+                <div data-i18n="Layouts" style="color:black;">예약</div>
+              </a>
+
+              <ul class="menu-sub">
+                <li class="menu-item active">
+                  <a th:href="@{/kids/pediatric}" class="menu-link">
+                    <div data-i18n="Without menu" style="color:black;">소아과</div>
+                  </a>
+                </li>
+                <li class="menu-item">
+                  <a th:href="@{/kids/emergency}" class="menu-link">
+                    <div data-i18n="Without navbar" style="color:black;">응급실</div>
+                  </a>
+                </li>
+              </ul>
+            </li>
+
+            <li class="menu-header small text-uppercase">
+              <span class="menu-header-text" style="color:black;">회원 정보 관리 & 회원 인증</span>
+            </li>
+            <li class="menu-item">
+              <a href="javascript:void(0);" class="menu-link menu-toggle">
+                <i class="menu-icon tf-icons bx bx-dock-top"></i>
+                <div data-i18n="Account Settings" style="color:black;">마이 페이지</div>
+              </a>
+              <ul class="menu-sub">
+                <li class="menu-item">
+                  <a th:href="@{/kids/modifyInfo}" class="menu-link">
+                    <div data-i18n="Account" style="color:black;">내 정보 관리/수정</div>
+                  </a>
+                </li>
+                <li class="menu-item">
+                  <a th:href="@{/kids/myreservation}" class="menu-link">
+                    <div data-i18n="Notifications" style="color:black;">내 예약 관리/수정</div>
+                  </a>
+                </li>
+                <li class="menu-item">
+                  <a href="pages-account-settings-connections.html" class="menu-link">
+                    <div data-i18n="Connections" style="color:black;">아기 수첩</div>
+                  </a>
+                </li>
+              </ul>
+            </li>
+            <li class="menu-item">
+              <a href="javascript:void(0);" class="menu-link menu-toggle">
+                <i class="menu-icon tf-icons bx bx-lock-open-alt"></i>
+                <div data-i18n="Authentications" style="color:black;">인증</div>
+              </a>
+              <ul class="menu-sub">
+                <li class="menu-item">
+                  <a th:href="@{/master/login}" class="menu-link">
+                    <div data-i18n="Basic" style="color:black;">로그인</div>
+                  </a>
+                </li>
+                <li class="menu-item">
+                  <a th:href="@{/master/signup}" class="menu-link">
+                    <div data-i18n="Basic" style="color:black;">회원 가입</div>
+                  </a>
+                </li>
+                <li class="menu-item">
+                  <a href="@{/master/searchIDPW}" class="menu-link">
+                    <div data-i18n="Basic" style="color:black;">ID / PW 찾기</div>
+                  </a>
+                </li>
+              </ul>
+            </li>
+            
+            <!-- Components -->
+            <li class="menu-header small text-uppercase"><span class="menu-header-text" style="color:black;">유용한 정보</span></li>
+            <!-- Cards -->
+            <li class="menu-item">
+              <a th:href="@{/kids/healthInfo}" class="menu-link">
+                <i class="menu-icon tf-icons bx bx-collection"></i>
+                <div data-i18n="Basic" style="color:black;">건강 정보</div>
+              </a>
+            </li>
+
+            <li class="menu-item">
+              <a href="icons-boxicons.html" class="menu-link">
+                <i class="menu-icon tf-icons bx bx-home-heart"></i>
+                <div data-i18n="Boxicons" style="color:black;">전국 보건소 찾기</div>
+              </a>
+            </li>
+            <!-- Misc -->
+            <li class="menu-header small text-uppercase"><span class="menu-header-text" style="color:black;">기타</span></li>
+            
+            <li class="menu-item">
+              <a th:href="@{/kids/notice}" class="menu-link">
+                <i class="menu-icon tf-icons bx bx-file"></i>
+                <div data-i18n="Documentation" style="color:black;">공지사항</div>
+              </a>
+            </li>
+            <li class="menu-item">
+              <a
+                href="https://github.com/themeselection/sneat-html-admin-template-free/issues"
+                target="_blank"
+                class="menu-link"
+              >
+                <i class="menu-icon tf-icons bx bx-support"></i>
+                <div data-i18n="Support" style="color:black;">고객 지원</div>
+              </a>
+            </li>
+            <li class="menu-item">
+              <a
+                href="https://themeselection.com/demo/sneat-bootstrap-html-admin-template/documentation/"
+                target="_blank"
+                class="menu-link"
+              >
+                <i class="menu-icon tf-icons bx bx-file"></i>
+                <div data-i18n="Documentation" style="color:black;">이용 약관</div>
+              </a>
+            </li>
+          </ul>
+        </aside>
+        <!-- / Menu -->
+
+        <!-- Layout container -->
+        <div class="layout-page">
+          <!-- Navbar -->
+
+          <nav
+            class="layout-navbar container-xxl navbar navbar-expand-xl navbar-detached align-items-center bg-navbar-theme"
+            id="layout-navbar"
+          >
+          	<div class="layout-menu-toggle navbar-nav align-items-xl-center me-3 me-xl-0  d-xl-none ">
+		        <a class="nav-item nav-link px-0 me-xl-4" href="javascript:void(0)">
+		          <i class="bx bx-menu bx-sm"></i>
+		        </a>
+		    </div>
+		    
+            <div class="navbar-nav-right d-flex align-items-center" id="navbar-collapse">
+		         <div class="navbar-nav align-items-center">
+		          <div class="nav-item d-flex align-items-center">
+		            <a href="javascript:searchPlaces()"><i class="bx bx-search fs-4 lh-0"></i></a>
+		            <input type="text" class="form-control w-100 border-0 shadow-0" placeholder="병원을 검색하세요" aria-label="Recipient's username" aria-describedby="button-addon2" value="" id="keyword">
+		          </div>
+		        </div>
+              <!-- Search -->
+              
+              <!-- /Search -->
+
+              <ul class="navbar-nav flex-row align-items-center ms-auto">
+
+                <!-- User -->
+                <li class="nav-item navbar-dropdown dropdown-user dropdown">
+                  <a class="nav-link dropdown-toggle hide-arrow" href="javascript:void(0);" data-bs-toggle="dropdown">
+                    <div class="avatar avatar-online">
+                      <img src="../assets/img/avatars/1.png" alt class="w-px-40 h-auto rounded-circle" />
+                    </div>
+                  </a>
+                  <ul class="dropdown-menu dropdown-menu-end">
+                    <li>
+                      <a class="dropdown-item" href="#">
+                        <div class="d-flex">
+                          <div class="flex-shrink-0 me-3">
+                            <div class="avatar avatar-online">
+                              <img src="../assets/img/avatars/1.png" alt class="w-px-40 h-auto rounded-circle" />
+                            </div>
+                          </div>
+                          <div class="flex-grow-1">
+                            <span class="fw-semibold d-block" th:text="${userid}"></span>
+                            <small class="text-muted" th:text="${role}"></small>
+                          </div>
+                        </div>
+                      </a>
+                    </li>
+                    <li>
+                      <div class="dropdown-divider"></div>
+                    </li>
+                    <li>
+                      <a class="dropdown-item" href="#">
+                        <i class="bx bx-user me-2"></i>
+                        <span class="align-middle">My Profile</span>
+                      </a>
+                    </li>
+                    <li>
+                      <a class="dropdown-item" href="#">
+                        <i class="bx bx-cog me-2"></i>
+                        <span class="align-middle">Settings</span>
+                      </a>
+                    </li>
+                    <li>
+                      <a class="dropdown-item" href="#">
+                        <span class="d-flex align-items-center align-middle">
+                          <i class="flex-shrink-0 bx bx-credit-card me-2"></i>
+                          <span class="flex-grow-1 align-middle">Billing</span>
+                          <span class="flex-shrink-0 badge badge-center rounded-pill bg-danger w-px-20 h-px-20">4</span>
+                        </span>
+                      </a>
+                    </li>
+                    <li>
+                      <div class="dropdown-divider"></div>
+                    </li>
+                    <li>
+                      <a class="dropdown-item" href="auth-login-basic.html">
+                        <i class="bx bx-power-off me-2"></i>
+                        <span class="align-middle">Log Out</span>
+                      </a>
+                    </li>
+                  </ul>
+                </li>
+                <!--/ User -->
+              </ul>
+            </div>
+          </nav>
+
+          <!-- / Navbar -->
+
+          <!-- Content wrapper -->
+          <div class="content-wrapper">
+            <!-- Content -->
+            <div class="container-xxl flex-grow-1 container-p-y">
+              <div class="row">
+	              <div class="col-md-5 col-12">
+	              	<p style="font-size:20pt; color:black;"><b>내 주변 소아과</b></p>
+          	      </div>
+          	      <div class="col-md-7 col-12">
+			  	   <form id="form1" name="form1" method="post" onsubmit="geocoder.addressSearch(this.value)">
+		    			<div class="row">
+								<div class="col-4  d-flex align-items-end">
+									<select id='city1' name='city1' onchange="change(this.selectedIndex);" class="form-select d-flex align-items-end">
+			                      	  <option value='전체'>시/도</option>
+				                      <option value='서울특별시'>서울특별시</option>
+				                      <option value='부산광역시'>부산광역시</option>
+				                      <option value='대구광역시'>대구광역시</option>
+				                      <option value='인천광역시'>인천광역시</option>
+				                      <option value='광주광역시'>광주광역시</option>
+				                      <option value='대전광역시'>대전광역시</option>
+				                      <option value='울산광역시'>울산광역시</option>
+				                      <option value='경기도'>경기도</option>
+				                      <option value='강원도'>강원도</option>
+				                      <option value='충청북도'>충청북도</option>
+				                      <option value='충청남도'>충청남도</option>
+				                      <option value='전라북도'>전라북도</option>
+				                      <option value='전라남도'>전라남도</option>
+				                      <option value='경상북도'>경상북도</option>
+				                      <option value='경상남도'>경상남도</option>
+				                      <option value='제주도'>제주도</option>
+			                   		</select>
+								</div>
+			                    <div class="col-4  d-flex align-items-end">
+									 <select id='county1' name='county1' class="form-select d-flex align-items-end">
+				                   		 <option value=''>구/군</option>
+				                	 </select>
+							    </div>
+					   			<div class="col-4 d-flex align-items-end">
+									 <button type="submit" class="btn btn-outline-dark border-0" style="color:white; background-color:#1977cc; font-size:12pt;">검색</button>
+							    </div>
+						</div>
+						<div class="row">
+							<span id="my_location"></span>
+						</div>
+		    		</form>
+          	      </div>
+          	      <hr>
+              </div>
+              <br>
+              <div class="row">
+                <div class="col-md-12 col-md-6 mb-2">
+                  <div class="row card">
+                    <div class="d-flex justify-content-center">
+                      <div class="col-12 col-md-12">
+			    		<div class="row">
+			    			<div class="map_wrap">
+						    	<div id="map" style="width:100%;height:100%;position:relative;overflow:hidden;"></div>
+						    	<div class="hAddr">
+							        <span class="title">내 위치</span>
+							        <span id="centerAddr"></span>
+						    	</div>
+							</div>
+			  	    	</div>
+				  	    <div class="row">
+				    		
+				  	    </div>
+				 
+                       </div>
+                      </div>
+                    </div>
+                 </div>
+            </div>
+            <br>
+            <div class="row d-flex justify-content-center">
+				    
+					<div class="col-md-12 col-12">
+				        <div class="card">
+						  <p class="card-header" style="font-size:20pt; color:#454545"><b>병원 리스트</b></p>
+						    <table class="table">
+						      <thead>
+						        <tr>
+						          <th style="font-size:14pt; color:#454545">병원</th>
+						          <th style="font-size:14pt; color:#454545">주소</th>
+						          <th style="font-size:14pt; color:#454545">전화번호</th>
+						          <th style="font-size:14pt; color:#454545">거리</th>
+						          <th style="font-size:14pt; color:#454545">진료시간</th>
+						          <th style="font-size:14pt; color:#454545">예약</th>
+						        </tr>
+						      </thead>
+						      <tbody id="hospital_table" class="table-border-bottom-0">
+						        
+						      </tbody>
+						    </table>
+						</div>
+				        <div id="pagination">
+				        
+				        </div>
+				 	
+					</div>
+			</div>
+            	
+            
+            </div>
+            <!-- / Content -->
+
+           
+            <!-- / Footer -->
+
+            <div class="content-backdrop fade"></div>
+          </div>
+          <!-- Content wrapper -->
+        </div>
+        <!-- / Layout page -->
+      </div>
+
+      <!-- Overlay -->
+      <div class="layout-overlay layout-menu-toggle"></div>
+    </div>
+    <!-- / Layout wrapper -->
+	<!-- Kakao Map API -->
+	<script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=67f892ae27b42594c7defd720d2dcdc9&libraries=services"></script>
+    <script>
+			// 마커를 담을 배열입니다
+			
+	        var arr = [];
+			var markers = [];
+			var value;
+			var lat;
+			var lon;
+			var lat2;
+			var lon2;
+			var locPosition;
+			var locPosition2;
+			var markerloc = [];
+			var arr2 = [];
+			var countInDiameter = [];
+			
+			/////////////////지도의 중심을 현재 위치로 변경///////////////////////
+			var mapContainer = document.getElementById('map'), // 지도를 표시할 div 
+			    mapOption = { 
+			        center: new kakao.maps.LatLng(37.566826, 126.9786567), // 지도의 중심좌표
+			        level: 5 // 지도의 확대 레벨 
+			    }; 
+			 
+			var map = new kakao.maps.Map(mapContainer, mapOption); // 지도를 생성합니다
+			 
+			// HTML5의 geolocation으로 사용할 수 있는지 확인합니다 
+			if (navigator.geolocation) {
+			    
+			    // GeoLocation을 이용해서 접속 위치를 얻어옵니다
+			    navigator.geolocation.getCurrentPosition(function(position) {
+			        
+			        lat = position.coords.latitude, // 위도
+			        lon = position.coords.longitude; // 경도
+			        
+			        locPosition = new kakao.maps.LatLng(lat, lon); // geolocation으로 얻어온 좌표
+			       	
+			        map.setCenter(locPosition);   
+			            
+			      });
+			    
+			} else { // HTML5의 GeoLocation을 사용할 수 없을때 
+			    
+			    var locPosition = new kakao.maps.LatLng(37.566826, 126.9786567)
+			    alert('현재 위치를 찾을 수 없습니다!');
+			}
+			
+			
+	
+			
+			document.querySelector("#form1").onsubmit = function (){
+				var city1 = document.querySelector("#city1").value;
+				var county1 = document.querySelector("#county1").value;
+				var local = city1 + county1;
+				
+				geocoder.addressSearch(local, function(result, status) {
+					
+				    // 정상적으로 검색이 완료됐으면 
+				     if (status === kakao.maps.services.Status.OK) {
+						var lati = result[0].y;
+						var longi = result[0].x;
+				        var centerLocation = new kakao.maps.LatLng(lati, longi);
+				        // 지도의 중심을 결과값으로 받은 위치로 이동시킵니다
+				        map.setCenter(centerLocation);
+				    }
+				     
+				});
+				
+				
+				var formData = new FormData();
+				formData.append("city1", city1);
+				formData.append("county1", county1);
+				
+				fetch('/kids/pediatric', {
+					method:'post',
+					headers:{
+						'Accept': 'application/json'
+					},
+					body: formData
+				}).then((response) => response.json())
+				  .then((data) => {
+					 displayPlaces(data);
+					 // 페이지 번호를 표출합니다
+				}).catch((err) => {
+					  console.log(err);
+				  })
+				
+				
+				return false;
+				
+			}
+			
+			
+			
+			const triggerTabList = document.querySelectorAll('#myTab button')
+			triggerTabList.forEach(triggerEl => {
+			  const tabTrigger = new bootstrap.Tab(triggerEl)
+
+			  triggerEl.addEventListener('click', event => {
+			    event.preventDefault()
+			    tabTrigger.show()
+			  })
+			})
+			
+			
+			// 주소-좌표 변환 객체를 생성합니다
+			var geocoder = new kakao.maps.services.Geocoder();
+			
+			var marker = new kakao.maps.Marker(), // 클릭한 위치를 표시할 마커입니다
+			infowindow = new kakao.maps.InfoWindow({zindex:1}); // 클릭한 위치에 대한 주소를 표시할 인포윈도우입니다
+
+			// 현재 지도 중심좌표로 주소를 검색해서 지도 좌측 상단에 표시합니다
+			searchAddrFromCoords(map.getCenter(), displayCenterInfo);
+			
+			
+			// 지도를 클릭했을 때 클릭 위치 좌표에 대한 주소정보를 표시하도록 이벤트를 등록합니다
+			kakao.maps.event.addListener(map, 'click', function(mouseEvent) {
+			    searchDetailAddrFromCoords(mouseEvent.latLng, function(result, status) {
+			        if (status === kakao.maps.services.Status.OK) {
+			            var detailAddr = !!result[0].road_address ? '<div style="color:black;">도로명주소 : ' + result[0].road_address.address_name + '</div>' : '';
+			            detailAddr += '<div style="color:black;">지번 주소 : ' + result[0].address.address_name + '</div>';
+			            
+			            var content = '<div class="bAddr">' +
+			                            '<span class="title" style="color:black;">법정동 주소정보</span>' + 
+			                            detailAddr + 
+			                        '</div>';
+
+			            // 마커를 클릭한 위치에 표시합니다 
+			            marker.setPosition(mouseEvent.latLng);
+			            marker.setMap(map);
+
+			            // 인포윈도우에 클릭한 위치에 대한 법정동 상세 주소정보를 표시합니다
+			            infowindow.setContent(content);
+			            infowindow.open(map, marker);
+			        }   
+			    });
+			});
+			
+			
+			// 중심 좌표나 확대 수준이 변경됐을 때 지도 중심 좌표에 대한 주소 정보를 표시하도록 이벤트를 등록합니다
+			kakao.maps.event.addListener(map, 'idle', function() {
+			    searchAddrFromCoords(map.getCenter(), displayCenterInfo);
+			});
+			
+			function searchAddrFromCoords(coords, callback) {
+			    // 좌표로 행정동 주소 정보를 요청합니다
+			    geocoder.coord2RegionCode(coords.getLng(), coords.getLat(), callback);         
+			}
+
+			function searchDetailAddrFromCoords(coords, callback) {
+			    // 좌표로 법정동 상세 주소 정보를 요청합니다
+			    geocoder.coord2Address(coords.getLng(), coords.getLat(), callback);
+			}
+
+			// 지도 좌측상단에 지도 중심좌표에 대한 주소정보를 표출하는 함수입니다
+			function displayCenterInfo(result, status) {
+			    if (status === kakao.maps.services.Status.OK) {
+			        var infoDiv = document.getElementById('centerAddr');
+
+			        for(var i = 0; i < result.length; i++) {
+			            // 행정동의 region_type 값은 'H' 이므로
+			            if (result[i].region_type === 'H') {
+			                infoDiv.innerHTML = result[i].address_name;
+			                break;
+			            }
+			        }
+			    }    
+			}
+			
+			// 키워드로 장소를 검색합니다
+			searchPlaces();
+				
+			
+			// 키워드 검색을 요청하는 함수입니다
+			function searchPlaces() {
+				// 장소 검색 객체를 생성합니다
+				var ps = new kakao.maps.services.Places();  
+				// 검색 결과 목록이나 마커를 클릭했을 때 장소명을 표출할 인포윈도우를 생성합니다
+				var infowindow = new kakao.maps.InfoWindow({zIndex:1});
+			    var keyword = document.getElementById('keyword').value;
+			
+			    if (!keyword.replace(/^\s+|\s+$/g, '')) {
+			        return false;
+			    }
+			
+			    // 장소검색 객체를 통해 키워드로 장소검색을 요청합니다
+			    ps.keywordSearch( keyword, placesSearchCB); 
+			}
+			
+			// 장소검색이 완료됐을 때 호출되는 콜백함수 입니다
+			function placesSearchCB(data, status, pagination) {
+			    if (status === kakao.maps.services.Status.OK) {
+					
+			        // 정상적으로 검색이 완료됐으면
+			        // 검색 목록과 마커를 표출합니다
+			        displayPlaces(data);
+			
+			        // 페이지 번호를 표출합니다
+			
+			    } else if (status === kakao.maps.services.Status.ZERO_RESULT) {
+			
+			        alert('검색 결과가 존재하지 않습니다.');
+			        return;
+			
+			    } else if (status === kakao.maps.services.Status.ERROR) {
+			
+			        alert('검색 결과 중 오류가 발생했습니다.');
+			        return;
+			
+			    }
+			}
+			
+			// 검색 결과 목록과 마커를 표출하는 함수입니다
+			function displayPlaces(data) {
+			
+			    var hospital_table = document.querySelector('#hospital_table'), 
+			    menuEl = document.getElementById('menu_wrap'), 
+			    bounds = new kakao.maps.LatLngBounds(), 
+			    listStr = '';
+			  
+			    
+			    // 검색 결과 목록에 추가된 항목들을 제거합니다
+			
+			    // 지도에 표시되고 있는 마커를 제거합니다
+			    removeMarker();
+			    
+			    for (var i=0; i < data.length; i++ ) {
+					var dLat = (Math.PI / 180) * (data[i].wgs84Lat - map.getCenter().getLat());
+				    var dLon = (Math.PI / 180) * (data[i].wgs84Lon - map.getCenter().getLng());
+				
+				    var a = Math.sin(dLat/2)* Math.sin(dLat/2)+ Math.cos((Math.PI/180)*(map.getCenter().getLat()))* Math.cos((Math.PI/180)*(data[i].wgs84Lat))* Math.sin(dLon/2)* Math.sin(dLon/2);
+				    var c = 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1-a));
+				    var d = 6400 * c * 1000;
+				    d = d / 1000;
+				    d = d.toFixed(2);
+		            arr.push([i,data[i], d]);
+		            arr.sort((a,b) => a[2] - b[2]);
+			    }
+			    
+			    for (var i=0; i < arr.length; i++){
+			        // 마커를 생성하고 지도에 표시합니다
+			        var placePosition = new kakao.maps.LatLng(arr[i][1].wgs84Lat, arr[i][1].wgs84Lon),
+			            marker = addMarker(placePosition, i), 
+			            itemEl = getListItem(arr[i][0], arr[i][1], arr[i][2]); // 검색 결과 항목 Element를 생성합니다
+			        // 검색된 장소 위치를 기준으로 지도 범위를 재설정하기위해
+			        // LatLngBounds 객체에 좌표를 추가합니다
+			        bounds.extend(placePosition);
+			        // 마커와 검색결과 항목에 mouseover 했을때
+			        // 해당 장소에 인포윈도우에 장소명을 표시합니다
+			        // mouseout 했을 때는 인포윈도우를 닫습니다
+			        (function(marker, title) {
+			            kakao.maps.event.addListener(marker, 'mouseover', function() {
+			                displayInfowindow(marker, title);
+			            });
+			
+			            kakao.maps.event.addListener(marker, 'mouseout', function() {
+			                infowindow.close();
+			            });
+			
+			            itemEl.onmouseover =  function () {
+			                displayInfowindow(marker, title);
+			            };
+			
+			            itemEl.onmouseout =  function () {
+			                infowindow.close();
+			            };
+			        })(marker, arr[i][1].dutyName);
+					
+			        var row = '<tr><td style="font-size:11pt; color:#454545"><i class="fab fa-angular fa-lg text-danger me-3"></i><b>'
+			        + arr[i][1].dutyName + '</b></td><td style="font-size:11pt; color:#454545"><b>' + arr[i][1].dutyAddr + '<b></td><td style="font-size:11pt; color:#454545;"><b>' + 
+			        arr[i][1].dutyTel1 + '</b></td><td style="font-size:11pt; color:#454545"><b>' + arr[i][2] + 'km</b></td><td><ul style="list-style-type:none;"><br><li style="font-size:11pt; color:#454545"><b>월: ' + arr[i][1].dutyTime1s + ' ~ ' + arr[i][1].dutyTime1c + '</b></li>'+
+			        '<li style="font-size:11pt; color:#454545"><b>화: ' + arr[i][1].dutyTime2s + ' ~ ' + arr[i][1].dutyTime2c + '</b></li>' + '<li style="font-size:11pt; color:#454545"><b>수: ' + arr[i][1].dutyTime3s + ' ~ ' + arr[i][1].dutyTime3c + '</b></li>' + 
+			        '<li style="font-size:11pt; color:#454545"><b>목: ' + arr[i][1].dutyTime4s + ' ~ ' + arr[i][1].dutyTime4c + '</b></li>' + '<li style="font-size:11pt; color:#454545"><b>금: ' + arr[i][1].dutyTime5s + ' ~ ' + arr[i][1].dutyTime5c + '</b></li>' + 
+			        '<li style="font-size:11pt; color:#454545"><b>토: ' + arr[i][1].dutyTime6s + ' ~ ' + arr[i][1].dutyTime6c + '</b></li>' + '<li style="font-size:11pt; color:#454545"><b>일: ' + arr[i][1].dutyTime7s + ' ~ ' + arr[i][1].dutyTime7c + '</b></li></ul></td>' +
+			        '<td><input type="button" class="btn-primary" onclick="viewHospital(\'' + arr[i][0] + '\',\''  + arr[i][1].dutyName + '\',\'' + arr[i][1].dutyAddr + '\',\'' + arr[i][1].dutyTel1 +'\',\'' + arr[i][1].wgs84Lat + '\' , \'' + 
+			        arr[i][1].wgs84Lon +'\',\'' + arr[i][1].dutyDiv +  '\');" value="예약하기" style="font-size:12pt; border:none;border-radius:10px; padding:10px; color:#fff;"></td></tr>';
+			        hospital_table.innerHTML += row;
+			    }
+			    
+			    displayPagination(arr);
+			
+			    // 검색결과 항목들을 검색결과 목록 Element에 추가합니다
+			    menuEl.scrollTop = 0;
+			
+			    // 검색된 장소 위치를 기준으로 지도 범위를 재설정합니다
+			    map.setBounds(bounds);
+			}
+			
+			// 검색결과 항목을 Element로 반환하는 함수입니다
+			function getListItem(index, hospital, distance) {
+			    var el = document.createElement('li'),
+			    itemStr = '<form><span class="markerbg marker_' + (index+1) + '">'+'</span>' +
+			                '<div class="info" style="border:none">' +
+			                '   <h6 style="color:black;"> ' + hospital.dutyName + '</h6>';
+			
+			    
+		        itemStr += '    <span style="color:black;">주소: ' + hospital.dutyAddr + '</span>';
+			     
+			    itemStr += '  <span class="tel">전화번호: ' + hospital.dutyTel1  + '</span>' + '<span style=";color:black;">거리: '+ distance + 'km</span>' +
+			                '</div></form>';           
+			
+			    el.innerHTML = itemStr;
+			    el.className = 'item';
+			    
+			    return el;
+				
+			}
+
+            
+			
+			// 마커를 생성하고 지도 위에 마커를 표시하는 함수입니다
+			function addMarker(position, idx) {
+			    var imageSrc = 'https://t1.daumcdn.net/localimg/localimages/07/mapapidoc/marker_number_blue.png', // 마커 이미지 url, 스프라이트 이미지를 씁니다
+			        imageSize = new kakao.maps.Size(36, 37),  // 마커 이미지의 크기
+			        imgOptions =  {
+			            spriteSize : new kakao.maps.Size(36, 691), // 스프라이트 이미지의 크기
+			            spriteOrigin : new kakao.maps.Point(0, (idx*46)+10), // 스프라이트 이미지 중 사용할 영역의 좌상단 좌표
+			            offset: new kakao.maps.Point(13, 37) // 마커 좌표에 일치시킬 이미지 내에서의 좌표
+			        },
+			        markerImage = new kakao.maps.MarkerImage(imageSrc, imageSize, imgOptions),
+			            marker = new kakao.maps.Marker({
+			            position: position, // 마커의 위치
+			            image: markerImage 
+			        });
+			
+			    marker.setMap(map); // 지도 위에 마커를 표출합니다
+			    markers.push(marker);  // 배열에 생성된 마커를 추가합니다
+				
+			    markerloc.push(marker.getPosition());
+			   
+			    
+			    return marker;
+			}
+			
+			// 지도 위에 표시되고 있는 마커를 모두 제거합니다
+			function removeMarker() {
+			    for ( var i = 0; i < markers.length; i++ ) {
+			        markers[i].setMap(null);
+			    }   
+			    markers = [];
+			}
+			
+			// 검색결과 목록 하단에 페이지번호를 표시는 함수입니다
+			function displayPagination(arr) {
+				var postNum = 5,
+				totalCount = arr.length;
+				
+			    for(var i = 0 ; i < totalCount; i++){
+			    	var pageNum = arr[i][0];
+			    	var startPoint = ((pageNum - 1) / (pageCountInSection)) * pageCountInSection + 1;
+			    	var endPoint = startPoint + pageCountInSection - 1;
+			    }
+			}
+			
+			function viewHospital(index, dutyName, dutyAddr, dutyTel1, wgs84Lat, wgs84Lon, dutyDiv){
+				location.href = "/kids/viewHospital?index="+ index + "&dutyName=" + dutyName + "&dutyAddr=" + dutyAddr + "&dutyTel1=" + dutyTel1 + "&wgs84Lat=" + wgs84Lat + "&wgs84Lon=" + wgs84Lon + "&dutyDiv=" + dutyDiv;
+			}
+			
+			// 검색결과 목록 또는 마커를 클릭했을 때 호출되는 함수입니다
+			// 인포윈도우에 장소명을 표시합니다
+			function displayInfowindow(marker, title) {
+			    var content = '<div style="padding:10px;">'+'<p style="font-family:GODOM; font-size:9pt; color:#454545">' + title + '</p></div>';
+			
+			    infowindow.setContent(content);
+			    infowindow.open(map, marker);
+			}
+			
+			 // 검색결과 목록의 자식 Element를 제거하는 함수입니다
+			function removeAllChildNods(el) {   
+			    while (el.hasChildNodes()) {
+			        el.removeChild (el.lastChild);
+			    }
+			}
+			var drawingFlag = false; // 원이 그려지고 있는 상태를 가지고 있을 변수입니다
+			var centerPosition; // 원의 중심좌표 입니다
+			var drawingCircle; // 그려지고 있는 원을 표시할 원 객체입니다
+			var drawingLine; // 그려지고 있는 원의 반지름을 표시할 선 객체입니다
+			var drawingOverlay; // 그려지고 있는 원의 반경을 표시할 커스텀오버레이 입니다
+			var drawingDot; // 그려지고 있는 원의 중심점을 표시할 커스텀오버레이 입니다
+
+			var circles = []; // 클릭으로 그려진 원과 반경 정보를 표시하는 선과 커스텀오버레이를 가지고 있을 배열입니다
+
+			// 지도에 클릭 이벤트를 등록합니다
+			kakao.maps.event.addListener(map, 'click', function(mouseEvent) {
+			        
+			    // 클릭 이벤트가 발생했을 때 원을 그리고 있는 상태가 아니면 중심좌표를 클릭한 지점으로 설정합니다
+			    if (!drawingFlag) {    
+			        
+			        // 상태를 그리고있는 상태로 변경합니다
+			        drawingFlag = true; 
+			       
+			        // 원이 그려질 중심좌표를 클릭한 위치로 설정합니다 
+			        centerPosition = new kakao.maps.LatLng(lat, lon);
+			        // 그려지고 있는 원의 반경을 표시할 선 객체를 생성합니다
+			        if (!drawingLine) {
+			            drawingLine = new kakao.maps.Polyline({
+			                strokeWeight: 3, // 선의 두께입니다
+			                strokeColor: '#00a0e9', // 선의 색깔입니다
+			                strokeOpacity: 1, // 선의 불투명도입니다 0에서 1 사이값이며 0에 가까울수록 투명합니다
+			                strokeStyle: 'solid' // 선의 스타일입니다
+			            });    
+			        }
+			        
+			        // 그려지고 있는 원을 표시할 원 객체를 생성합니다
+			        if (!drawingCircle) {                    
+			            drawingCircle = new kakao.maps.Circle({ 
+			                strokeWeight: 1, // 선의 두께입니다
+			                strokeColor: '#00a0e9', // 선의 색깔입니다
+			                strokeOpacity: 0.1, // 선의 불투명도입니다 0에서 1 사이값이며 0에 가까울수록 투명합니다
+			                strokeStyle: 'solid', // 선의 스타일입니다
+			                fillColor: '#00a0e9', // 채우기 색깔입니다
+			                fillOpacity: 0.2 // 채우기 불투명도입니다 
+			            });     
+			        }
+			        
+			        // 그려지고 있는 원의 반경 정보를 표시할 커스텀오버레이를 생성합니다
+			        if (!drawingOverlay) {
+			            drawingOverlay = new kakao.maps.CustomOverlay({
+			                xAnchor: 0,
+			                yAnchor: 0,
+			                zIndex: 1
+			            });              
+			        }
+			    }
+			    });
+
+			// 지도에 마우스무브 이벤트를 등록합니다
+			// 원을 그리고있는 상태에서 마우스무브 이벤트가 발생하면 그려질 원의 위치와 반경정보를 동적으로 보여주도록 합니다
+			kakao.maps.event.addListener(map, 'mousemove', function (mouseEvent) {
+			        
+			    // 마우스무브 이벤트가 발생했을 때 원을 그리고있는 상태이면
+			    if (drawingFlag) {
+
+			        // 마우스 커서의 현재 위치를 얻어옵니다 
+			        var mousePosition = mouseEvent.latLng; 
+			        
+			        // 그려지고 있는 선을 표시할 좌표 배열입니다. 클릭한 중심좌표와 마우스커서의 위치로 설정합니다
+			        var linePath = [centerPosition, mousePosition];     
+			        
+			        // 그려지고 있는 선을 표시할 선 객체에 좌표 배열을 설정합니다
+			        drawingLine.setPath(linePath);
+			        
+			        // 원의 반지름을 선 객체를 이용해서 얻어옵니다 
+			        var length = drawingLine.getLength();
+			        
+			        if(length > 0) {
+			            
+			            // 그려지고 있는 원의 중심좌표와 반지름입니다
+			            var circleOptions = { 
+			                center : centerPosition, 
+			            radius: length,                 
+			            };
+			            
+			            // 그려지고 있는 원의 옵션을 설정합니다
+			            drawingCircle.setOptions(circleOptions); 
+			                
+			            // 반경 정보를 표시할 커스텀오버레이의 내용입니다
+			            var radius = Math.round(drawingCircle.getRadius()),   
+			            content = '<div class="info">반경 <span class="number">' + radius + '</span>m</div>';
+			            
+			            // 반경 정보를 표시할 커스텀 오버레이의 좌표를 마우스커서 위치로 설정합니다
+			            drawingOverlay.setPosition(mousePosition);
+			            
+			            // 반경 정보를 표시할 커스텀 오버레이의 표시할 내용을 설정합니다
+			            drawingOverlay.setContent(content);
+			            
+			            // 그려지고 있는 원을 지도에 표시합니다
+			            drawingCircle.setMap(map); 
+			            
+			            // 그려지고 있는 선을 지도에 표시합니다
+			            drawingLine.setMap(map);  
+			            
+			            // 그려지고 있는 원의 반경정보 커스텀 오버레이를 지도에 표시합니다
+			            drawingOverlay.setMap(map);
+			            
+			        } else { 
+			            
+			            drawingCircle.setMap(null);
+			            drawingLine.setMap(null);    
+			            drawingOverlay.setMap(null);
+			            
+			        }
+			    }     
+			});     
+
+			// 지도에 마우스 오른쪽 클릭이벤트를 등록합니다
+			// 원을 그리고있는 상태에서 마우스 오른쪽 클릭 이벤트가 발생하면
+			// 마우스 오른쪽 클릭한 위치를 기준으로 원과 원의 반경정보를 표시하는 선과 커스텀 오버레이를 표시하고 그리기를 종료합니다
+			kakao.maps.event.addListener(map, 'rightclick', function (mouseEvent) {
+
+			    if (drawingFlag) {
+
+			        // 마우스로 오른쪽 클릭한 위치입니다 
+			        var rClickPosition = mouseEvent.latLng; 
+
+			        // 원의 반경을 표시할 선 객체를 생성합니다
+			        var polyline = new kakao.maps.Polyline({
+			            path: [centerPosition, rClickPosition], // 선을 구성하는 좌표 배열입니다. 원의 중심좌표와 클릭한 위치로 설정합니다
+			            strokeWeight: 3, // 선의 두께 입니다
+			            strokeColor: '#00a0e9', // 선의 색깔입니다
+			            strokeOpacity: 1, // 선의 불투명도입니다 0에서 1 사이값이며 0에 가까울수록 투명합니다
+			            strokeStyle: 'solid' // 선의 스타일입니다
+			        });
+			        
+			        // 원 객체를 생성합니다
+			        var circle = new kakao.maps.Circle({ 
+			            center : centerPosition, // 원의 중심좌표입니다
+			            radius: polyline.getLength(), // 원의 반지름입니다 m 단위 이며 선 객체를 이용해서 얻어옵니다
+			            strokeWeight: 1, // 선의 두께입니다
+			            strokeColor: '#00a0e9', // 선의 색깔입니다
+			            strokeOpacity: 0.1, // 선의 불투명도입니다 0에서 1 사이값이며 0에 가까울수록 투명합니다
+			            strokeStyle: 'solid', // 선의 스타일입니다
+			            fillColor: '#00a0e9', // 채우기 색깔입니다
+			            fillOpacity: 0.2  // 채우기 불투명도입니다 
+			        });
+			        
+			        var radius = Math.round(circle.getRadius()), // 원의 반경 정보를 얻어옵니다
+			            content = getTimeHTML(radius,markerloc); // 커스텀 오버레이에 표시할 반경 정보입니다
+
+			        // 반경정보를 표시할 커스텀 오버레이를 생성합니다
+			        var radiusOverlay = new kakao.maps.CustomOverlay({
+			            content: content, // 표시할 내용입니다
+			            position: rClickPosition, // 표시할 위치입니다. 클릭한 위치로 설정합니다
+			            xAnchor: 0,
+			            yAnchor: 0,
+			            zIndex: 1 
+			        });  
+
+			        // 원을 지도에 표시합니다
+			        circle.setMap(map); 
+			        
+			        // 선을 지도에 표시합니다
+			        polyline.setMap(map);
+			        
+			        // 반경 정보 커스텀 오버레이를 지도에 표시합니다
+			        radiusOverlay.setMap(map);
+			        
+			        // 배열에 담을 객체입니다. 원, 선, 커스텀오버레이 객체를 가지고 있습니다
+			        var radiusObj = {
+			            'polyline' : polyline,
+			            'circle' : circle,
+			            'overlay' : radiusOverlay
+			        };
+			        
+			        // 배열에 추가합니다
+			        // 이 배열을 이용해서 "모두 지우기" 버튼을 클릭했을 때 지도에 그려진 원, 선, 커스텀오버레이들을 지웁니다
+			        circles.push(radiusObj);   
+			    
+			        // 그리기 상태를 그리고 있지 않는 상태로 바꿉니다
+			        drawingFlag = false;
+			        
+			        // 중심 좌표를 초기화 합니다  
+			        centerPosition = null;
+			        
+			        // 그려지고 있는 원, 선, 커스텀오버레이를 지도에서 제거합니다
+			        drawingCircle.setMap(null);
+			        drawingLine.setMap(null);   
+			        drawingOverlay.setMap(null);
+			    }
+			});
+			
+			// 지도에 표시되어 있는 모든 원과 반경정보를 표시하는 선, 커스텀 오버레이를 지도에서 제거합니다
+			function removeCircles() {         
+			    for (var i = 0; i < circles.length; i++) {
+			        circles[i].circle.setMap(null);    
+			        circles[i].polyline.setMap(null);
+			        circles[i].overlay.setMap(null);
+			    }         
+			    circles = [];
+			}
+
+			// 마우스 우클릭 하여 원 그리기가 종료됐을 때 호출하여 
+			// 그려진 원의 반경 정보와 반경에 대한 도보, 자전거 시간을 계산하여
+			// HTML Content를 만들어 리턴하는 함수입니다
+			function getTimeHTML(distance, markerloc) {
+				for(i = 0 ; i < markerloc.length ; i++){
+					var dLat = (Math.PI / 180) * (markerloc[i]['Ma'] - lat);
+				    var dLon = (Math.PI / 180) * (markerloc[i]['La'] - lon);
+				
+				    var a = Math.sin(dLat/2)* Math.sin(dLat/2)+ Math.cos((Math.PI/180)*(lat))* Math.cos((Math.PI/180)*(markerloc[i]['Ma']))* Math.sin(dLon/2)* Math.sin(dLon/2);
+				    var c = 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1-a));
+				    var d = 6400 * c * 1000;
+				    d = d / 1000;
+				    d = d.toFixed(2);
+		            arr2.push([i,markerloc[i], d]);
+		            arr2.sort((a,b) => a[2] - b[2]);
+				}
+				
+				
+			    // 도보의 시속은 평균 4km/h 이고 도보의 분속은 67m/min입니다
+			    var walkkTime = distance / 67 | 0;
+			    var walkHour = '', walkMin = '';
+				
+			    for(i = 0 ; i < arr2.length ; i++){
+			    	if(arr2[i][2] < distance/1000){
+			    		countInDiameter.push(arr2[i][2]);
+			    	}
+			    }
+			    
+			    var lenCountInDiameter = countInDiameter.length;
+			    // 계산한 도보 시간이 60분 보다 크면 시간으로 표시합니다
+			    if (walkkTime > 60) {
+			        walkHour = '<span class="number">' + Math.floor(walkkTime / 60) + '</span>시간 '
+			    }
+			    walkMin = '<span class="number">' + walkkTime % 60 + '</span>분'
+				
+			    // 자전거의 평균 시속은 16km/h 이고 이것을 기준으로 자전거의 분속은 267m/min입니다
+			    var bycicleTime = distance / 227 | 0;
+			    var bycicleHour = '', bycicleMin = '';
+
+			    // 계산한 자전거 시간이 60분 보다 크면 시간으로 표출합니다
+			    if (bycicleTime > 60) {
+			        bycicleHour = '<span class="number">' + Math.floor(bycicleTime / 60) + '</span>시간 '
+			    }
+			    bycicleMin = '<span class="number">' + bycicleTime % 60 + '</span>분'
+
+			    // 거리와 도보 시간, 자전거 시간을 가지고 HTML Content를 만들어 리턴합니다
+			    var content = '<ul class="info">';
+			    content += '    <li>';
+			    content += '        <span class="label">총거리</span><span class="number">' + distance + '</span>m';
+			    content += '    </li>';
+			    content += '    <li>';
+			    content += '        <span class="label">도보</span>' + walkHour + walkMin;
+			    content += '    </li>';
+			    content += '    <li>';
+			    content += '        <span class="label">자전거</span>' + bycicleHour + bycicleMin;
+			    content += '    </li>';
+			    content += '    <li>';
+			    content += '        <span class="label">병원 수</span>' + lenCountInDiameter;
+			    content += '    </li>';
+			    content += '</ul>'
+
+			    return content;
+			}
+			
+			 var cnt = new Array();
+			     cnt[0] = new Array('전체');
+			     cnt[1] = new Array('전체','강남구','강동구','강북구','강서구','관악구','광진구','구로구','금천구','노원구','도봉구','동대문구','동작구','마포구','서대문구','서초구','성동구','성북구','송파구','양천구','영등포구','용산구','은평구','종로구','중구','중랑구');
+			     cnt[2] = new Array('전체','강서구','금정구','남구','동구','동래구','부산진구','북구','사상구','사하구','서구','수영구','연제구','영도구','중구','해운대구','기장군');
+			     cnt[3] = new Array('전체','남구','달서구','동구','북구','서구','수성구','중구','달성군');
+			     cnt[4] = new Array('전체','계양구','남구','남동구','동구','부평구','서구','연수구','중구','강화군','옹진군');
+			     cnt[5] = new Array('전체','광산구','남구','동구','북구','서구');
+			     cnt[6] = new Array('전체','대덕구','동구','서구','유성구','중구');
+			     cnt[7] = new Array('전체','남구','동구','북구','중구','울주군');
+			     cnt[8] = new Array('전체','고양시','과천시','광명시','구리시','군포시','남양주시','동두천시','부천시','성남시','수원시','시흥시','안산시','안양시','오산시','의왕시','의정부시','평택시','하남시','가평군','광주시','김포시','안성시','양주군','양평군','여주군','연천군','용인시','이천군','파주시','포천시','화성시');
+			     cnt[9] = new Array('전체','강릉시','동해시','삼척시','속초시','원주시','춘천시','태백시','고성군','양구군','양양군','영월군','인제군','정선군','철원군','평창군','홍천군','화천군','황성군');
+			     cnt[10] = new Array('전체','제천시','청주시','충주시','괴산군','단양군','보은군','영동군','옥천군','음성군','진천군','청원군');
+			     cnt[11] = new Array('전체','공주시','보령시','서산시','아산시','천안시','금산군','논산군','당진군','부여군','서천군','연기군','예산군','청양군','태안군','홍성군');
+			     cnt[12] = new Array('전체','군산시','김제시','남원시','익산시','전주시','정읍시','고창군','무주군','부안군','순창군','완주군','임실군','장수군','진안군');
+			     cnt[13] = new Array('전체','광양시','나주시','목포시','순천시','여수시','여천시','강진군','고흥군','곡성군','구례군','담양군','무안군','보성군','신안군','여천군','영광군','영암군','완도군','장성군','장흥군','진도군','함평군','해남군','화순군');
+			     cnt[14] = new Array('전체','경산시','경주시','구미시','김천시','문겅시','상주시','안동시','영주시','영천시','포항시','고령군','군위군','봉화군','성주군','영덕군','영양군','예천군','울릉군','울진군','의성군','청도군','청송군','칠곡군');
+			     cnt[15] = new Array('전체','거제시','김해시','마산시','밀양시','사천시','울산시','진주시','진해시','창원시','통영시','거창군','고성군','남해군','산청군','양산시','의령군','창녕군','하동군','함안군','함양군','합천군');
+			     cnt[16] = new Array('전체','서귀포시','제주시','남제주군','북제주군');
+		     
+			  function change(index) {
+		     	var sel = document.querySelector("#county1");
+		       /* 옵션메뉴삭제 */
+		       for (i=sel.length-1; i>=0; i--){
+		         sel.options[i] = null
+		         }
+		       /* 옵션박스추가 */
+		       for (i=0; i < cnt[index].length;i++){                     
+		                         sel.options[i] = new Option(cnt[index][i], cnt[index][i]);
+		        }
+		     }
+			
+			
+		</script>
+
+    <!-- Core JS -->
+    <!-- build:js assets/vendor/js/core.js -->
+    <script src="/assets/vendor/libs/jquery/jquery.js"></script>
+    <script src="/assets/vendor/libs/popper/popper.js"></script>
+    <script src="/assets/vendor/js/bootstrap.js"></script>
+    <script src="/assets/vendor/libs/perfect-scrollbar/perfect-scrollbar.js"></script>
+    <script src="/assets/vendor/js/menu.js"></script>
+   
+    
+    <!-- endbuild -->
+
+    <!-- Vendors JS -->
+    <script src="/assets/vendor/libs/apex-charts/apexcharts.js"></script>
+    <!-- Vendor JS Files -->
+	<script src="/vendor/purecounter/purecounter_vanilla.js"></script>
+	<script src="/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+	<script src="/vendor/glightbox/js/glightbox.min.js"></script>
+	<script src="/vendor/swiper/swiper-bundle.min.js"></script>
+	<script src="/vendor/php-email-form/validate.js"></script>
+
+    <!-- Main JS -->
+    <script src="/assets/js/main.js"></script>
+
+    <!-- Page JS -->
+    <script src="/assets/js/dashboards-analytics.js"></script>
+
+    <!-- Place this tag in your head or just before your close body tag. -->
+    <script async defer src="https://buttons.github.io/buttons.js"></script>
+    
+    
+  </body>
+</html>

@@ -1,8 +1,8 @@
 package com.example.wahwah.member.service;
 
-import com.example.wahwah.member.dto.HospitalDTO;
+import com.example.wahwah.Hospital.domain.HospitalEntity;
+import com.example.wahwah.Hospital.dto.HospitalDTO;
 import com.example.wahwah.member.dto.MasterDTO;
-import com.example.wahwah.member.entity.HospitalEntity;
 import com.example.wahwah.member.entity.MasterEntity;
 
 public interface MasterService {

@@ -5,9 +5,9 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 
-import com.example.wahwah.member.dto.HospitalDTO;
+import com.example.wahwah.Hospital.domain.HospitalEntity;
+import com.example.wahwah.Hospital.dto.HospitalDTO;
 import com.example.wahwah.member.dto.MasterDTO;
-import com.example.wahwah.member.entity.HospitalEntity;
 import com.example.wahwah.member.entity.MasterEntity;
 import com.example.wahwah.member.service.MasterService;
 
@@ -24,9 +24,16 @@ public class MasterController {
     	return "login";
     }
     
+    @GetMapping("/master/login")
+    public void getLogin() {}
+    
     // 병원관리자 회원가입 보여주기
     @GetMapping("/master/signup")
     public void getSignup() {
+
+    }
+    @GetMapping("/master/signup1")
+    public void getSignup1() {
 
     }
     @GetMapping("/master/finishSignup")

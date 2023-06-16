@@ -1,56 +1,194 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
 	<head>
-	<meta charset="UTF-8">
-	<link href="/css/bootstrap.min.css" rel="stylesheet">
-	<title>Insert title here</title>
+	  <meta charset="utf-8">
+	  <meta content="width=device-width, initial-scale=1.0" name="viewport">
 	
+	  <title>소아과/응급실 예약 플랫폼  응애응애 </title>
+	  <meta name="robots" content="noindex, nofollow">
+	  <meta content="" name="description">
+	  <meta content="" name="keywords">
+	
+	  <!-- Favicons -->
+	  <link href="/img/favicon.png" rel="icon">
+	  <link href="/img/apple-touch-icon.png" rel="apple-touch-icon">
+		
+	  
+	  <!-- Vendor CSS Files -->
+	  <link href="/vendor/fontawesome-free/css/all.min.css" rel="stylesheet">
+	  <link href="/vendor/animate.css/animate.min.css" rel="stylesheet">
+	  <link href="/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+	  <link href="/vendor/bootstrap-icons/bootstrap-icons.css" rel="stylesheet">
+	  <link href="/vendor/boxicons/css/boxicons.min.css" rel="stylesheet">
+	  <link href="/vendor/glightbox/css/glightbox.min.css" rel="stylesheet">
+	  <link href="/vendor/remixicon/remixicon.css" rel="stylesheet">
+	  <link href="/vendor/swiper/swiper-bundle.min.css" rel="stylesheet">
+	
+	  <!-- Template Main CSS File -->
+	  <script src="/js/main.js"></script>
+	  <link href="/css/style.css" rel="stylesheet">
+	  <link href="/css/fonts.css" rel="stylesheet" type="text/css">
+	  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/js/bootstrap.bundle.min.js"></script>
+	  <style>
+		  	@font-face {
+		    	font-family: 'GODOM';
+		    	src: url('/vendor/bootstrap-icons/fonts/GODOM.ttf') format('truetype');
+			}
+			
+			body,h1,h2,h3,h4,h5,h6,p,div p,a,div,span,small{
+				font-family: 'GODOM';
+			}
+	  </style>
+	
+	  <!-- =======================================================
+	  * Template Name: Medilab
+	  * Template URL: https://bootstrapmade.com/medilab-free-medical-bootstrap-theme/
+	  * Author: BootstrapMade.com
+	  * License: https://bootstrapmade.com/license/
+	  ======================================================== -->
 	</head>
 	<body>
-	<main>
-  <div class="album py-5 bg-light">
-    <div class="container">
-	  <h3><b th:text="|${keyword} 리뷰|"></b></h3>
-	  <br>
-      <div class="row row-cols-3">
-        <div class="col-12">
-          <div class="card shadow-md">
-            <div class="card-body">
-            <div class="col-8" style="margin-left:auto; margin-right:auto;">
-				<div class="list-group">
-				  <a href="#" class="list-group-item list-group-item-action" aria-current="true">
-				    <div class="d-flex w-100 justify-content-between">
-				      <h5 class="mb-1">List group item heading</h5>
-				      <small>3 days ago</small>
-				    </div>
-				    <p class="mb-1">Some placeholder content in a paragraph.</p>
-				    <small>And some small print.</small>
-				  </a>
-				  </div>
-			</div>
-              <div class="d-flex justify-content-between align-items-center">
-                
-              </div>
-            </div>
-          </div>
-        </div>
-        
-      </div>
-    </div>
-  </div>
+		<main>
+		  <div class="album py-5 bg-light">
+		    <div class="container">
+		      <!-- ======= Testimonials Section ======= -->
+		    <section id="testimonials" class="testimonials">
+		      <div class="container">
+				 <div class="section-title">
+				 	<h2 th:text="|${dutyName} 리뷰|" style="color:#454545;"></h2>
+				    <p th:text="|${dutyName}의 최신 리뷰입니다.|" style="color:#454545; font-weight:bold; font-size:14pt;"></p>
+		        </div>
+		        <div class="testimonials-slider swiper swiper-initialized swiper-horizontal swiper-pointer-events swiper-backface-hidden" data-aos="fade-up" data-aos-delay="100">
+		          <div class="swiper-wrapper" id="swiper-wrapper-3c16974babcb2964" aria-live="off" style="transform: translate3d(-1407px, 0px, 0px); transition-duration: 0ms;"><div class="swiper-slide swiper-slide-duplicate" role="group" aria-label="5 / 5" data-swiper-slide-index="4" style="width: 449px; margin-right: 20px;">
+		              <div class="testimonial-wrap">
+		                <div class="testimonial-item">
+		                  <img src="assets/img/testimonials/testimonials-5.jpg" class="testimonial-img" alt="">
+		                  <h3>John Larson</h3>
+		                  <h4>Entrepreneur</h4>
+		                  <p>
+		                    <i class="bx bxs-quote-alt-left quote-icon-left"></i>
+		                    Quis quorum aliqua sint quem legam fore sunt eram irure aliqua veniam tempor noster veniam enim culpa labore duis sunt culpa nulla illum cillum fugiat legam esse veniam culpa fore nisi cillum quid.
+		                    <i class="bx bxs-quote-alt-right quote-icon-right"></i>
+		                  </p>
+		                </div>
+		              </div>
+		            </div>
+		
+		            <div class="swiper-slide" role="group" aria-label="1 / 5" data-swiper-slide-index="0" style="width: 449px; margin-right: 20px;">
+		              <div class="testimonial-wrap">
+		                <div class="testimonial-item">
+		                  <img src="assets/img/testimonials/testimonials-1.jpg" class="testimonial-img" alt="">
+		                  <h3>Saul Goodman</h3>
+		                  <h4>Ceo &amp; Founder</h4>
+		                  <p>
+		                    <i class="bx bxs-quote-alt-left quote-icon-left"></i>
+		                    Proin iaculis purus consequat sem cure digni ssim donec porttitora entum suscipit rhoncus. Accusantium quam, ultricies eget id, aliquam eget nibh et. Maecen aliquam, risus at semper.
+		                    <i class="bx bxs-quote-alt-right quote-icon-right"></i>
+		                  </p>
+		                </div>
+		              </div>
+		            </div><!-- End testimonial item -->
+		
+		            <div class="swiper-slide swiper-slide-prev" role="group" aria-label="2 / 5" data-swiper-slide-index="1" style="width: 449px; margin-right: 20px;">
+		              <div class="testimonial-wrap">
+		                <div class="testimonial-item">
+		                  <img src="assets/img/testimonials/testimonials-2.jpg" class="testimonial-img" alt="">
+		                  <h3>Sara Wilsson</h3>
+		                  <h4>Designer</h4>
+		                  <p>
+		                    <i class="bx bxs-quote-alt-left quote-icon-left"></i>
+		                    Export tempor illum tamen malis malis eram quae irure esse labore quem cillum quid cillum eram malis quorum velit fore eram velit sunt aliqua noster fugiat irure amet legam anim culpa.
+		                    <i class="bx bxs-quote-alt-right quote-icon-right"></i>
+		                  </p>
+		                </div>
+		              </div>
+		            </div><!-- End testimonial item -->
+		
+		            <div class="swiper-slide swiper-slide-active" role="group" aria-label="3 / 5" data-swiper-slide-index="2" style="width: 449px; margin-right: 20px;">
+		              <div class="testimonial-wrap">
+		                <div class="testimonial-item">
+		                  <img src="assets/img/testimonials/testimonials-3.jpg" class="testimonial-img" alt="">
+		                  <h3>Jena Karlis</h3>
+		                  <h4>Store Owner</h4>
+		                  <p>
+		                    <i class="bx bxs-quote-alt-left quote-icon-left"></i>
+		                    Enim nisi quem export duis labore cillum quae magna enim sint quorum nulla quem veniam duis minim tempor labore quem eram duis noster aute amet eram fore quis sint minim.
+		                    <i class="bx bxs-quote-alt-right quote-icon-right"></i>
+		                  </p>
+		                </div>
+		              </div>
+		            </div><!-- End testimonial item -->
+		
+		            <div class="swiper-slide swiper-slide-next" role="group" aria-label="4 / 5" data-swiper-slide-index="3" style="width: 449px; margin-right: 20px;">
+		              <div class="testimonial-wrap">
+		                <div class="testimonial-item">
+		                  <img src="assets/img/testimonials/testimonials-4.jpg" class="testimonial-img" alt="">
+		                  <h3>Matt Brandon</h3>
+		                  <h4>Freelancer</h4>
+		                  <p>
+		                    <i class="bx bxs-quote-alt-left quote-icon-left"></i>
+		                    Fugiat enim eram quae cillum dolore dolor amet nulla culpa multos export minim fugiat minim velit minim dolor enim duis veniam ipsum anim magna sunt elit fore quem dolore labore illum veniam.
+		                    <i class="bx bxs-quote-alt-right quote-icon-right"></i>
+		                  </p>
+		                </div>
+		              </div>
+		            </div><!-- End testimonial item -->
+		
+		            <div class="swiper-slide" role="group" aria-label="5 / 5" data-swiper-slide-index="4" style="width: 449px; margin-right: 20px;">
+		              <div class="testimonial-wrap">
+		                <div class="testimonial-item">
+		                  <img src="assets/img/testimonials/testimonials-5.jpg" class="testimonial-img" alt="">
+		                  <h3>John Larson</h3>
+		                  <h4>Entrepreneur</h4>
+		                  <p>
+		                    <i class="bx bxs-quote-alt-left quote-icon-left"></i>
+		                    Quis quorum aliqua sint quem legam fore sunt eram irure aliqua veniam tempor noster veniam enim culpa labore duis sunt culpa nulla illum cillum fugiat legam esse veniam culpa fore nisi cillum quid.
+		                    <i class="bx bxs-quote-alt-right quote-icon-right"></i>
+		                  </p>
+		                </div>
+		              </div>
+		            </div><!-- End testimonial item -->
+		
+		          <div class="swiper-slide swiper-slide-duplicate" role="group" aria-label="1 / 5" data-swiper-slide-index="0" style="width: 449px; margin-right: 20px;">
+		              <div class="testimonial-wrap">
+		                <div class="testimonial-item">
+		                  <img src="assets/img/testimonials/testimonials-1.jpg" class="testimonial-img" alt="">
+		                  <h3>Saul Goodman</h3>
+		                  <h4>Ceo &amp; Founder</h4>
+		                  <p>
+		                    <i class="bx bxs-quote-alt-left quote-icon-left"></i>
+		                    Proin iaculis purus consequat sem cure digni ssim donec porttitora entum suscipit rhoncus. Accusantium quam, ultricies eget id, aliquam eget nibh et. Maecen aliquam, risus at semper.
+		                    <i class="bx bxs-quote-alt-right quote-icon-right"></i>
+		                  </p>
+		                </div>
+		              </div>
+		            </div></div>
+		          <div class="swiper-pagination swiper-pagination-clickable swiper-pagination-bullets swiper-pagination-horizontal"><span class="swiper-pagination-bullet" tabindex="0" role="button" aria-label="Go to slide 1"></span><span class="swiper-pagination-bullet" tabindex="0" role="button" aria-label="Go to slide 2"></span><span class="swiper-pagination-bullet swiper-pagination-bullet-active" tabindex="0" role="button" aria-label="Go to slide 3" aria-current="true"></span><span class="swiper-pagination-bullet" tabindex="0" role="button" aria-label="Go to slide 4"></span><span class="swiper-pagination-bullet" tabindex="0" role="button" aria-label="Go to slide 5"></span></div>
+		        <span class="swiper-notification" aria-live="assertive" aria-atomic="true"></span></div>
+		
+		      </div>
+		    </section><!-- End Testimonials Section -->
+		
+		    </div>
+		  </div>
+		
+		</main>
+		<footer class="text-muted py-5">
+		  <div class="container">
+		    <a th:href="@{/kids/home}">홈으로</a>
+		  </div>
+		</footer>
 
-</main>
-<footer class="text-muted py-5">
-  <div class="container">
-    <p class="float-end mb-1">
-      <a href="/Pediatrics">이전으로</a>
-    </p>
-    <a href="/">홈으로</a>
-  </div>
-</footer>
-
-    <script src="/resources/js/bootstrap.bundle.min.js"></script>
-
-      
+		<script src="/resources/js/bootstrap.bundle.min.js"></script>
+	
+		<!-- Vendor JS Files -->
+		<script src="/vendor/purecounter/purecounter_vanilla.js"></script>
+		<script src="/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+		<script src="/vendor/glightbox/js/glightbox.min.js"></script>
+		<script src="/vendor/swiper/swiper-bundle.min.js"></script>
+		<script src="/vendor/php-email-form/validate.js"></script>
+		
+		<!-- Template Main JS File -->
+		<script src="/js/main.js"></script>
 	</body>
 </html>

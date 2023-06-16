@@ -1,11 +1,77 @@
-
-<!DOCTYPE html>
-<html>
+<!doctype html>
+<html lang="en" class="light-style  customizer-hide" dir="ltr" data-theme="theme-default" data-assets-path="../assets/" data-template="vertical-menu-template-free" xmlns:th="www.thymeleaf.org">
 	<head>
-		<meta charset="UTF-8">
-		<link href="/css/bootstrap.min.css" rel="stylesheet">
-		<title>Insert title here</title>
-		<script>
+	    <meta charset="utf-8">
+	    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0">
+	
+	    <title>Register Basic - Pages | Sneat - Bootstrap 5 HTML Admin Template - Pro</title>
+	    
+	    <meta name="description" content="Most Powerful &amp; Comprehensive Bootstrap 5 HTML Admin Dashboard Template built for developers!">
+	    <meta name="keywords" content="dashboard, bootstrap 5 dashboard, bootstrap 5 design, bootstrap 5">
+	    <!-- Canonical SEO -->
+	    <link rel="canonical" href="https://themeselection.com/products/sneat-bootstrap-html-admin-template/">
+	    
+	    <!-- Favicon -->
+	    <link rel="icon" type="image/x-icon" href="../assets/img/favicon/favicon.ico">
+	
+	    <!-- Fonts -->
+	    <link rel="preconnect" href="https://fonts.googleapis.com">
+	    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
+	    <link href="https://fonts.googleapis.com/css2?family=Public+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500;1,600;1,700&amp;display=swap" rel="stylesheet">
+	
+	    <!-- Icons. Uncomment required icon fonts -->
+	    <link rel="stylesheet" href="../assets/vendor/fonts/boxicons.css">
+	    
+	    
+	
+	    <!-- Core CSS -->
+	    <link rel="stylesheet" href="../assets/vendor/css/core.css" class="template-customizer-core-css">
+	    <link rel="stylesheet" href="../assets/vendor/css/theme-default.css" class="template-customizer-theme-css">
+	    <link rel="stylesheet" href="../assets/css/demo.css">
+	
+	    <!-- Vendors CSS -->
+	    <link rel="stylesheet" href="../assets/vendor/libs/perfect-scrollbar/perfect-scrollbar.css">
+	    
+	    
+	
+	    <!-- Page CSS -->
+	    <!-- Page -->
+		<link rel="stylesheet" href="../assets/vendor/css/pages/page-auth.css">
+	    <!-- Helpers -->
+	    <script src="../assets/vendor/js/helpers.js"></script><style type="text/css">
+			.layout-menu-fixed .layout-navbar-full .layout-menu,
+			.layout-page {
+			  padding-top: 0px !important;
+			}
+			.content-wrapper {
+			  padding-bottom: 0px !important;
+			}
+			@font-face {
+		    	font-family: 'GODOM';
+		    	src: url('/vendor/bootstrap-icons/fonts/GODOM.ttf') format('truetype');
+			}
+			
+			body,h1,h2,h3,h4,h5,h6,p,div p,a,div,span,small{
+				font-family: 'GODOM';
+			}
+		</style>
+	
+	    <!--! Template customizer & Theme config files MUST be included after core stylesheets and helpers.js in the <head> section -->
+	    <!--? Config:  Mandatory theme config file contain global vars & default theme options, Set your preferred theme option in this file.  -->
+	    <script src="../assets/js/config.js"></script>
+	    
+	    <!-- Global site tag (gtag.js) - Google Analytics -->
+	    <script async="async" src="https://www.googletagmanager.com/gtag/js?id=GA_MEASUREMENT_ID"></script>
+	    <script>
+		    window.dataLayer = window.dataLayer || [];
+		
+		    function gtag() {
+		      dataLayer.push(arguments);
+		    }
+		    gtag('js', new Date());
+		    gtag('config', 'GA_MEASUREMENT_ID');
+	    </script>
+	    <script>
 		
 			window.onload = function() {
 				var imgZone = document.querySelector(".ImageRegistration");
@@ -151,99 +217,131 @@
 			}
 
 		</script>
+	    <!-- Custom notification for demo -->
+	    <!-- beautify ignore:end -->
+		
 	</head>
+
 	<body>
-		<br>
-		<div class="row d-flex justify-content-center">
-			<img src="/images/doctor.png" style="width:7%;height:7%;">
-		</div>
-		<br><br>
-		<form class="row g-3" name="registerForm">
-			<div class="row d-flex justify-content-center">
-				<div class="col-md-4">
-			    	<h4 style="text-align:center;"><b>&nbsp;응애응애 - 관리자 회원가입</b></h4>
-			    	<hr>
-			  	</div>
-			</div>
-			
-			<div class="row d-flex justify-content-center">
-				<div class="col-md-4">
-			    	<label for="hospital_id" class="form-label">병원 아이디</label>
-			    	<input type="text" class="form-control" id="hospital_id">
-			    	<br>
-			  	</div>
-			</div>
-			<div class="row d-flex justify-content-center">
-				<div class="col-md-4">
-			    	<label for="hospital_name" class="form-label">병원명</label>
-			    	<input type="text" class="form-control" id="hospital_name">
-			    	<br>
-			  	</div>
-			</div>
-			<div class="row d-flex justify-content-center">
-				<div class="col-md-4">
-			    	<label for="password" class="form-label">패스워드</label>
-			    	<input type="password" class="form-control" id="password">
-			    	<span id="pwtext" style='color:red;'></span>
-			  	</div>
-			</div>
-			<div class="row d-flex justify-content-center">
-				<div class="col-md-4">
-			    	<label for="password1" class="form-label">패스워드 확인</label>
-			    	<input type="password" class="form-control" id="password1">
-			    	<br>
-			  	</div>
-			</div>
-			
-			<div class="row d-flex justify-content-center">
-				<div class="col-md-4">
-					<label for="addrSearch" class="form-label">주소 입력</label>
-					<div class="input-group mb-3">
-			    		<input type="text" id="addrSearch" class="form-control"> 
-  						<button class="btn btn-outline-secondary" type="button" onclick="searchAddr()">검색</button>
-					</div>
-			  	</div>
-			</div>
-			<div class="row d-flex justify-content-center">
-				<div class="col-md-4">
-					<br>
-					<input type="text" id="zip" class="form-control" name="zip" placeholder="우편번호가 검색되어 입력됩니다." disabled>
-			        <input type="hidden" id="zipcode" name="zipcode">
-			  	</div>
-			</div>
-			<div class="row d-flex justify-content-center">
-				<div class="col-md-4">
-					<input type="text" id="addr1" class="form-control" name="addr1" placeholder="주소가 검색되어 입력됩니다." readonly>
-			  	</div>
-			</div>
-			<div class="row d-flex justify-content-center">
-				<div class="col-md-4">
-			        <input type="text" id="addr2" class="form-control" name="addr2" placeholder="상세주소를 입력하세요" >
-			        <input type="hidden" id="address" name="address">
-			        <br>
-			  	</div>
-			</div>
-			<div class="row d-flex justify-content-center">
-				<div class="col-md-4">
-			    	<label for="telno" class="form-label">전화번호</label>
-			    	<input type="text" class="form-control" id="telno" placeholder="010-1234-5678">
-			    	<br>
-			  	</div>
-			</div>
-			<div class="row d-flex justify-content-center">
-				<div class="col-md-4">
-			    	<div class="mb-3">
-			  			<label for="file" class="form-label">관리자 인증</label>
-						<input type="file" class="form-control" id="file">
-						<div class="invalid-feedback">Example invalid form file feedback</div>
-			  		</div>
-			  	</div>
-			</div>
-			<div class="row d-flex justify-content-center">
-				<div class="col-md-4">
-			    	<button type="submit" id="btn_register" class="btn btn-outline-dark" onclick="register();">회원가입</button>
-			  	</div>
-			</div> 
-		</form>
+	
+	  <!-- Content -->
+	
+	<div class="container-xxl">
+	  <div class="authentication-wrapper authentication-basic container-p-y">
+	    <div class="authentication-inner">
+	
+	      <!-- Register Card -->
+	      <div class="card">
+	        <div class="card-body">
+	          <p class="mb-2" style="text-align:center; color:black; font-size: 20pt;"><b>회원 가입</b></p>
+	          <form id="formAuthentication" class="mb-3" action="/master/signup" method="POST">
+	            <div class="mb-3">
+	              <label for="hpid" class="form-label" style="color:black; font-size: 10pt;">병원 아이디</label>
+	              <input type="text" class="form-control" id="hpid" name="hpid" placeholder="병원 아이디를 입력하세요" autofocus="">
+	            </div>
+	            <div class="mb-3">
+	              <label for="dutyName" class="form-label" style="color:black; font-size: 10pt;">병원명</label>
+	              <input type="text" class="form-control" id="dutyName" name="dutyName" placeholder="이메일을 입력하세요">
+	            </div>
+	            <div class="mb-3 form-password-toggle">
+	              <label class="form-label" for="password" style="color:black; font-size: 10pt;">비밀번호</label>
+	              <div class="input-group input-group-merge">
+	                <input type="password" id="password" class="form-control" name="password" placeholder="············" aria-describedby="password">
+	                <span class="input-group-text cursor-pointer"><i class="bx bx-hide"></i></span>
+	              </div>
+	            </div>
+	            <div class="mb-3 form-password-toggle">
+	              <label class="form-label" for="password1" style="color:black; font-size: 10pt;">비밀번호 확인</label>
+	              <div class="input-group input-group-merge">
+	                <input type="password" id="password1" class="form-control" name="password1" placeholder="············" aria-describedby="password1">
+	                <span class="input-group-text cursor-pointer"><i class="bx bx-hide"></i></span>
+	              </div>
+	            </div>
+	            <div class="mb-3">
+	              <label class="form-label" for="dutyTel1" style="color:black; font-size: 10pt;">전화번호</label>
+	              <div class="input-group input-group-merge">
+	                <input type="text" id="dutyTel1" class="form-control" name="dutyTel1">
+	                <span class="input-group-text cursor-pointer"></span>
+	              </div>
+	            </div>
+	            <div class="mb-3">
+	              <label for="addrSearch" class="form-label" style="color:black; font-size: 10pt;">주소 입력</label>
+				  <div class="input-group mb-3">
+			    	<input type="text" id="addrSearch" class="form-control"> 
+	 				<button class="btn btn-primary d-grid" type="button" onclick="searchAddr()" style="text-align:center; font-size:10pt;">검색</button>
+				  </div>
+	            </div>
+	            <div class="mb-3">
+	              <div class="input-group input-group-merge" style="color:black; font-size: 10pt;">
+	                <input type="text" id="zip" class="form-control" name="zip" placeholder="우편번호가 검색되어 입력됩니다." disabled>
+				    <input type="hidden" id="zipcode" name="zipcode">
+	              </div>
+	            </div>
+				<div class="mb-3">
+	              <div class="input-group input-group-merge" style="color:black; font-size: 10pt;">
+	              	<input type="text" id="addr1" class="form-control" name="addr1" placeholder="주소가 검색되어 입력됩니다." readonly>
+	              </div>
+	            </div>
+	            <div class="mb-3">
+	              <div class="input-group input-group-merge" style="color:black; font-size: 10pt;">
+	              	<input type="text" id="addr2" class="form-control" name="addr2" placeholder="상세주소를 입력하세요">
+				    <input type="hidden" id="address" name="address">
+	              </div>
+	            </div>
+	            <div class="mb-3">
+	              <div class="form-check">
+	                <input class="form-check-input" type="checkbox" id="terms-conditions" name="terms" >
+	                <label class="form-check-label" for="terms-conditions" style="color:black; font-size: 10pt;">
+	                  <a href="javascript:void(0);">개인 정보 보호 정책 및 약관</a>에 동의합니다.
+	                </label>
+	              </div>
+	            </div>
+	            <button class="btn btn-primary d-grid w-100">
+	              회원 가입
+	            </button>
+	          </form>
+	
+	          <p class="text-center" style="color:black; font-size: 10pt;">
+	            <span>이미 계정이 있으신가요?</span>
+	            <a href="@{/master/login}">
+	              <span>로그인</span>
+	            </a>
+	          </p>
+	        </div>
+	      </div>
+	      <!-- Register Card -->
+	    </div>
+	  </div>
+	</div>
+	
+	<!-- / Content -->
+	
+	  <!-- Core JS -->
+	  <!-- build:js assets/vendor/js/core.js -->
+	  <script src="../assets/vendor/libs/jquery/jquery.js"></script>
+	  <script src="../assets/vendor/libs/popper/popper.js"></script>
+	  <script src="../assets/vendor/js/bootstrap.js"></script>
+	  <script src="../assets/vendor/libs/perfect-scrollbar/perfect-scrollbar.js"></script>
+	  
+	  <script src="../assets/vendor/js/menu.js"></script>
+	  <!-- endbuild -->
+	
+	  <!-- Vendors JS -->
+	  
+	  
+	
+	  <!-- Main JS -->
+	  <script src="../assets/js/main.js"></script>
+	
+	  <!-- Page JS -->
+	  
+	  
+	  
+	  <!-- Place this tag in your head or just before your close body tag. -->
+	  <script async="" defer="" src="https://buttons.github.io/buttons.js"></script>
+	  
+	
+	
+	
 	</body>
 </html>

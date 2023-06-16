@@ -11,9 +11,6 @@ import java.util.*;
 import org.jdom2.Document;
 import org.jdom2.Element;
 import org.jdom2.input.SAXBuilder;
-import org.springframework.boot.configurationprocessor.json.JSONArray;
-import org.springframework.boot.configurationprocessor.json.JSONException;
-import org.springframework.boot.configurationprocessor.json.JSONObject;
 
 import com.example.wahwah.Hospital.dto.*;
 
@@ -33,6 +30,7 @@ public class OpenAPI {
             sb.append("&" + URLEncoder.encode("Q0", "UTF-8") +"=" + URLEncoder.encode(city1, "UTF-8"));
             sb.append("&" + URLEncoder.encode("Q1", "UTF-8") +"=" + URLEncoder.encode(county1, "UTF-8"));
             sb.append("&" + URLEncoder.encode("QD", "UTF-8") +"=" + URLEncoder.encode(kidCode, "UTF-8"));
+            sb.append("&" + URLEncoder.encode("numOfRows", "UTF-8") +"=" + URLEncoder.encode("500", "UTF-8"));
         } catch (Exception e) {
             e.printStackTrace();
         }
