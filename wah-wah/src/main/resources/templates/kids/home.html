@@ -57,7 +57,7 @@
 	  <div id="topbar" class="d-flex align-items-center fixed-top">
 	    <div class="container d-flex justify-content-end">
 	    <th:block th:if="${session.userid == null}">
-	    	<a class="nav-link scrollto active" th:href="@{/kids/login}" style="color:#454545; font-size:13pt;"><b>로그인</b></a>&emsp;
+	    	<a class="nav-link scrollto active" data-bs-toggle="modal" data-bs-target="#exampleModal"  th:href="@{/kids/login}" style="color:#454545; font-size:13pt;"><b>로그인</b></a>&emsp;
 	    	<a class="nav-link scrollto" th:href="@{/master/signup}" style="color:#454545; font-size:13pt;"><b>회원가입</b></a>
 	    	<i class="bi mobile-nav-toggle"></i>
 	    </th:block>
@@ -91,7 +91,6 @@
 	        
 	        <th:block th:unless="${session.userid == null}">
 	        	<ul>
-		        	<li><a class="nav-link scrollto" th:href="@{/kids/pediatric}" style="font-size:18pt; color:black;"><b>소아과</b></a></li>
 		        	<li><a class="nav-link scrollto" th:href="@{/kids/pediatric}" style="font-size:18pt; color:black;"><b>소아과</b></a></li>
 			          <li><a class="nav-link scrollto" th:href="@{/kids/emergency}" style="font-size:18pt; color:black;"><b>응급실</b></a></li>
 			          <li><a class="nav-link scrollto" th:href="@{/kids/reservation}" style="font-size:18pt; color:black;"><b>예약</b></a></li>

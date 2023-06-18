@@ -28,7 +28,7 @@
       content="width=device-width, initial-scale=1.0, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0"
     />
 
-    <title>Dashboard - Analytics | Sneat - Bootstrap 5 HTML Admin Template - Pro</title>
+    <title>응애응애 - 소아과</title>
 
     <meta name="description" content="" />
 
@@ -316,64 +316,48 @@
               <ul class="navbar-nav flex-row align-items-center ms-auto">
 
                 <!-- User -->
-                <li class="nav-item navbar-dropdown dropdown-user dropdown">
-                  <a class="nav-link dropdown-toggle hide-arrow" href="javascript:void(0);" data-bs-toggle="dropdown">
-                    <div class="avatar avatar-online">
-                      <img src="../assets/img/avatars/1.png" alt class="w-px-40 h-auto rounded-circle" />
-                    </div>
-                  </a>
-                  <ul class="dropdown-menu dropdown-menu-end">
-                    <li>
-                      <a class="dropdown-item" href="#">
-                        <div class="d-flex">
-                          <div class="flex-shrink-0 me-3">
-                            <div class="avatar avatar-online">
-                              <img src="../assets/img/avatars/1.png" alt class="w-px-40 h-auto rounded-circle" />
-                            </div>
-                          </div>
-                          <div class="flex-grow-1">
-                            <span class="fw-semibold d-block" th:text="${userid}"></span>
-                            <small class="text-muted" th:text="${role}"></small>
-                          </div>
-                        </div>
-                      </a>
-                    </li>
-                    <li>
-                      <div class="dropdown-divider"></div>
-                    </li>
-                    <li>
-                      <a class="dropdown-item" href="#">
-                        <i class="bx bx-user me-2"></i>
-                        <span class="align-middle">My Profile</span>
-                      </a>
-                    </li>
-                    <li>
-                      <a class="dropdown-item" href="#">
-                        <i class="bx bx-cog me-2"></i>
-                        <span class="align-middle">Settings</span>
-                      </a>
-                    </li>
-                    <li>
-                      <a class="dropdown-item" href="#">
-                        <span class="d-flex align-items-center align-middle">
-                          <i class="flex-shrink-0 bx bx-credit-card me-2"></i>
-                          <span class="flex-grow-1 align-middle">Billing</span>
-                          <span class="flex-shrink-0 badge badge-center rounded-pill bg-danger w-px-20 h-px-20">4</span>
-                        </span>
-                      </a>
-                    </li>
-                    <li>
-                      <div class="dropdown-divider"></div>
-                    </li>
-                    <li>
-                      <a class="dropdown-item" href="auth-login-basic.html">
-                        <i class="bx bx-power-off me-2"></i>
-                        <span class="align-middle">Log Out</span>
-                      </a>
-                    </li>
-                  </ul>
-                </li>
-                <!--/ User -->
+	          <li class="nav-item navbar-dropdown dropdown-user dropdown">
+	            <a class="nav-link dropdown-toggle hide-arrow" href="javascript:void(0);" data-bs-toggle="dropdown">
+	              <div class="avatar avatar-online">
+	                
+	              </div>
+	            </a>
+	            <ul class="dropdown-menu dropdown-menu-end">
+	              <li>
+	                <a class="dropdown-item" href="#">
+	                  <div class="d-flex">
+	                    <div class="flex-shrink-0 me-3">
+	                      <div class="avatar avatar-online">
+	                      </div>
+	                    </div>
+	                    <div class="flex-grow-1">
+	                      <span th:text="${email}" class="fw-semibold d-block"></span>
+	                      <small th:text= "${username}" class="text-muted"></small>
+	                    </div>
+	                  </div>
+	                </a>
+	              </li>
+	              <li>
+	                <div class="dropdown-divider"></div>
+	              </li>
+	              <li>
+	                <a class="dropdown-item" href="#">
+	                  <i class="bx bx-user me-2"></i>
+	                  <span th:href="@{/kids/modifyInfo}" class="align-middle" style="color:#454545; font-size:10pt;"><b>내 정보 수정</b></span>
+	                </a>
+	              </li>
+	              <li>
+	                <div class="dropdown-divider"></div>
+	              </li>
+	              <li>
+	                <a class="dropdown-item" th:href="@{/kids/logout}">
+	                  <i class="bx bx-power-off me-2"></i>
+	                  <span class="align-middle" style="color:#454545; font-size:10pt;"><b>로그아웃</b></span>
+	                </a>
+	              </li>
+	            </ul>
+	          </li>
+	          <!--/ User -->
               </ul>
             </div>
           </nav>
@@ -774,8 +758,8 @@
 			        '<li style="font-size:11pt; color:#454545"><b>화: ' + arr[i][1].dutyTime2s + ' ~ ' + arr[i][1].dutyTime2c + '</b></li>' + '<li style="font-size:11pt; color:#454545"><b>수: ' + arr[i][1].dutyTime3s + ' ~ ' + arr[i][1].dutyTime3c + '</b></li>' + 
 			        '<li style="font-size:11pt; color:#454545"><b>목: ' + arr[i][1].dutyTime4s + ' ~ ' + arr[i][1].dutyTime4c + '</b></li>' + '<li style="font-size:11pt; color:#454545"><b>금: ' + arr[i][1].dutyTime5s + ' ~ ' + arr[i][1].dutyTime5c + '</b></li>' + 
 			        '<li style="font-size:11pt; color:#454545"><b>토: ' + arr[i][1].dutyTime6s + ' ~ ' + arr[i][1].dutyTime6c + '</b></li>' + '<li style="font-size:11pt; color:#454545"><b>일: ' + arr[i][1].dutyTime7s + ' ~ ' + arr[i][1].dutyTime7c + '</b></li></ul></td>' +
-			        '<td><input type="button" class="btn-primary" onclick="viewHospital(\'' + arr[i][0] + '\',\''  + arr[i][1].dutyName + '\',\'' + arr[i][1].dutyAddr + '\',\'' + arr[i][1].dutyTel1 +'\',\'' + arr[i][1].wgs84Lat + '\' , \'' + 
-			        arr[i][1].wgs84Lon +'\',\'' + arr[i][1].dutyDiv +  '\');" value="예약하기" style="font-size:12pt; border:none;border-radius:10px; padding:10px; color:#fff;"></td></tr>';
+			        '<td><input type="button" class="btn-primary" onclick="viewHospital(\'' + arr[i][0] + '\',\'' +  arr[i][1].dutyName + '\',\'' + arr[i][1].dutyAddr + '\',\'' + arr[i][1].dutyTel1 +'\',\'' + arr[i][1].wgs84Lat + '\' , \'' + 
+			        arr[i][1].wgs84Lon +'\',\'' + arr[i][1].dutyDiv + '\',\'' + arr[i][1].hpid + '\'' + ');" value="예약하기" style="font-size:12pt; border:none;border-radius:10px; padding:10px; color:#fff;"></td></tr>';
 			        hospital_table.innerHTML += row;
 			    }
 			    
@@ -854,8 +838,8 @@
 			    }
 			}
 			
-			function viewHospital(index, dutyName, dutyAddr, dutyTel1, wgs84Lat, wgs84Lon, dutyDiv){
-				location.href = "/kids/viewHospital?index="+ index + "&dutyName=" + dutyName + "&dutyAddr=" + dutyAddr + "&dutyTel1=" + dutyTel1 + "&wgs84Lat=" + wgs84Lat + "&wgs84Lon=" + wgs84Lon + "&dutyDiv=" + dutyDiv;
+			function viewHospital(index, dutyName, dutyAddr, dutyTel1, wgs84Lat, wgs84Lon, dutyDiv, hpid){
+				location.href = "/kids/viewHospital?index="+ index + "&dutyName=" + dutyName + "&dutyAddr=" + dutyAddr + "&dutyTel1=" + dutyTel1 + "&wgs84Lat=" + wgs84Lat + "&wgs84Lon=" + wgs84Lon + "&dutyDiv=" + dutyDiv + "&hpid=" + hpid;
 			}
 			
 			// 검색결과 목록 또는 마커를 클릭했을 때 호출되는 함수입니다

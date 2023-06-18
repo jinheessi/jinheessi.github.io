@@ -4,7 +4,7 @@
 	    <meta charset="utf-8">
 	    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0">
 	
-	    <title>Login Basic - Pages | Sneat - Bootstrap 5 HTML Admin Template - Pro</title>
+	    <title>응애응애 - 병원 로그인</title>
 	    
 	    <meta name="description" content="Most Powerful &amp; Comprehensive Bootstrap 5 HTML Admin Dashboard Template built for developers!">
 	    <meta name="keywords" content="dashboard, bootstrap 5 dashboard, bootstrap 5 design, bootstrap 5">
@@ -73,6 +73,11 @@
 	    </script>
 	    <!-- Custom notification for demo -->
 	    <!-- beautify ignore:end -->
+		<script th:inline="javascript">
+			if(/*[[${session.hospitalUserId}]]*/ null != null){
+				location.href="/master/reservationView";
+			}
+		</script>
 
 	</head>
 
@@ -86,10 +91,10 @@
 		        <div class="card-body">
 		          <p class="mb-2" style="text-align: center; color:black; font-size: 20pt;"><b>로그인</b></p>
 
-		          <form id="formAuthentication" class="mb-3" action="index.html" method="POST">
+		          <form id="loginForm" class="mb-3" th:action="@{/master/login}" method="post">
 		            <div class="mb-3">
-		              <label for="email" class="form-label" style="text-align: center; color:black; font-size:10pt;">아이디</label>
-		              <input type="text" class="form-control" id="email" name="email-username" placeholder="" autofocus="">
+		              <label for="hospitalUserId" class="form-label" style="text-align: center; color:black; font-size:10pt;">아이디</label>
+		              <input type="text" class="form-control" id="hospitalUserId" name="hospitalUserId" placeholder="" autofocus="">
 		            </div>
 		            <div class="mb-3 form-password-toggle">
 		              <div class="d-flex justify-content-between">
@@ -99,7 +104,7 @@
 		                </a>
 		              </div>
 		              <div class="input-group input-group-merge">
-		                <input type="password" id="password" class="form-control" name="password" placeholder="············" aria-describedby="password">
+		                <input type="password" id="password" class="form-control" name="password" placeholder="" aria-describedby="password">
 		                <span class="input-group-text cursor-pointer"><i class="bx bx-hide"></i></span>
 		              </div>
 		            </div>
@@ -112,7 +117,7 @@
 		              </div>
 		            </div>
 		            <div class="mb-3">
-		              <button class="btn btn-primary d-grid w-100" type="submit" style="font-size:11pt;">로그인</button>
+		              <button type="submit" class="btn btn-primary d-grid w-100" style="font-size:11pt;">로그인</button>
 		            </div>
 		          </form>
 

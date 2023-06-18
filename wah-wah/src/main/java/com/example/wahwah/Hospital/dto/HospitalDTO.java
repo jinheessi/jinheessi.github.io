@@ -2,7 +2,7 @@ package com.example.wahwah.Hospital.dto;
 
 import java.time.LocalDateTime;
 
-import com.example.wahwah.Hospital.domain.HospitalEntity;
+import com.example.wahwah.Hospital.entity.HospitalEntity;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;

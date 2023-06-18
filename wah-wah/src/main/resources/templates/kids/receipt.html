@@ -1,0 +1,579 @@
+<!DOCTYPE html>
+
+<!-- =========================================================
+* Sneat - Bootstrap 5 HTML Admin Template - Pro | v1.0.0
+==============================================================
+
+* Product Page: https://themeselection.com/products/sneat-bootstrap-html-admin-template/
+* Created by: ThemeSelection
+* License: You must have a valid license purchased in order to legally use the theme for your project.
+* Copyright ThemeSelection (https://themeselection.com)
+
+=========================================================
+ -->
+<!-- beautify ignore:start -->
+<html
+  lang="en"
+  class="light-style layout-menu-fixed"
+  dir="ltr"
+  data-theme="theme-default"
+  data-assets-path="../assets/"
+  data-template="vertical-menu-template-free"
+  xmlns:th="http://www.thymeleaf.org"
+>
+  <head>
+    <meta charset="utf-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1.0, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0"
+    />
+
+    <title>응애응애 - 예약하기</title>
+
+    <meta name="description" content="" />
+    <!-- Icons. Uncomment required icon fonts -->
+    <link rel="stylesheet" href="/assets/vendor/fonts/boxicons.css" />
+
+    <!-- Core CSS -->
+    <link rel="stylesheet" href="/assets/vendor/css/core.css" class="template-customizer-core-css" />
+    <link rel="stylesheet" href="/assets/vendor/css/theme-default.css" class="template-customizer-theme-css" />
+    <link rel="stylesheet" href="/assets/css/demo.css" />
+
+    <!-- Vendors CSS -->
+    <link rel="stylesheet" href="/assets/vendor/libs/perfect-scrollbar/perfect-scrollbar.css" />
+
+    <link rel="stylesheet" href="/assets/vendor/libs/apex-charts/apex-charts.css" />
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.9.0/css/bootstrap-datepicker.css">
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/2.3.2/css/bootstrap-responsive.css">
+	
+	<!-- Helpers -->
+    <script src="/assets/vendor/js/helpers.js"></script>
+    <!--! Template customizer & Theme config files MUST be included after core stylesheets and helpers.js in the <head> section -->
+    <!--? Config:  Mandatory theme config file contain global vars & default theme options, Set your preferred theme option in this file.  -->
+    <script src="/assets/js/config.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.9.0/css/bootstrap-datepicker.css">
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/2.3.2/css/bootstrap-responsive.css">
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.9.0/js/bootstrap-datepicker.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.4.1/js/bootstrap.js"></script>
+	    
+	
+    <style>
+		  @font-face {
+		    	font-family: 'GODOM';
+		    	src: url('/vendor/bootstrap-icons/fonts/GODOM.ttf') format('truetype');
+			}
+			
+			body,h1,h2,h3,h4,h5,h6,p,div p,a,div,span,small{
+				font-family: 'GODOM';
+			}
+			body {
+			    color: black;
+			    overflow-x: hidden;
+			    background-repeat: no-repeat;
+			    padding: 0px !important;
+			    background-color:#FFFFFF;
+			}
+			input {
+			    border-radius: 10px;
+			    color: #000;
+			    font-size: 16px;
+			    font-weight: bold;
+			}
+			
+			input:focus {
+				color:#000;
+			    -moz-box-shadow: none !important;
+			    -webkit-box-shadow: none !important;
+			    
+			    
+			}
+			
+			::placeholder {
+			    color: #000;
+			    font-size:15pt;
+			    font-weight:bold;
+			    opacity: 1;
+			}
+			
+			:-ms-input-placeholder {
+			    color: #000;
+			    font-weight:bold;
+			}
+			
+			::-ms-input-placeholder {
+			    color: #000;
+			    font-weight:bold;
+			}
+			
+			button:focus {
+			    -moz-box-shadow: none !important;
+			    -webkit-box-shadow: none !important;
+			    box-shadow: none !important;
+			    outline-width: 0;
+			}
+			
+			.datepicker {
+			  background-color: rgba(25,119,204,0.2);
+			  color: #000;
+			  border: none;
+			  border-radius:5px;
+			  padding: 10px !important;
+			}
+			
+			.datepicker-dropdown{
+			  background-color: #fff;
+			  border-radius:5px;
+			}
+			
+			thead tr:nth-child(3) th {
+			  color: #000 !important;
+			  font-weight: bold;
+			  padding-top: 20px;
+			  padding-bottom: 10px;
+			}
+			
+			.dow, .old-day, .day, .new-day {
+			  width: 40px !important;
+			  height: 40px !important;
+			  border-radius: 0px !important;
+			}
+			
+			.old-day:hover, .day:hover, .new-day:hover, .month:hover, .year:hover, .decade:hover, .century:hover {
+			  border-radius: 6px !important; 
+			  color: #000;
+			}
+			
+			.active {
+			  border-radius: 6px !important;
+			  color: #000 !important;
+			}
+			
+			.disabled {
+			  color: gray !important;
+			}
+			
+			.prev, .next, .datepicker-switch {
+			  border-radius: 0 !important;
+			  padding: 20px 10px !important;
+			  text-transform: uppercase;
+			  font-size: 20px;
+			  color: #000 !important;
+			  
+			}
+			
+			.prev:hover, .next:hover, .datepicker-switch:hover {
+			  background-color: inherit !important;
+			  opacity: 1;
+			}
+			
+			.cell {
+			  border:none;
+			  cursor: pointer;
+			}
+			
+			.cell:hover {
+			  border: 1px solid rgba(25,119,204,0.5);
+			  border-radius:5px;
+			}
+			
+			.cell.select {
+			  background-color:  rgba(25, 119, 204, 0.2);
+			  border-radius:5px;
+			  color: #000;
+			}
+			
+			.fa-calendar {
+			  color: #000;
+			  font-size: 30px;
+			  padding-top: 8px;
+			  padding-left: 5px;
+			  cursor: pointer;
+			}
+			.menu-inner{
+				font-weight:bold;
+				color:#454545;
+			}
+			table{
+			table-layout:fixed;
+			}
+			th, td{
+				word-wrap: break-word;
+				text-align:center;
+				padding:5px;
+			}
+			.menu-inner{
+				font-weight:bold;
+				font-size:14pt;
+				color:#454545;
+			}
+			select, option{
+				font-weight:bold;
+				color:#454545;
+			}
+			i{
+				color:#1977CC;
+				font-weight:bold;
+			}
+    </style>
+	
+	
+  </head>
+
+  <body style="background-color:white;">
+  	<script>
+			$(document).ready(function(){
+				var email = $('#email').val();
+				var	birth = $('#birth').val();
+				var	gender1 = $('#gender1').val();
+				var	gender2 = $('#gender2').val();
+				var	height = $('#height').val();
+				var	weight = $('#weight').val();
+				var	user_info = $('#user_info').val();
+				var	hpid = $('#hpid').val();
+				var	regdate = $('#regdate').val();
+				
+				$('#rbtn').click(async function(){
+					var url = '/kids/receipt';
+					var formData = new FormData();
+					formData.append("email", email);
+					formData.append("birth", birth);
+					formData.append("gender1", gender1);
+					formData.append("gender2", gender2);
+					formData.append("height", height);
+					formData.append("weight", weight);
+					formData.append("user_info", user_info);
+					formData.append("hpid", hpid);
+					formData.append("regdate", regdate);
+					
+					await fetch(url, {
+						method: 'POST',
+						body: formData
+					}).then((response) => response.json())
+					  .then((data) => {
+					  }).catch((error) => {
+						 console.log(error); 
+					  });
+				});
+			
+			});
+		
+		</script>    
+		
+    <!-- Layout wrapper -->
+    <div class="layout-wrapper layout-content-navbar">
+      <div class="layout-container">
+        <!-- Menu -->
+
+        <aside id="layout-menu" class="layout-menu menu-vertical menu bg-menu-theme">
+          <div class="app-brand demo">
+          	<br>
+          	<p style="font-weight:bold; font-size:30pt; color:black; margin-top:20%; margin-bottom:10%;">응애응애</p>
+
+            <a href="javascript:void(0);" class="layout-menu-toggle menu-link text-large ms-auto d-block d-xl-none">
+              <i class="bx bx-chevron-left bx-sm align-middle"></i>
+            </a>
+          </div>
+          <div class="menu-inner-shadow"></div>
+			<br><br>
+          <ul class="menu-inner py-1">
+            <!-- Dashboard -->
+            <li class="menu-item">
+              <a th:href="@{/kids/home}" class="menu-link">
+                <i class="menu-icon tf-icons bx bx-home-circle"></i>
+                <div data-i18n="Analytics" style="color:black;">홈 페이지</div>
+              </a>
+            </li>
+
+            <!-- Layouts -->
+            <li class="menu-item active">
+              <a href="javascript:void(0);" class="menu-link menu-toggle">
+                <i class="menu-icon tf-icons bx bx-layout"></i>
+                <div data-i18n="Layouts" style="color:black;">예약</div>
+              </a>
+
+              <ul class="menu-sub">
+                <li class="menu-item">
+                  <a th:href="@{/kids/pediatric}" class="menu-link">
+                    <div data-i18n="Without menu" style="color:black;">소아과</div>
+                  </a>
+                </li>
+                <li class="menu-item active">
+                  <a th:href="@{/kids/emergency}" class="menu-link">
+                    <div data-i18n="Without navbar" style="color:black;">응급실</div>
+                  </a>
+                </li>
+              </ul>
+            </li>
+
+            <li class="menu-header small text-uppercase">
+              <span class="menu-header-text" style="color:black;">회원 정보 관리 & 회원 인증</span>
+            </li>
+            <li class="menu-item">
+              <a href="javascript:void(0);" class="menu-link menu-toggle">
+                <i class="menu-icon tf-icons bx bx-dock-top"></i>
+                <div data-i18n="Account Settings" style="color:black;">마이 페이지</div>
+              </a>
+              <ul class="menu-sub">
+                <li class="menu-item">
+                  <a th:href="@{/kids/modifyInfo}" class="menu-link">
+                    <div data-i18n="Account" style="color:black;">내 정보 관리/수정</div>
+                  </a>
+                </li>
+                <li class="menu-item">
+                  <a th:href="@{/kids/myreservation}" class="menu-link">
+                    <div data-i18n="Notifications" style="color:black;">내 예약 관리/수정</div>
+                  </a>
+                </li>
+                <li class="menu-item">
+                  <a href="pages-account-settings-connections.html" class="menu-link">
+                    <div data-i18n="Connections" style="color:black;">아기 수첩</div>
+                  </a>
+                </li>
+              </ul>
+            </li>
+            <li class="menu-item">
+              <a href="javascript:void(0);" class="menu-link menu-toggle">
+                <i class="menu-icon tf-icons bx bx-lock-open-alt"></i>
+                <div data-i18n="Authentications" style="color:black;">인증</div>
+              </a>
+              <ul class="menu-sub">
+                <li class="menu-item">
+                  <a th:href="@{/master/login}" class="menu-link" target="_blank">
+                    <div data-i18n="Basic" style="color:black;">로그인</div>
+                  </a>
+                </li>
+                <li class="menu-item">
+                  <a th:href="@{/master/signup}" class="menu-link" target="_blank">
+                    <div data-i18n="Basic" style="color:black;">회원 가입</div>
+                  </a>
+                </li>
+                <li class="menu-item">
+                  <a th:href="@{/master/searchIDPW}" class="menu-link" target="_blank">
+                    <div data-i18n="Basic" style="color:black;">ID / PW 찾기</div>
+                  </a>
+                </li>
+              </ul>
+            </li>
+            
+            <!-- Components -->
+            <li class="menu-header small text-uppercase"><span class="menu-header-text" style="color:black;">유용한 정보</span></li>
+            <!-- Cards -->
+            <li class="menu-item">
+              <a th:href="@{/kids/healthInfo}" class="menu-link">
+                <i class="menu-icon tf-icons bx bx-collection"></i>
+                <div data-i18n="Basic" style="color:black;">건강 정보</div>
+              </a>
+            </li>
+
+            <li class="menu-item">
+              <a href="icons-boxicons.html" class="menu-link">
+                <i class="menu-icon tf-icons bx bx-crown"></i>
+                <div data-i18n="Boxicons" style="color:black;">전국 보건소 찾기</div>
+              </a>
+            </li>
+            <!-- Misc -->
+            <li class="menu-header small text-uppercase"><span class="menu-header-text" style="color:black;">기타</span></li>
+            
+            <li class="menu-item">
+              <a th:href="@{/kids/notice}" class="menu-link">
+                <i class="menu-icon tf-icons bx bx-file"></i>
+                <div data-i18n="Documentation" style="color:black;">공지사항</div>
+              </a>
+            </li>
+            <li class="menu-item">
+              <a
+                href="https://github.com/themeselection/sneat-html-admin-template-free/issues"
+                target="_blank"
+                class="menu-link"
+              >
+                <i class="menu-icon tf-icons bx bx-support"></i>
+                <div data-i18n="Support" style="color:black;">고객 지원</div>
+              </a>
+            </li>
+            <li class="menu-item">
+              <a
+                href="https://themeselection.com/demo/sneat-bootstrap-html-admin-template/documentation/"
+                target="_blank"
+                class="menu-link"
+              >
+                <i class="menu-icon tf-icons bx bx-file"></i>
+                <div data-i18n="Documentation" style="color:black;">이용 약관</div>
+              </a>
+            </li>
+          </ul>
+        </aside>
+        <!-- / Menu -->
+
+        <!-- Layout container -->
+        <div class="layout-page">
+          <!-- Navbar -->
+
+          <nav
+            class="layout-navbar container-xxl navbar navbar-expand-xl navbar-detached align-items-center bg-navbar-theme"
+            id="layout-navbar"
+          >
+          	<div class="layout-menu-toggle navbar-nav align-items-xl-center me-3 me-xl-0  d-xl-none ">
+		        <a class="nav-item nav-link px-0 me-xl-4" href="javascript:void(0)">
+		          <i class="bx bx-menu bx-sm"></i>
+		        </a>
+		    </div>
+		    
+            <div class="navbar-nav-right d-flex align-items-center" id="navbar-collapse">
+		         <div class="navbar-nav align-items-center">
+		          <div class="nav-item d-flex align-items-center">
+		            <a href="javascript:searchPlaces()"><i class="bx bx-search fs-4 lh-0"></i></a>
+		            <input type="text" class="form-control w-100 border-0 shadow-0" placeholder="병원을 검색하세요" aria-label="Recipient's username" aria-describedby="button-addon2" value="" id="keyword">
+		          </div>
+		        </div>
+              <!-- Search -->
+              
+              <!-- /Search -->
+
+              <ul class="navbar-nav flex-row align-items-center ms-auto">
+
+                <!-- User -->
+	          <li class="nav-item navbar-dropdown dropdown-user dropdown">
+	            <a class="nav-link dropdown-toggle hide-arrow" href="javascript:void(0);" data-bs-toggle="dropdown">
+	              <div class="avatar avatar-online">
+	                
+	              </div>
+	            </a>
+	            <ul class="dropdown-menu dropdown-menu-end">
+	              <li>
+	                <a class="dropdown-item" href="#">
+	                  <div class="d-flex">
+	                    <div class="flex-shrink-0 me-3">
+	                      <div class="avatar avatar-online">
+	                      </div>
+	                    </div>
+	                    <div class="flex-grow-1">
+	                      <span th:text="${email}" class="fw-semibold d-block"></span>
+	                      <small th:text= "${username}" class="text-muted"></small>
+	                    </div>
+	                  </div>
+	                </a>
+	              </li>
+	              <li>
+	                <div class="dropdown-divider"></div>
+	              </li>
+	              <li>
+	                <a class="dropdown-item" href="#">
+	                  <i class="bx bx-user me-2"></i>
+	                  <span th:href="@{/kids/modifyInfo}" class="align-middle" style="color:#454545; font-size:10pt;"><b>내 정보 수정</b></span>
+	                </a>
+	              </li>
+	              <li>
+	                <div class="dropdown-divider"></div>
+	              </li>
+	              <li>
+	                <a class="dropdown-item" th:href="@{/kids/logout}">
+	                  <i class="bx bx-power-off me-2"></i>
+	                  <span class="align-middle" style="color:#454545; font-size:10pt;"><b>로그아웃</b></span>
+	                </a>
+	              </li>
+	            </ul>
+	          </li>
+	          <!--/ User -->
+              </ul>
+            </div>
+          </nav>
+
+          <!-- / Navbar -->
+
+          <!-- Content wrapper -->
+          <div class="content-wrapper">
+            <!-- Content -->
+            <div class="container-xxl flex-grow-1 container-p-y">
+              <div class="row">
+	              <div class="col-12">
+	              	<p th:text="|${dutyName} 접수|" style="font-size:23pt; color:black; font-weight:bold;"></p>
+          	      </div>
+          	      <hr>
+              </div>
+              <br><br><br>
+              
+            <div class="row d-flex justify-content-center">
+            	<div class="col-md-10">
+            		<div class="card mb-4">
+            		<p style="font-size:18pt;"><b>접수 필수 정보</b></p>
+				      <div class="card-body">
+				        <form action="/kids/reservation" method="post">
+				          <div class="row mb-3">
+				            <label class="col-sm-2 col-form-label" for="email" style="color:#454545; font-size:11pt;"><b>이메일</b></label>
+				            <div class="col-sm-10">
+				              <input type="text" class="form-control" id="email">
+				            </div>
+				          </div>
+				          <div class="row mb-3">
+				            <label class="col-sm-2 col-form-label" for="birth" style="color:#454545; font-size:11pt;"><b>생년월일</b></label>
+				            <div class="col-sm-10">
+				              <input type="text" class="form-control" id="birth" >
+				            </div>
+				          </div>
+				          <div class="row mb-3">
+				            <label class="col-sm-2 col-form-label" for="gender" style="color:#454545; font-size:11pt;"><b>성별</b></label>
+				            <div class="col-sm-10">
+				              <div class="input-group input-group-merge">
+				                <div class="col-md">
+						            <div class="form-check form-check-inline mt-3">
+						              <input class="form-check-input" type="radio" name="gender1" id="gender1" value="gender1">
+						              <label class="form-check-label" for="inlineRadio1" style="color:#454545; font-size:11pt;"><b>남성</b></label>
+						            </div>
+						            <div class="form-check form-check-inline">
+						              <input class="form-check-input" type="radio" name="gender2" id="gender2" value="gender2">
+						              <label class="form-check-label" for="inlineRadio2" style="color:#454545; font-size:11pt;"><b>여성</b></label>
+						            </div>
+						          </div>
+				              </div>
+				            </div>
+				          </div>
+				          <div class="row mb-3">
+				            <label class="col-sm-2 col-form-label" for="weight" style="color:#454545; font-size:11pt;"><b>키/체중</b></label>
+				            <div class="col-md-3">
+				              <input type="text" id="height" name="height" class="form-control">
+				            </div>
+				            <div class="col-md-3">
+				              <input type="text" id="weight" name="weight" class="form-control">
+				            </div>
+				          </div>
+				          <div class="row mb-3">
+				            <label class="col-sm-2 col-form-label" for="user_info" style="color:#454545; font-size:11pt;"><b>증상</b></label>
+				            <div class="col-sm-10">
+				              <textarea id="user_info" name="user_info" class="form-control"></textarea>
+				            </div>
+				          </div>
+				          <input type="hidden" id="hpid" name="hpid" th:value="${hpid}">
+				          <input type="hidden" id="regdate" name="regdate" th:value="${#calendars.format(#calendars.createNow(), 'yyyy-MM-dd')}">
+				          </form>
+				      </div>
+				    </div>
+            	
+            	</div>
+            </div>
+            	
+			<div class="row">
+				<div class="col-md-12 d-flex justify-content-start">
+					<input id="rbtn" name="rbtn" type="button" class="btn btn-outline-primary"  value="접수하기">
+				</div>
+			</div>
+            
+            </div>
+            <!-- / Content -->
+           
+            <!-- / Footer -->
+
+            <div class="content-backdrop fade"></div>
+          </div>
+          <!-- Content wrapper -->
+        </div>
+        <!-- / Layout page -->
+      </div>
+
+      <!-- Overlay -->
+      <div class="layout-overlay layout-menu-toggle"></div>
+      
+    </div>
+    
+  </body>
+</html>

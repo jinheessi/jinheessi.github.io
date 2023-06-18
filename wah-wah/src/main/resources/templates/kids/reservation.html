@@ -28,7 +28,7 @@
       content="width=device-width, initial-scale=1.0, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0"
     />
 
-    <title>Dashboard - Analytics | Sneat - Bootstrap 5 HTML Admin Template - Pro</title>
+    <title>응애응애 - 예약하기</title>
 
     <meta name="description" content="" />
     <!-- Icons. Uncomment required icon fonts -->
@@ -194,9 +194,26 @@
 				font-weight:bold;
 				color:#454545;
 			}
-			i {
+			table{
+			table-layout:fixed;
+			}
+			th, td{
+				word-wrap: break-word;
+				text-align:center;
+				padding:5px;
+			}
+			.menu-inner{
 				font-weight:bold;
-				color:black;
+				font-size:14pt;
+				color:#454545;
+			}
+			select, option{
+				font-weight:bold;
+				color:#454545;
+			}
+			i{
+				color:#1977CC;
+				font-weight:bold;
 			}
     </style>
 	
@@ -208,7 +225,16 @@
 			$(document).ready(function(){
 				var rdate;
 				var rtime;
-				
+				var email;
+				var birth;
+				var gender1;
+				var gender2;
+				var height;
+				var weight;
+				var user_info;
+				var hpid;
+				var regdate;
+				var reserve_start;
 				$('.datepicker').datepicker({
 				    format: 'yyyy년 mm월 dd일',
 				    autoclose: true,
@@ -218,8 +244,21 @@
 				$('.cell').click(function(){
 				    $('.cell').removeClass('select');
 				    $(this).addClass('select');
-				    rdate = $('#dp1').val();
+				    rdate = $('#rdate').val();
 				    rtime = $(this).text();
+				    
+				    
+				    reserve_start= rdate + ' ' + rtime;
+					email = $('#email').val();
+					birth = $('#birth').val();
+					gender1 = $('#gender1').val();
+					gender2 = $('#gender2').val();
+					height = $('#height').val();
+					weight = $('#weight').val();
+					user_info = $('#user_info').val();
+					hpid = $('#hpid').val();
+					regdate = $('#regdate').val();
+					
 					$('#reservationdatetime').html('예약한 날짜는 ' + rdate +'이고, 시간은 '+ rtime + ' 입니다.');
 				    
 				});
@@ -230,6 +269,16 @@
 					var formData = new FormData();
 					formData.append("rdate", rdate);
 					formData.append("rtime", rtime);
+					formData.append("email", email);
+					formData.append("birth", birth);
+					formData.append("gender1", gender1);
+					formData.append("gender2", gender2);
+					formData.append("height", height);
+					formData.append("weight", weight);
+					formData.append("user_info", user_info);
+					formData.append("hpid", hpid);
+					formData.append("regdate", regdate);
+					
 					await fetch(url, {
 						method: 'POST',
 						body: formData
@@ -254,16 +303,15 @@
 
         <aside id="layout-menu" class="layout-menu menu-vertical menu bg-menu-theme">
           <div class="app-brand demo">
-            <a href="index.html" class="app-brand-link">
-            </a>
+          	<br>
+          	<p style="font-weight:bold; font-size:30pt; color:black; margin-top:20%; margin-bottom:10%;">응애응애</p>
 
             <a href="javascript:void(0);" class="layout-menu-toggle menu-link text-large ms-auto d-block d-xl-none">
               <i class="bx bx-chevron-left bx-sm align-middle"></i>
             </a>
           </div>
-
           <div class="menu-inner-shadow"></div>
-
+			<br><br>
           <ul class="menu-inner py-1">
             <!-- Dashboard -->
             <li class="menu-item">
@@ -421,64 +469,48 @@
               <ul class="navbar-nav flex-row align-items-center ms-auto">
 
                 <!-- User -->
-                <li class="nav-item navbar-dropdown dropdown-user dropdown">
-                  <a class="nav-link dropdown-toggle hide-arrow" href="javascript:void(0);" data-bs-toggle="dropdown">
-                    <div class="avatar avatar-online">
-                      <img src="../assets/img/avatars/1.png" alt class="w-px-40 h-auto rounded-circle" />
-                    </div>
-                  </a>
-                  <ul class="dropdown-menu dropdown-menu-end">
-                    <li>
-                      <a class="dropdown-item" href="#">
-                        <div class="d-flex">
-                          <div class="flex-shrink-0 me-3">
-                            <div class="avatar avatar-online">
-                              <img src="../assets/img/avatars/1.png" alt class="w-px-40 h-auto rounded-circle" />
-                            </div>
-                          </div>
-                          <div class="flex-grow-1">
-                            <span class="fw-semibold d-block">John Doe</span>
-                            <small class="text-muted">Admin</small>
-                          </div>
-                        </div>
-                      </a>
-                    </li>
-                    <li>
-                      <div class="dropdown-divider"></div>
-                    </li>
-                    <li>
-                      <a class="dropdown-item" href="#">
-                        <i class="bx bx-user me-2"></i>
-                        <span class="align-middle">My Profile</span>
-                      </a>
-                    </li>
-                    <li>
-                      <a class="dropdown-item" href="#">
-                        <i class="bx bx-cog me-2"></i>
-                        <span class="align-middle">Settings</span>
-                      </a>
-                    </li>
-                    <li>
-                      <a class="dropdown-item" href="#">
-                        <span class="d-flex align-items-center align-middle">
-                          <i class="flex-shrink-0 bx bx-credit-card me-2"></i>
-                          <span class="flex-grow-1 align-middle">Billing</span>
-                          <span class="flex-shrink-0 badge badge-center rounded-pill bg-danger w-px-20 h-px-20">4</span>
-                        </span>
-                      </a>
-                    </li>
-                    <li>
-                      <div class="dropdown-divider"></div>
-                    </li>
-                    <li>
-                      <a class="dropdown-item" href="auth-login-basic.html">
-                        <i class="bx bx-power-off me-2"></i>
-                        <span class="align-middle">Log Out</span>
-                      </a>
-                    </li>
-                  </ul>
-                </li>
-                <!--/ User -->
+	          <li class="nav-item navbar-dropdown dropdown-user dropdown">
+	            <a class="nav-link dropdown-toggle hide-arrow" href="javascript:void(0);" data-bs-toggle="dropdown">
+	              <div class="avatar avatar-online">
+	                
+	              </div>
+	            </a>
+	            <ul class="dropdown-menu dropdown-menu-end">
+	              <li>
+	                <a class="dropdown-item" href="#">
+	                  <div class="d-flex">
+	                    <div class="flex-shrink-0 me-3">
+	                      <div class="avatar avatar-online">
+	                      </div>
+	                    </div>
+	                    <div class="flex-grow-1">
+	                      <span th:text="${email}" class="fw-semibold d-block"></span>
+	                      <small th:text= "${username}" class="text-muted"></small>
+	                    </div>
+	                  </div>
+	                </a>
+	              </li>
+	              <li>
+	                <div class="dropdown-divider"></div>
+	              </li>
+	              <li>
+	                <a class="dropdown-item" href="#">
+	                  <i class="bx bx-user me-2"></i>
+	                  <span th:href="@{/kids/modifyInfo}" class="align-middle" style="color:#454545; font-size:10pt;"><b>내 정보 수정</b></span>
+	                </a>
+	              </li>
+	              <li>
+	                <div class="dropdown-divider"></div>
+	              </li>
+	              <li>
+	                <a class="dropdown-item" th:href="@{/kids/logout}">
+	                  <i class="bx bx-power-off me-2"></i>
+	                  <span class="align-middle" style="color:#454545; font-size:10pt;"><b>로그아웃</b></span>
+	                </a>
+	              </li>
+	            </ul>
+	          </li>
+	          <!--/ User -->
               </ul>
             </div>
           </nav>
@@ -502,30 +534,30 @@
             		<div class="card mb-4">
             		<p style="font-size:18pt;"><b>예약 필수 정보</b></p>
 				      <div class="card-body">
-				        <form>
+				        <form action="/kids/reservation" method="post">
 				          <div class="row mb-3">
-				            <label class="col-sm-2 col-form-label" for="basic-default-name" style="color:#454545; font-size:11pt;"><b>이름</b></label>
+				            <label class="col-sm-2 col-form-label" for="email" style="color:#454545; font-size:11pt;"><b>이메일</b></label>
 				            <div class="col-sm-10">
-				              <input type="text" class="form-control" id="basic-default-name">
+				              <input type="text" class="form-control" id="email">
 				            </div>
 				          </div>
 				          <div class="row mb-3">
-				            <label class="col-sm-2 col-form-label" for="basic-default-company" style="color:#454545; font-size:11pt;"><b>생년월일</b></label>
+				            <label class="col-sm-2 col-form-label" for="birth" style="color:#454545; font-size:11pt;"><b>생년월일</b></label>
 				            <div class="col-sm-10">
-				              <input type="text" class="form-control" id="basic-default-company" >
+				              <input type="text" class="form-control" id="birth" >
 				            </div>
 				          </div>
 				          <div class="row mb-3">
-				            <label class="col-sm-2 col-form-label" for="basic-default-email" style="color:#454545; font-size:11pt;"><b>성별</b></label>
+				            <label class="col-sm-2 col-form-label" for="gender" style="color:#454545; font-size:11pt;"><b>성별</b></label>
 				            <div class="col-sm-10">
 				              <div class="input-group input-group-merge">
 				                <div class="col-md">
 						            <div class="form-check form-check-inline mt-3">
-						              <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio1" value="option1">
+						              <input class="form-check-input" type="radio" name="gender1" id="gender1" value="gender1">
 						              <label class="form-check-label" for="inlineRadio1" style="color:#454545; font-size:11pt;"><b>남성</b></label>
 						            </div>
 						            <div class="form-check form-check-inline">
-						              <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio2" value="option2">
+						              <input class="form-check-input" type="radio" name="gender2" id="gender2" value="gender2">
 						              <label class="form-check-label" for="inlineRadio2" style="color:#454545; font-size:11pt;"><b>여성</b></label>
 						            </div>
 						          </div>
@@ -533,18 +565,21 @@
 				            </div>
 				          </div>
 				          <div class="row mb-3">
-				            <label class="col-sm-2 col-form-label" for="basic-default-phone" style="color:#454545; font-size:11pt;"><b>키/체중</b></label>
+				            <label class="col-sm-2 col-form-label" for="weight" style="color:#454545; font-size:11pt;"><b>키/체중</b></label>
 				            <div class="col-sm-10">
-				              <input type="text" id="basic-default-phone" class="form-control phone-mask" aria-label="658 799 8941" aria-describedby="basic-default-phone">
+				              <input type="text" id="height" name="height" class="form-control">
+				              <input type="text" id="weight" name="weight" class="form-control">
 				            </div>
 				          </div>
 				          <div class="row mb-3">
-				            <label class="col-sm-2 col-form-label" for="basic-default-message" style="color:#454545; font-size:11pt;"><b>증상</b></label>
+				            <label class="col-sm-2 col-form-label" for="user_info" style="color:#454545; font-size:11pt;"><b>증상</b></label>
 				            <div class="col-sm-10">
-				              <textarea id="basic-default-message" class="form-control" aria-label="Hi, Do you have a moment to talk Joe?" aria-describedby="basic-icon-default-message2"></textarea>
+				              <textarea id="user_info" name="user_info" class="form-control"></textarea>
 				            </div>
 				          </div>
-				        </form>
+				          <input type="hidden" id="hpid" name="hpid" th:value="${hpid}">
+				          <input type="hidden" id="regdate" name="regdate" th:value="${#calendars.format(#calendars.createNow(), 'yyyy-MM-dd')}">
+				          </form>
 				      </div>
 				    </div>
             	
@@ -554,10 +589,10 @@
                     <div class="d-flex justify-content-center">
                       <div class="col-md-12 col-12">
                       <p style="font-size:18pt;"><b>날짜 선택</b></p>
-				 		<form autocomplete="off">
+                      <form autocomplete="off">
 				          <div class="card-header" style="background-color:#fff; border:0;">
 				            <div class="mx-0 mb-0 row justify-content-sm-center px-1">
-				              <input type="text" id="dp1" class="datepicker" placeholder="날짜를 선택하세요(여기를 클릭)" name="date" readonly><span class="fa fa-calendar"></span>
+				              <input type="text" id="rdate" class="datepicker" placeholder="날짜를 선택하세요(여기를 클릭)" name="date" readonly><span class="fa fa-calendar"></span>
 				            </div>
 				          </div>
 				          <div class="card-body p-3 p-sm-5" style=" background-color:#fff; border:none;">
@@ -580,7 +615,7 @@
 				          <div class="row" >
 							 <div class="col-md-12" style="text-align: center; font-size:15pt;">
 							 	<br><br>
-							 	<b><span id="reservationdatetime"></span></b>
+							 	<b><span id="rtime" name="rtime"></span></b>
 							 </div>
 					      </div>
 				    	</form>
@@ -590,14 +625,14 @@
                  </div>
             </div>
             	
+			<div class="row">
+				<div class="col-md-12 d-flex justify-content-start">
+					<input id="rbtn" name="rbtn" type="button" class="btn btn-outline-primary"  value="예약하기">
+				</div>
+			</div>
             
             </div>
             <!-- / Content -->
-			<div class="row">
-				<div class="col-md-12 d-flex justify-content-end">
-					<input type="button" class="btn btn-outline-primary"  value="예약하기" onclick="reservation();">
-				</div>
-			</div>
            
             <!-- / Footer -->
 
