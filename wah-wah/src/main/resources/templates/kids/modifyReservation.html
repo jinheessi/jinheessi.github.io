@@ -143,7 +143,7 @@
 		  cursor: pointer;
 		}
 		</style>
-		<script>
+		<script th:inline="javascript">
 			$(document).ready(function(){
 				var rdate;
 				var rtime;
@@ -165,15 +165,20 @@
 				
 				$('#rbtn').click(async function(){
 					$('#modalbodytext').html('예약한 날짜는 ' + rdate +'이고, 시간은 '+ rtime + ' 입니다. 정말로 예약하시겠습니까?');
-					var url = '/kids/reservation';
+
+					var seqno = /*[[${seqno.toString()}]]*/ '';
+					var url = '/kids/reservationModify?seqno=' +seqno;
+
 					var formData = new FormData();
 					formData.append("rdate", rdate);
 					formData.append("rtime", rtime);
+					// formData.append("email", email);
 					await fetch(url, {
 						method: 'POST',
 						body: formData
 					}).then((response) => response.json())
 					  .then((data) => {
+						if(data.msg == 'GOOD') document.location.href='/kids/myreservation';
 					  }).catch((error) => {
 						 console.log(error); 
 					  });
@@ -187,6 +192,7 @@
 		</script>
 	</head>
 	<body>
+
 	 <div class="container-fluid px-0 px-sm-4 mx-auto">
 	  <div class="row justify-content-center mx-0">
 	    <div class="col-lg-10">
@@ -225,50 +231,15 @@
 	 </div>
 	 </div>
 	 
-	 <div class="row">
-		<div class="col-md">
-			<div class="modal fade" id="exampleModalToggle" aria-hidden="true" aria-labelledby="exampleModalToggleLabel" tabindex="-1">
-			  <div class="modal-dialog modal-dialog-centered">
-			    <div class="modal-content">
-			      <div class="modal-header">
-			        <h1 class="modal-title fs-5" id="exampleModalToggleLabel">예약</h1>
-			       
-			      </div>
-			      <div class="modal-body">
-					  <span id="modalbodytext"></span>
-			      </div>
-			      <div class="modal-footer">
-			        <button id="confirm1" class="btn btn-primary" data-bs-target="#exampleModalToggle2" data-bs-toggle="modal">확인</button>
-			        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal" aria-label="Close">닫기</button>
-			      </div>
-			    </div>
-			  </div>
-			</div>
-		</div>
-	  <div class="row">
-		<div class="modal fade" id="exampleModalToggle2" aria-hidden="true" aria-labelledby="exampleModalToggleLabel2" tabindex="-1">
-		  <div class="modal-dialog modal-dialog-centered">
-		    <div class="modal-content">
-		      <div class="modal-header">
-		        <h1 class="modal-title fs-5" id="exampleModalToggleLabel2">예약 완료</h1>
-		        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-		      </div>
-		      <div class="modal-body" style="text-align: center;">
-				  <span id="modal2bodytext"></span>
-		      </div>
-		      <div class="modal-footer">
-		        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal" aria-label="Close">닫기</button>
-		      </div>
-		    </div>
-		  </div>
-		</div>
-	  </div>
+	 
+
+
 	  <div class="row">
 		<div class="col-md-12">
 			<button id="rbtn" class="btn btn-outline-dark" data-bs-target="#exampleModalToggle" data-bs-toggle="modal" style="margin-left:80%;">예약 수정</button>
 		</div>
 	  </div>
-	 </div>
+
 	 
 	 
 	 <nav class="navbar bg-body-tertiary fixed-top" style="margin-left:90%;">
@@ -278,22 +249,23 @@
 	    </button>
 	    <div class="offcanvas offcanvas-end" tabindex="-1" id="offcanvasNavbar" aria-labelledby="offcanvasNavbarLabel">
 	      <div class="offcanvas-header">
-	        <h5 class="offcanvas-title" id="offcanvasNavbarLabel">${id}님 환영합니다</h5>
+	        <h5 class="offcanvas-title" id="offcanvasNavbarLabel">${email}님 환영합니다</h5>
 	        <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
 	      </div>
 	      <div class="offcanvas-body">
 	        <ul class="navbar-nav justify-content-end flex-grow-1 pe-3">
 	          <li class="nav-item">
-	            <a class="nav-link active" aria-current="page" href="modifyInfo">내 정보 수정</a>
+	            <a class="nav-link active" aria-current="page" href="/kids/modifyInfo">내 정보 수정</a>
 	          </li>
 	          <li class="nav-item">
-	            <a class="nav-link" href="#">예약 관리</a>
+	            <a class="nav-link" href="/kids/myreservation">예약 관리</a>
 	          </li>
 	        </ul>
 	      </div>
 	    </div>
 	  </div>
 	 </nav>
+
 	</body>
 	
 	

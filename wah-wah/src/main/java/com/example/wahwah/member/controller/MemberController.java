@@ -21,6 +21,7 @@ import com.example.wahwah.hospitaluser.dto.HospitalUserDTO;
 import com.example.wahwah.member.dto.ArticleDTO;
 import com.example.wahwah.member.dto.FileDTO;
 import com.example.wahwah.member.dto.MemberDTO;
+import com.example.wahwah.member.dto.MemberInterface;
 import com.example.wahwah.member.entity.AddressEntity;
 import com.example.wahwah.member.service.*;
 import com.example.wahwah.member.util.PageUtil;
@@ -42,8 +43,7 @@ public class MemberController {
 
 	// 로그인
 	@GetMapping("/kids/login")
-	public void getLogIn() {
-	}
+	public void getLogIn() {}
 
 	// 로그인
 	@PostMapping("/kids/login")
@@ -64,15 +64,35 @@ public class MemberController {
 	public void gerMemberInfoViewModify(Model model, HttpSession session) {
 
 		String email = (String) session.getAttribute("email");
-		MemberDTO member = memberService.memberInfoView(email);
+		MemberInterface member = memberService.memberInfoView(email);
 
 		model.addAttribute("member", member);
+		model.addAttribute("session", session);
 	}
 
 	// 사용자 정보 수정
 	@PostMapping("/kids/modifyInfo")
-	public String postMemberInfoModify(MemberDTO member) {
+	public String postMemberInfoModify(MemberDTO member, @RequestParam("fileUpload") MultipartFile mpr) throws IllegalStateException, IOException {
 
+		String path = "c:\\Repository\\profile\\"; 
+		
+		if(!mpr.isEmpty()) {
+
+			File targetFile = null; 
+			String org_filename = mpr.getOriginalFilename();	
+			String org_fileExtension = org_filename.substring(org_filename.lastIndexOf("."));	
+			String stored_filename = UUID.randomUUID().toString().replaceAll("-", "") + org_fileExtension;	
+			long filesize = mpr.getSize();
+				
+			targetFile = new File(path + stored_filename);
+			mpr.transferTo(targetFile);
+				
+			member.setOrg_filename(org_filename);
+			member.setStored_filename(stored_filename);
+			member.setFilesize(filesize);
+		}
+        
+		member.setRole("USER");
 		memberService.memberInfoUpdate(member);
 		return "redirect:/kids/modifyInfo";
 
@@ -96,156 +116,21 @@ public class MemberController {
 
 	}
 
-	// 건강 정보 조회
-	@GetMapping("/kids/healthInfo")
-	public void getHealthInfo() {
-		String type = "posting";
-		memberService.listArticleInfo(type, 0, 0);
-	}
-
-	// 건강 정보 작성, 수정, 삭제 버튼은 thymeleaf에서 Session이 master면 보이도록 처리해줘야 한다.
-	// 건강 정보 작성
-	@GetMapping("/kids/healthInfo/write")
-	public void getWriteHealthInfo() {
-	}
-
-	@PostMapping("/kids/healthInfo/write")
-	public String postWriteHealthInfo(ArticleDTO articleDTO,
-			@RequestParam("fileUpload") List<MultipartFile> multipartFiles) {
-
-		articleDTO.setType("posting");
-		String path = "c:\\Repository\\file\\";
-
-		List<FileDTO> fileDTOs = new ArrayList<>();
-
-		File targetFile = null;
-
-		for (MultipartFile multipartFile : multipartFiles) {
-			String orgFilename = multipartFile.getOriginalFilename();
-			String orgFileExtension = orgFilename.substring(orgFilename.lastIndexOf("."));
-			String storedFilename = UUID.randomUUID().toString().replaceAll("-", "") + orgFileExtension;
-			long fileSize = multipartFile.getSize();
-
-			targetFile = new File(path + storedFilename);
-			try {
-				multipartFile.transferTo(targetFile);
-			} catch (IllegalStateException | IOException e) {
-				return "fail";
-			}
-
-			FileDTO fileDTO = FileDTO.builder().orgFilename(orgFilename).storedFilename(storedFilename)
-					.fileSize(fileSize).build();
-			fileDTOs.add(fileDTO);
-		}
-
-		memberService.writeArticleInfo(articleDTO, fileDTOs);
-		return "success";
-
-	}
-
-	@GetMapping("/kids/healthInfo/modify")
-	public void getModifyHealthInfo(@RequestParam("seqno") Long seqno, Model model) {
-		model.addAttribute("article", memberService.viewArticleInfo(seqno).getArticleDTO());
-		model.addAttribute("files", memberService.viewArticleInfo(seqno).getFileDTOs());
-	}
-
-	@PostMapping("/kids/healthInfo/modify")
-	public String postModifyHealthInfo(ArticleDTO articleDTO,
-			@RequestParam("fileUpload") List<MultipartFile> multipartFiles) {
-		articleDTO.setType("posting");
-		String path = "c:\\Repository\\file\\";
-
-		List<FileDTO> fileDTOs = new ArrayList<>();
-
-		File targetFile = null;
-
-		for (MultipartFile multipartFile : multipartFiles) {
-			String orgFilename = multipartFile.getOriginalFilename();
-			String orgFileExtension = orgFilename.substring(orgFilename.lastIndexOf("."));
-			String storedFilename = UUID.randomUUID().toString().replaceAll("-", "") + orgFileExtension;
-			long fileSize = multipartFile.getSize();
-
-			targetFile = new File(path + storedFilename);
-			try {
-				multipartFile.transferTo(targetFile);
-			} catch (IllegalStateException | IOException e) {
-				return "fail";
-			}
-
-			FileDTO fileDTO = FileDTO.builder().orgFilename(orgFilename).storedFilename(storedFilename)
-					.fileSize(fileSize).build();
-			fileDTOs.add(fileDTO);
-		}
-
-		memberService.modifyArticleInfo(articleDTO, fileDTOs);
-		return "success";
-	}
-
-	@GetMapping("/kids/healthInfo/delete")
-	public void getHealthInfoDelete(@RequestParam("seqno") Long seqno) {
-		memberService.deleteArticleInfo(seqno);
-	}
 
 	// -------------------------------- 공지사항 -----------------------------------
 	@GetMapping("/kids/notice")
-	public void getAnnounceInfo() {
-		// String type = "announce";
-		// memberService.listArticleInfo(type, 0, 0);
+	public void getNotice(HttpSession session, Model model) {
+		
+		MemberInterface member = memberService.memberInfoView((String)session.getAttribute("email"));
+		model.addAttribute("member", member);
+		model.addAttribute("session", session);
 	}
+	
 
-	@GetMapping("/kids/notice/view")
-	public void getAnnounceInfoList(@RequestParam("seqno") Long seqno, Model model) {
-		model.addAttribute("announce", memberService.viewArticleInfo(seqno).getArticleDTO());
-		model.addAttribute("files", memberService.viewArticleInfo(seqno).getFileDTOs());
-	}
+	
+	
 
-	// 건강 정보 작성, 수정, 삭제 버튼은 thymeleaf에서 Session이 master면 보이도록 처리해줘야 한다.
-	// 건강 정보 작성
-	@GetMapping("/kids/writeNotice")
-	public void getWriteAnnounce() {
-	}
-
-	@PostMapping("/kids/writeNotice")
-	public String postAnnounce(ArticleDTO articleDTO,
-			@RequestParam("fileUpload") List<MultipartFile> multipartFiles) {
-
-		articleDTO.setType("announce");
-		String path = "c:\\Repository\\file\\";
-
-		List<FileDTO> fileDTOs = new ArrayList<>();
-
-		File targetFile = null;
-
-		for (MultipartFile multipartFile : multipartFiles) {
-			String orgFilename = multipartFile.getOriginalFilename();
-			String orgFileExtension = orgFilename.substring(orgFilename.lastIndexOf("."));
-			String storedFilename = UUID.randomUUID().toString().replaceAll("-", "") + orgFileExtension;
-			long fileSize = multipartFile.getSize();
-
-			targetFile = new File(path + storedFilename);
-			try {
-				multipartFile.transferTo(targetFile);
-			} catch (IllegalStateException | IOException e) {
-				return "fail";
-			}
-
-			FileDTO fileDTO = FileDTO.builder().orgFilename(orgFilename).storedFilename(storedFilename)
-					.fileSize(fileSize).build();
-			fileDTOs.add(fileDTO);
-		}
-
-		memberService.writeArticleInfo(articleDTO, fileDTOs);
-		return "success";
-
-	}
-
-	@GetMapping("/kids/notice/modify")
-	public void getModifyAnnounce(@RequestParam("seqno") Long seqno, Model model) {
-		model.addAttribute("article", memberService.viewArticleInfo(seqno).getArticleDTO());
-		model.addAttribute("files", memberService.viewArticleInfo(seqno).getFileDTOs());
-	}
-
-	@PostMapping("/kids/notice/modify")
+	@PostMapping("/kids/modifyNotice")
 	public String postModifyAnnounce(ArticleDTO articleDTO,
 			@RequestParam("fileUpload") List<MultipartFile> multipartFiles) {
 		articleDTO.setType("announce");
@@ -277,19 +162,10 @@ public class MemberController {
 		return "success";
 	}
 
-	@GetMapping("/kids/notice/delete")
+
+
+	@GetMapping("/kids/deleteNotice")
 	public void getAnnounceDelete(@RequestParam("seqno") Long seqno) {
 		memberService.deleteArticleInfo(seqno);
-	}
-
-	//어드민 페이지 
-	@GetMapping("/kids/admin")
-	public void getAdminPage(){
-	}
-
-	//병원회원 허락 페이지 
-	@GetMapping("/kids/admin/accept")
-	public void getAccept(HospitalUserDTO hospitalUserDTO){
-		
 	}
 }

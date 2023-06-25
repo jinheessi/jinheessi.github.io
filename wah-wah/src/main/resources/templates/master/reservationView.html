@@ -1,17 +1,4 @@
 <!DOCTYPE html>
-
-<!-- =========================================================
-* Sneat - Bootstrap 5 HTML Admin Template - Pro | v1.0.0
-==============================================================
-
-* Product Page: https://themeselection.com/products/sneat-bootstrap-html-admin-template/
-* Created by: ThemeSelection
-* License: You must have a valid license purchased in order to legally use the theme for your project.
-* Copyright ThemeSelection (https://themeselection.com)
-
-=========================================================
- -->
-<!-- beautify ignore:start -->
 <html
   lang="en"
   class="light-style layout-menu-fixed"
@@ -43,269 +30,262 @@
     <link rel="stylesheet" href="/assets/vendor/libs/perfect-scrollbar/perfect-scrollbar.css" />
 
     <link rel="stylesheet" href="/assets/vendor/libs/apex-charts/apex-charts.css" />
-	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.9.0/css/bootstrap-datepicker.css">
-	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/2.3.2/css/bootstrap-responsive.css">
-	
-	<!-- Helpers -->
+   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.9.0/css/bootstrap-datepicker.css">
+   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/2.3.2/css/bootstrap-responsive.css">
+   
+   <!-- Helpers -->
     <script src="/assets/vendor/js/helpers.js"></script>
     <!--! Template customizer & Theme config files MUST be included after core stylesheets and helpers.js in the <head> section -->
     <!--? Config:  Mandatory theme config file contain global vars & default theme options, Set your preferred theme option in this file.  -->
     <script src="/assets/js/config.js"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.9.0/css/bootstrap-datepicker.css">
-	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/2.3.2/css/bootstrap-responsive.css">
-	<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.js"></script>
-	<script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.9.0/js/bootstrap-datepicker.js"></script>
-	<script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.4.1/js/bootstrap.js"></script>
+   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/2.3.2/css/bootstrap-responsive.css">
+   <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.js"></script>
+   <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.9.0/js/bootstrap-datepicker.js"></script>
+   <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.4.1/js/bootstrap.js"></script>
     <style>
-		  @font-face {
-		    	font-family: 'GODOM';
-		    	src: url('/vendor/bootstrap-icons/fonts/GODOM.ttf') format('truetype');
-			}
-			
-			body,h1,h2,h3,h4,h5,h6,p,div p,a,div,span,small{
-				font-family: 'GODOM';
-			}
-			body {
-			    color: black;
-			    overflow-x: hidden;
-			    background-repeat: no-repeat;
-			    padding: 0px !important;
-			    background-color:#FFFFFF;
-			}
-			input {
-			    border-radius: 10px;
-			    color: #000;
-			    font-size: 16px;
-			    font-weight: bold;
-			}
-			
-			input:focus {
-				color:#000;
-			    -moz-box-shadow: none !important;
-			    -webkit-box-shadow: none !important;
-			    
-			    
-			}
-			
-			::placeholder {
-			    color: #000;
-			    font-size:15pt;
-			    font-weight:bold;
-			    opacity: 1;
-			}
-			
-			:-ms-input-placeholder {
-			    color: #000;
-			    font-weight:bold;
-			}
-			
-			::-ms-input-placeholder {
-			    color: #000;
-			    font-weight:bold;
-			}
-			
-			button:focus {
-			    -moz-box-shadow: none !important;
-			    -webkit-box-shadow: none !important;
-			    box-shadow: none !important;
-			    outline-width: 0;
-			}
-			
-			.datepicker {
-			  background-color: rgba(25,119,204,0.2);
-			  color: #000;
-			  border: none;
-			  border-radius:5px;
-			  padding: 10px !important;
-			}
-			
-			.datepicker-dropdown{
-			  background-color: #fff;
-			  border-radius:5px;
-			}
-			
-			thead tr:nth-child(3) th {
-			  color: #000 !important;
-			  font-weight: bold;
-			  padding-top: 20px;
-			  padding-bottom: 10px;
-			}
-			
-			.dow, .old-day, .day, .new-day {
-			  width: 40px !important;
-			  height: 40px !important;
-			  border-radius: 0px !important;
-			}
-			
-			.old-day:hover, .day:hover, .new-day:hover, .month:hover, .year:hover, .decade:hover, .century:hover {
-			  border-radius: 6px !important; 
-			  color: #000;
-			}
-			
-			.active {
-			  border-radius: 6px !important;
-			  color: #000 !important;
-			}
-			
-			.disabled {
-			  color: gray !important;
-			}
-			
-			.prev, .next, .datepicker-switch {
-			  border-radius: 0 !important;
-			  padding: 20px 10px !important;
-			  text-transform: uppercase;
-			  font-size: 20px;
-			  color: #000 !important;
-			  
-			}
-			
-			.prev:hover, .next:hover, .datepicker-switch:hover {
-			  background-color: inherit !important;
-			  opacity: 1;
-			}
-			
-			.cell {
-			  border:none;
-			  cursor: pointer;
-			}
-			
-			.cell:hover {
-			  border: 1px solid rgba(25,119,204,0.5);
-			  border-radius:5px;
-			}
-			
-			.cell.select {
-			  background-color:  rgba(25, 119, 204, 0.2);
-			  border-radius:5px;
-			  color: #000;
-			}
-			
-			.fa-calendar {
-			  color: #000;
-			  font-size: 30px;
-			  padding-top: 8px;
-			  padding-left: 5px;
-			  cursor: pointer;
-			}
-			.menu-inner{
-				font-weight:bold;
-				color:#454545;
-			}
-			table{
-			table-layout:fixed;
-			}
-			th, td{
-				word-wrap: break-word;
-				text-align:center;
-				padding:5px;
-			}
-			.menu-inner{
-				font-weight:bold;
-				font-size:14pt;
-				color:#454545;
-			}
-			select, option{
-				font-weight:bold;
-				color:#454545;
-			}
-			i{
-				color:#1977CC;
-				font-weight:bold;
-			}
+        @font-face {
+             font-family: 'GODOM';
+             src: url('/vendor/bootstrap-icons/fonts/GODOM.ttf') format('truetype');
+         }
+         
+         body,h1,h2,h3,h4,h5,h6,p,div p,a,div,span,small{
+            font-family: 'GODOM';
+         }
+         body {
+             color: black;
+             overflow-x: hidden;
+             background-repeat: no-repeat;
+             padding: 0px !important;
+             background-color:#FFFFFF;
+         }
+         input {
+             border-radius: 10px;
+             color: #000;
+             font-size: 16px;
+             font-weight: bold;
+         }
+         
+         input:focus {
+            color:#000;
+             -moz-box-shadow: none !important;
+             -webkit-box-shadow: none !important;
+             
+             
+         }
+         
+         ::placeholder {
+             color: #000;
+             font-size:15pt;
+             font-weight:bold;
+             opacity: 1;
+         }
+         
+         :-ms-input-placeholder {
+             color: #000;
+             font-weight:bold;
+         }
+         
+         ::-ms-input-placeholder {
+             color: #000;
+             font-weight:bold;
+         }
+         
+         button:focus {
+             -moz-box-shadow: none !important;
+             -webkit-box-shadow: none !important;
+             box-shadow: none !important;
+             outline-width: 0;
+         }
+         
+         .datepicker {
+           background-color: rgba(25,119,204,0.2);
+           color: #000;
+           border: none;
+           border-radius:5px;
+           padding: 10px !important;
+         }
+         
+         .datepicker-dropdown{
+           background-color: #fff;
+           border-radius:5px;
+         }
+         
+         thead tr:nth-child(3) th {
+           color: #000 !important;
+           font-weight: bold;
+           padding-top: 20px;
+           padding-bottom: 10px;
+         }
+         
+         .dow, .old-day, .day, .new-day {
+           width: 40px !important;
+           height: 40px !important;
+           border-radius: 0px !important;
+         }
+         
+         .old-day:hover, .day:hover, .new-day:hover, .month:hover, .year:hover, .decade:hover, .century:hover {
+           border-radius: 6px !important; 
+           color: #000;
+         }
+         
+         .active {
+           border-radius: 6px !important;
+           color: #000 !important;
+         }
+         
+         .disabled {
+           color: gray !important;
+         }
+         
+         .prev, .next, .datepicker-switch {
+           border-radius: 0 !important;
+           padding: 20px 10px !important;
+           text-transform: uppercase;
+           font-size: 20px;
+           color: #000 !important;
+           
+         }
+         
+         .prev:hover, .next:hover, .datepicker-switch:hover {
+           background-color: inherit !important;
+           opacity: 1;
+         }
+         
+         .cell {
+           border:none;
+           cursor: pointer;
+         }
+         
+         .cell:hover {
+           border: 1px solid rgba(25,119,204,0.5);
+           border-radius:5px;
+         }
+         
+         .cell.select {
+           background-color:  rgba(25, 119, 204, 0.2);
+           border-radius:5px;
+           color: #000;
+         }
+         
+         .fa-calendar {
+           color: #000;
+           font-size: 30px;
+           padding-top: 8px;
+           padding-left: 5px;
+           cursor: pointer;
+         }
+         .menu-inner{
+            font-weight:bold;
+            color:#454545;
+         }
+         table{
+         table-layout:fixed;
+         }
+         th, td{
+            word-wrap: break-word;
+            text-align:center;
+            padding:5px;
+         }
+         .menu-inner{
+            font-weight:bold;
+            font-size:14pt;
+            color:#454545;
+         }
+         select, option{
+            font-weight:bold;
+            color:#454545;
+         }
+         i{
+            color:#1977CC;
+            font-weight:bold;
+         }
     </style>
-	
+   
     
   </head>
 
   <body style="background-color:white;">
-	<script>
-			$(document).ready(function(){
-				var rdate;
-				var rtime;
-				
-				
-				$('.datepicker').datepicker({
-				    format: 'yyyy년 mm월 dd일',
-				    autoclose: true,
-				    startDate: '0d'
-				});
-				
-				$('.cell').click(function(){
-				    $('.cell').removeClass('select');
-				    $(this).addClass('select');
-				    rdate = $('#rdate').val();
-				    rtime = $(this).text();
-					$('#rtime').html(
-									'<div class="row">'+
-										'<div class="col-md-12">' +
-											'<p style="color:#454545; font-size:15pt;">' + rdate +'</p>' +
-										'</div>' +
-									'</div>' +
-									'<div class="row">'+
-										'<div class="col-md-12 d-flex justify-content-center" style="text-align: center; font-size:15pt;">' +
-							 			'<br><br>' + 
-							 			'<div class="card">' +
-							 				'<table class="table">' +
-												'<thead>' +
-													'<tr>' +
-														'<th style="color:#454545; font-size:12pt;">예약 시간</th>' +
-														'<th style="color:#454545; font-size:12pt;">생년월일</th>' +
-														'<th style="color:#454545; font-size:12pt;">키</th>' +
-														'<th style="color:#454545; font-size:12pt;">체중</th>' +
-														'<th style="color:#454545; font-size:12pt;">성별</th>' +
-														'<th style="color:#454545; font-size:12pt;">증상</th>' +
-														'<th style="color:#454545; font-size:12pt;">수정/취소</th>' +
-													'</tr>' +
-												'</thead>' +
-												'<tbody class="table-border-bottom-0">' +
-													'<th:block th:if="${reservationList == null}">' +
-														'<tr>' +
-															'<td colspan="7"><p style="font-size:12pt; color:#454545;">예약한 내역이 없습니다.</p></td>'+
-														'</tr>'+
-													'</th:block>'+
-													'<th:block th:unless="${reservationList == null}">'+
-														'<tr th:each="reservation : ${reservationList}">'+
-															'<td th:text="${reservation.reserve_start}"></td>'+
-															'<td th:text="${reservation.birth}"></td>' +
-															'<td th:text="${reservation.height}"></td>' +
-															'<td th:text="${reservation.weight}"></td>' +
-															'<td th:text="${reservation.gender}"></td>' +
-															'<td th:text="${reservation.user_info}"></td>'+
-															'<td>'+
-															'</td>'+
-														'</tr>'+
-													'</th:block>'+
-												'</tbody>' +									
-											'</table>'+
-										'</div>'+
-							 		'</div>'+
-					      		'</div>');
-				    
-				});
-				
-				$('#rbtn').click(async function(){
-					$('#modalbodytext').html('예약한 날짜는 ' + rdate +'이고, 시간은 '+ rtime + ' 입니다. 정말로 예약하시겠습니까?');
-					var url = '/kids/reservation';
-					var formData = new FormData();
-					formData.append("rdate", rdate);
-					formData.append("rtime", rtime);
-					await fetch(url, {
-						method: 'POST',
-						body: formData
-					}).then((response) => response.json())
-					  .then((data) => {
-					  }).catch((error) => {
-						 console.log(error); 
-					  });
-				});
-				$("#confirm1").click(function(){
-					$('#modal2bodytext').html(rdate +'<br>'+ rtime + '<br>예약완료 되었습니다');
-				});
-			
-			});
-		
-		</script>    
+   <script th:inline="javascript">
+         $(document).ready(function(){
+
+            var rdate;
+            var rtime;
+            
+            
+            $('.datepicker').datepicker({
+                format: 'yyyy년 mm월 dd일',
+                autoclose: true,
+                startDate: '0d'
+            });
+            
+
+            
+            $('.cell').click(async function(){
+
+            //    $('#replyList').html('예약한 날짜는 ' + rdate +'이고, 시간은 '+ rtime + ' 입니다. 정말로 예약하시겠습니까?');
+			   $('.cell').removeClass('select');
+                 $(this).addClass('select');
+                 rdate = $('#rdate').val();
+                 rtime = $(this).text();
+
+               var url = '/master/reservationViewAll';
+               var formData = new FormData();
+               formData.append("rdate", rdate);
+               formData.append("rtime", rtime);
+               await fetch(url, {
+                  method: 'POST',
+                  body: formData
+               }).then((response) => response.json())
+                  .then((data) => replyList(data))
+                     .catch((error) => {
+                   console.log(error); 
+                 });
+            });
+
+
+
+//댓글 목록 보기
+const replyList = (data) => {
+      
+      const jsonInfo = data;
+	  var replyBody = document.querySelector("#replyBody"); 
+      
+      var replyList = document.querySelector('#replyList');
+      
+      var result = "";
+      for(const i in jsonInfo){
+         if(jsonInfo[i].allow === 'N'){
+			continue;
+		 }
+         
+         let result = "";
+
+         result = '<tr>' +
+			 		'<td style="font-weight:bold; color:#454545;">' + jsonInfo[i].seqno+ '</td>'+
+			 		'<td style="font-weight:bold; color:#454545;">' + jsonInfo[i].reservestart+ '</td>'+
+			 		'<td style="font-weight:bold; color:#454545;">' + jsonInfo[i].email+ '</td>'+
+			 		'<td style="font-weight:bold; color:#454545;">' + jsonInfo[i].birth+ '</td>'+
+			 		'<td style="font-weight:bold; color:#454545;">' + jsonInfo[i].height+ '</td>'+
+			 		'<td style="font-weight:bold; color:#454545;">' + jsonInfo[i].userinfo+ '</td>'+
+			 	  '</tr>'
+         replyBody.innerHTML = result;
+         
+      }
+   }
+
+
+
+
+
+
+            $("#confirm1").click(function(){
+               $('#modal2bodytext').html(rdate +'<br>'+ rtime + '<br>예약완료 되었습니다');
+            });
+         
+         });
+      
+      </script>    
     <!-- Layout wrapper -->
     <div class="layout-wrapper layout-content-navbar">
       <div class="layout-container">
@@ -313,8 +293,8 @@
 
         <aside id="layout-menu" class="layout-menu menu-vertical menu bg-menu-theme">
           <div class="app-brand demo">
-          	<br>
-          	<p style="font-weight:bold; font-size:30pt; color:black; margin-top:20%; margin-bottom:10%;">응애응애</p>
+          	<br><a th:href="@{/}" style="font-weight:bold; font-size:30pt; color:black; margin-top:20%; margin-bottom:10%;">응애응애</a>
+          	
 
             <a href="javascript:void(0);" class="layout-menu-toggle menu-link text-large ms-auto d-block d-xl-none">
               <i class="bx bx-chevron-left bx-sm align-middle"></i>
@@ -332,49 +312,54 @@
               </a>
             </li>
 
-            <!-- Layouts -->
+            <li class="menu-header small text-uppercase">
+              <span class="menu-header-text" style="color:black;">회원 정보 관리 & 회원 인증</span>
+            </li>
+            
             <li class="menu-item active">
               <a href="javascript:void(0);" class="menu-link menu-toggle">
-                <i class="menu-icon tf-icons bx bx-layout"></i>
-                <div data-i18n="Layouts" style="color:black;">예약</div>
+                <i class="menu-icon tf-icons bx bx-dock-top"></i>
+                <div data-i18n="Account Settings" style="color:black;">마이 페이지</div>
               </a>
-
               <ul class="menu-sub">
                 <li class="menu-item active">
-                  <a th:href="@{/kids/pediatric}" class="menu-link">
-                    <div data-i18n="Without menu" style="color:black;">병원 예약 정보 조회</div>
-                  </a>
-                </li>
-              </ul>
-            </li>
-
-            <li class="menu-header small text-uppercase">
-              <span class="menu-header-text" style="color:black;">병원 정보 관리</span>
-            </li>
-            <li class="menu-item">
-              <a href="javascript:void(0);" class="menu-link menu-toggle">
-                <i class="menu-icon tf-icons bx bx-dock-top"></i>
-                <div data-i18n="Account Settings" style="color:black;">병원 정보 조회</div>
-              </a>
-              <ul class="menu-sub">
-                <li class="menu-item">
                   <a th:href="@{/master/modifyInfo}" class="menu-link">
-                    <div data-i18n="Account" style="color:black;">병원 정보 수정</div>
+                    <div data-i18n="Account" style="color:black;">내 정보 관리/수정</div>
+                  </a>
+                </li>
+                <li class="menu-item">
+                  <a th:href="@{/master/reservationView}" class="menu-link">
+                    <div data-i18n="Notifications" style="color:black;">내 예약 관리/수정</div>
                   </a>
                 </li>
               </ul>
             </li>
             
+            <!-- Components -->
+            <li class="menu-header small text-uppercase"><span class="menu-header-text" style="color:black;">유용한 정보</span></li>
+            <!-- Cards -->
+            <li class="menu-item">
+              <a th:href="@{/kids/healthInfo}" class="menu-link">
+                <i class="menu-icon tf-icons bx bx-collection"></i>
+                <div data-i18n="Basic" style="color:black;">건강 정보</div>
+              </a>
+            </li>
+            <!-- Misc -->
+            <li class="menu-header small text-uppercase"><span class="menu-header-text" style="color:black;">기타</span></li>
             
+            <li class="menu-item">
+              <a th:href="@{/kids/notice}" class="menu-link">
+                <i class="menu-icon tf-icons bx bx-file"></i>
+                <div data-i18n="Documentation" style="color:black;">공지사항</div>
+              </a>
+            </li>
           </ul>
         </aside>
         <!-- / Menu -->
-
         <!-- Layout container -->
         <div class="layout-page">
-          <!-- Navbar -->
-
-          <nav
+         <!-- Navbar -->
+		<nav
             class="layout-navbar container-xxl navbar navbar-expand-xl navbar-detached align-items-center bg-navbar-theme"
             id="layout-navbar"
           >
@@ -395,44 +380,45 @@
               
               <!-- /Search -->
 
-              <ul class="navbar-nav flex-row align-items-center ms-auto">
+              <ul class="navbar-nav d-flex justify-content-start align-items-start ms-auto">
 
                 <!-- User -->
 	          <li class="nav-item navbar-dropdown dropdown-user dropdown">
 	            <a class="nav-link dropdown-toggle hide-arrow" href="javascript:void(0);" data-bs-toggle="dropdown">
-	              <div class="avatar avatar-online">
-	                
+	              <div class="avatar avatar-online  d-flex justify-content-center align-items-center">
+	                <th:block th:if="${session.supervisor == hospitalUserInfo.supervisor}">
+	                	<img th:src="|/profile/${hospitalUserInfo.files}|" style="width:100%;height:100%">
+	                </th:block>
 	              </div>
 	            </a>
-	            <ul class="dropdown-menu dropdown-menu-end">
+	            <ul class="dropdown-menu pt-0 pb-1 ps-1 pe-1">
 	              <li>
 	                <a class="dropdown-item" href="#">
-	                  <div class="d-flex">
-	                    <div class="flex-shrink-0 me-3">
-	                      <div class="avatar avatar-online">
+	                   <div class="d-flex">
+	                    <div class="flex-shrink-0 mt-0 me-3">
+	                      <div class="avatar avatar-online d-flex justify-content-center align-items-center">
+	                      	<th:block th:if="${session.supervisor == hospitalUserInfo.supervisor}">
+			                	<img th:src="|/profile/${hospitalUserInfo.files}|" style="width:100%;height:100%">
+			                </th:block>
 	                      </div>
 	                    </div>
 	                    <div class="flex-grow-1">
-	                      <span th:text="${email}" class="fw-semibold d-block"></span>
-	                      <small th:text= "${username}" class="text-muted"></small>
+	                      <span th:text= "${hospitalUserInfo.supervisor}" style="font-size:12pt; font-weight:bold; color:black;"></span>
+	                      <th:block th:if="${session.supervisor != null}">
+	                      	<span style="font-size:10pt; font-weight:bold; color:#1977CC; text-align:end;">(관리자)</span>
+	                      </th:block>
+	                      <span th:text="|${hospitalUserInfo.hospitalName} (${hospitalUserInfo.hpid})|" class="fw-semibold d-block" style="font-size:11pt; font-weight:bold; color:#454545;"></span>
 	                    </div>
-	                  </div>
 	                </a>
 	              </li>
 	              <li>
-	                <div class="dropdown-divider"></div>
-	              </li>
-	              <li>
-	                <a class="dropdown-item" href="#">
+	                <a th:href="@{/master/modifyInfo}" class="dropdown-item d-flex justify-content-start" href="#">
 	                  <i class="bx bx-user me-2"></i>
-	                  <span th:href="@{/master/modifyInfo}" class="align-middle" style="color:#454545; font-size:10pt;"><b>병원 정보 수정</b></span>
+	                  <span  class="align-middle" style="color:#454545; font-size:10pt;"><b>내 정보 수정</b></span>
 	                </a>
 	              </li>
 	              <li>
-	                <div class="dropdown-divider"></div>
-	              </li>
-	              <li>
-	                <a class="dropdown-item" th:href="@{/master/logout}">
+	                <a class="dropdown-item d-flex justify-content-start" th:href="@{/master/logout}">
 	                  <i class="bx bx-power-off me-2"></i>
 	                  <span class="align-middle" style="color:#454545; font-size:10pt;"><b>로그아웃</b></span>
 	                </a>
@@ -443,60 +429,95 @@
               </ul>
             </div>
           </nav>
-
-          <!-- / Navbar -->
+	  
+	
+	  
+	<!-- / Navbar -->
 
           <!-- Content wrapper -->
           <div class="content-wrapper">
             <!-- Content -->
             <div class="container-xxl flex-grow-1 container-p-y">
               <div class="row">
-	              <div class="col-md-5 col-12">
-	              	<p th:text="${session.dutyName}"+"관리자 예약관리|" style="font-size:20pt; color:black; font-weight:bold;"></p>
-          	      </div>
-          	      <div class="col-md-7 col-12">
-			  	   
-          	      </div>
-          	      <hr>
+                 <div class="col-md-5 col-12">
+                    <p th:text="|${dutyName} 관리자 예약관리|" style="font-size:20pt; color:black; font-weight:bold;"></p>
+                   </div>
+                   <div class="col-md-7 col-12">
+                 
+                   </div>
               </div>
               <br>
               <div class="row">
                 <div class="col-md-12 col-md-6 mb-2">
-                  <p th:text="${dutyName}" style="font-size:18pt;"><b></b></p>
                       <form autocomplete="off">
-				          <div class="card-header" style="background-color:#fff; border:0;">
-				            <div class="mx-0 mb-0 row justify-content-sm-center px-1">
-				              <input type="text" id="rdate" class="datepicker" placeholder="날짜를 선택하세요(여기를 클릭)" name="date" readonly><span class="fa fa-calendar"></span>
-				            </div>
-				          </div>
-				          <div class="card-body p-3 p-sm-5" style=" background-color:#fff; border:none;">
-				            <div class="row text-center mx-0">
-				              <div class="col-md-4 col-12 my-1 px-2"><div class="cell py-1">오전 9:00</div></div>
-				              <div class="col-md-4 col-12 my-1 px-2"><div class="cell py-1">오전 10:00</div></div>
-				              <div class="col-md-4 col-12 my-1 px-2"><div class="cell py-1">오전 11:00</div></div>
-				            </div>
-				            <div class="row text-center mx-0">
-				              <div class="col-md-4 col-12 my-1 px-2"><div class="cell py-1">오후 1:00</div></div>
-				              <div class="col-md-4 col-12 my-1 px-2"><div class="cell py-1">오후 2:00</div></div>
-				              <div class="col-md-4 col-12 my-1 px-2"><div class="cell py-1">오후 3:00</div></div>
-				            </div>
-				            <div class="row text-center mx-0">
-				              <div class="col-md-4 col-12 my-1 px-2"><div class="cell py-1">오후 4:00</div></div>
-				              <div class="col-md-4 col-12 my-1 px-2"><div class="cell py-1">오후 5:00</div></div>
-				              <div class="col-md-4 col-12 my-1 px-2"><div class="cell py-1">오후 6:00</div></div>
-				            </div>
-				          </div>
-				    	</form>
+                      <div class="card-header" style="background-color:#fff; border:0;">
+                        <div class="mx-0 mb-0 row justify-content-sm-center px-1">
+                          <input type="text" id="rdate" class="datepicker" placeholder="날짜를 선택하세요(여기를 클릭)" name="date" readonly><span class="fa fa-calendar"></span>
+                        </div>
+                      </div>
+                      <div class="card-body p-3 p-sm-5" style=" background-color:#fff; border:none;">
+                        <div class="row text-center mx-0">
+                          <div class="col-md-3 col-12 my-1 px-2"><div class="cell py-1">오전 09:00</div></div>
+                          <div class="col-md-3 col-12 my-1 px-2"><div class="cell py-1">오전 09:30</div></div>
+                          <div class="col-md-3 col-12 my-1 px-2"><div class="cell py-1">오전 10:00</div></div>
+                          <div class="col-md-3 col-12 my-1 px-2"><div class="cell py-1">오전 10:30</div></div>
+                        </div>
+                        <div class="row text-center mx-0">
+                          <div class="col-md-3 col-12 my-1 px-2"><div class="cell py-1">오전 11:00</div></div>
+                          <div class="col-md-3 col-12 my-1 px-2"><div class="cell py-1">오전 11:30</div></div>
+                          <div class="col-md-3 col-12 my-1 px-2"><div class="cell py-1">오후 13:00</div></div>
+                          <div class="col-md-3 col-12 my-1 px-2"><div class="cell py-1">오후 13:30</div></div>
+                        </div>
+                        <div class="row text-center mx-0">
+                          <div class="col-md-3 col-12 my-1 px-2"><div class="cell py-1">오후 14:00</div></div>
+                          <div class="col-md-3 col-12 my-1 px-2"><div class="cell py-1">오후 14:30</div></div>
+                          <div class="col-md-3 col-12 my-1 px-2"><div class="cell py-1">오후 15:00</div></div>
+                          <div class="col-md-3 col-12 my-1 px-2"><div class="cell py-1">오후 15:30</div></div>
+                        </div>
+                         <div class="row text-center mx-0">
+                          <div class="col-md-3 col-12 my-1 px-2"><div class="cell py-1">오후 16:00</div></div>
+                          <div class="col-md-3 col-12 my-1 px-2"><div class="cell py-1">오후 16:30</div></div>
+                          <div class="col-md-3 col-12 my-1 px-2"><div class="cell py-1">오후 17:00</div></div>
+                          <div class="col-md-3 col-12 my-1 px-2"><div class="cell py-1">오후 17:30</div></div>
+                        </div>
+                        
+                      </div>
+                   </form>
                 </div>
               </div>
-	           	<div class="row" >
-								 <div class="col-md-12" style="text-align: center; font-size:15pt;">
-								 	<br><br>
-								 	<b><span id="rtime" name="rtime"></span></b>
-								 </div>
-						      </div>
-				</div>
-            	
+                <div class="row d-flex justify-content-center">
+				        <div id="card_table" class="card">
+						  <p class="card-header" style="font-size:20pt; color:#454545"><b>병원 리스트</b></p>
+						    <table id="replyList" class="table">
+						      <colgroup>
+						      	<col width="20%"></col>
+						      	<col width="20%"></col>
+						      	<col width="20%"></col>
+						      	<col width="20%"></col>
+						      	<col width="20%"></col>
+						      	<col width="20%"></col>
+						      </colgroup>
+						      <thead>
+						        <tr>
+						          <th style="font-size:14pt; color:#454545; font-weight:bold;">번호</th>
+						          <th style="font-size:14pt; color:#454545; font-weight:bold;">예약일</th>
+						          <th style="font-size:14pt; color:#454545; font-weight:bold;">생년월일</th>
+						          <th style="font-size:14pt; color:#454545; font-weight:bold;">이메일</th>
+						          <th style="font-size:14pt; color:#454545; font-weight:bold;">키/체중</th>
+						          <th style="font-size:14pt; color:#454545; font-weight:bold;">증상</th>
+						        </tr>
+						      </thead>
+						      <tbody id="replyBody" class="table-border-bottom-0">
+						        
+						      </tbody>
+						    </table>
+						</div>
+				        <div id="pagination">
+				        
+				        </div>
+				 	
+			</div>
+               
             
             </div>
             <!-- / Content -->
@@ -515,28 +536,28 @@
       <div class="layout-overlay layout-menu-toggle"></div>
     </div>
     <!-- / Layout wrapper -->
-	
+   
     <!-- Core JS -->
-	  <!-- build:js assets/vendor/js/core.js -->
-	  <script src="../assets/vendor/libs/popper/popper.js"></script>
-	  <script src="../assets/vendor/js/bootstrap.js"></script>
-	  <script src="../assets/vendor/libs/perfect-scrollbar/perfect-scrollbar.js"></script>
-	  
-	  <script src="../assets/vendor/js/menu.js"></script>
-	  <!-- endbuild -->
-	
-	  <!-- Vendors JS -->
-	  <script src="../assets/vendor/libs/masonry/masonry.js"></script>
-	
-	  <!-- Main JS -->
-	  <script src="../assets/js/main.js"></script>
-	
-	  <!-- Page JS -->
-	  
-	  
-	  
-	  <!-- Place this tag in your head or just before your close body tag. -->
-	  <script async="" defer="" src="https://buttons.github.io/buttons.js"></script>
+     <!-- build:js assets/vendor/js/core.js -->
+     <script src="../assets/vendor/libs/popper/popper.js"></script>
+     <script src="../assets/vendor/js/bootstrap.js"></script>
+     <script src="../assets/vendor/libs/perfect-scrollbar/perfect-scrollbar.js"></script>
+     
+     <script src="../assets/vendor/js/menu.js"></script>
+     <!-- endbuild -->
+   
+     <!-- Vendors JS -->
+     <script src="../assets/vendor/libs/masonry/masonry.js"></script>
+   
+     <!-- Main JS -->
+     <script src="../assets/js/main.js"></script>
+   
+     <!-- Page JS -->
+     
+     
+     
+     <!-- Place this tag in your head or just before your close body tag. -->
+     <script async="" defer="" src="https://buttons.github.io/buttons.js"></script>
     
   </body>
 </html>

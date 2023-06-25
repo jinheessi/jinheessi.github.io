@@ -19,7 +19,7 @@ public class MemberEntity {
 	@Column(name="email",length=50,nullable=false)
 	private String email;
 	
-	@Column(name="username",length=50,nullable=false)
+	@Column(name="username",length=50,nullable=true)
 	private String username;
 	
 	@Column(name="zipcode",length=20,nullable=true)
@@ -33,6 +33,15 @@ public class MemberEntity {
 	
 	@Column(name="nickname",length=20,nullable=true)
 	private String nickname;
+	
+	@Column(name="org_filename",length=200,nullable=true)
+	private String org_filename;
+	
+	@Column(name="stored_filename",length=200,nullable=true)
+	private String stored_filename;
+	
+	@Column(name="filesize",nullable=true)
+	private Long filesize;
 	
 	@Column(name="role",length=20,nullable=false)
 	private String role;

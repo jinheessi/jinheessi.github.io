@@ -1,46 +1,82 @@
 package com.example.wahwah.Hospital.dto;
 
+import java.time.LocalDateTime;
+
+import com.example.wahwah.Hospital.entity.HospitalEntity;
+
+import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
 
-@Data
 @Builder
+@Data
 public class HospitalSummaryDTO {
-    String dutyAddr; // 주소 
-    String dutyDiv; // 병원분류
-    String dutyEmcls; // 응급의료기관코드
-    String dutyEmclsName; // 응급의료기관코드명 
-    String dutyEryn; // 응급실운영여부 
-    String dutyInf; // 기관설명상세 
-    String dutyName; // 기관명
+    
+    private String hpid;
+    private String dutyName;
+    private String dutyAddr;
+    private String dutyTel1;
+    private String createdat;
+    private String dutyDiv;
+    private String dutyInf;
+    private String dutyTel3;
+    private String dutyTime1c;
+    private String dutyTime1s;
+    private String dutyTime2c;
+    private String dutyTime2s;
+    private String dutyTime3c;
+    private String dutyTime3s;
+    private String dutyTime4c;
+    private String dutyTime4s;
+    private String dutyTime5c;
+    private String dutyTime5s;
+    private String dutyTime6c;
+    private String dutyTime6s;
+    private String dutyTime7c;
+    private String dutyTime7s;
+    private String dutyTime8c;
+    private String dutyTime8s;
+    private String postCdn1;
+    private Double wgs84Lon;
+    private Double wgs84Lat;
+    
+    
 
-    String dutyTel1; // 대표전화1
-    String dutyTel3; // 응급실전화 
+    public HospitalEntity dtoToEntity() {
 
-    String dutyTime1c; //월요일 진료시간 
-    String dutyTime1s;
-    String dutyTime2c; //화요일 진료시간
-    String dutyTime2s;
-    String dutyTime3c; //수요일 진료시간
-    String dutyTime3s;
-    String dutyTime4c; //목요일 진료시간
-    String dutyTime4s;
-    String dutyTime5c; //금요일 진료시간
-    String dutyTime5s;
-    String dutyTime6c; //토요일 진료시간
-    String dutyTime6s;
-    String dutyTime7c; //일요일 진료시간
-    String dutyTime7s;
-    String dutyTime8c; //공휴일 진료시간
-    String dutyTime8s; 
+        HospitalEntity hospitalEntity = HospitalEntity.builder()
+                                .hpid(this.getHpid())
+                                .dutyName(this.getDutyName())
+                                .dutyAddr(this.getDutyAddr())
+                                .dutyTel1(this.getDutyTel1())
+                                .createdat(this.getCreatedat())
+                                .dutyDiv(this.getDutyDiv())
+                                .dutyInf(this.getDutyInf())
+                                .dutyTel3(this.getDutyTel3())
+                                .dutyTime1c(this.getDutyTime1c())
+                                .dutyTime1s(this.getDutyTime1s())
+                                .dutyTime2c(this.getDutyTime2c())
+                                .dutyTime2s(this.getDutyTime2s())
+                                .dutyTime3c(this.getDutyTime3c())
+                                .dutyTime3s(this.getDutyTime3s())
+                                .dutyTime4c(this.getDutyTime4c())
+                                .dutyTime4s(this.getDutyTime4s())
+                                .dutyTime5c(this.getDutyTime5c())
+                                .dutyTime5s(this.getDutyTime5s())
+                                .dutyTime6c(this.getDutyTime6c())
+                                .dutyTime6s(this.getDutyTime6s())
+                                .dutyTime7c(this.getDutyTime7c())
+                                .dutyTime7s(this.getDutyTime7s())
+                                .dutyTime8c(this.getDutyTime8c())
+                                .dutyTime8s(this.getDutyTime8s())
+                                .postCdn1(this.getPostCdn1())
+                                .wgs84Lon(this.getWgs84Lon())  
+                                .wgs84Lat(this.getWgs84Lat())  
+                                .build();
 
-    String hpid;
-
-    double distance; //현재 거리와 병원 거리를 계산한 값값
-
-    String postCdn1; // 우편번호1,
-    String postCdn2; // 우편번호2
-
-    double wgs84Lon; //병원경도
-    double wgs84Lat; //병원위도 
+        return hospitalEntity;
+    }
 }

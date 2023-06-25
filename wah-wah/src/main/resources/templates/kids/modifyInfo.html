@@ -10,7 +10,7 @@
     <link rel="canonical" href="https://themeselection.com/products/sneat-bootstrap-html-admin-template/">
     
     <!-- Favicon -->
-    <link rel="icon" type="image/x-icon" href="../assets/img/favicon/favicon.ico">
+    <link rel="icon" type="image/x-icon" href="/assets/img/favicon/favicon.ico">
 
     <!-- Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -18,24 +18,39 @@
     <link href="https://fonts.googleapis.com/css2?family=Public+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500;1,600;1,700&amp;display=swap" rel="stylesheet">
 
     <!-- Icons. Uncomment required icon fonts -->
-    <link rel="stylesheet" href="../assets/vendor/fonts/boxicons.css">
+    <link rel="stylesheet" href="/assets/vendor/fonts/boxicons.css">
     
     
 
     <!-- Core CSS -->
-    <link rel="stylesheet" href="../assets/vendor/css/core.css" class="template-customizer-core-css">
-    <link rel="stylesheet" href="../assets/vendor/css/theme-default.css" class="template-customizer-theme-css">
-    <link rel="stylesheet" href="../assets/css/demo.css">
+    <link rel="stylesheet" href="/assets/vendor/css/core.css" class="template-customizer-core-css">
+    <link rel="stylesheet" href="/assets/vendor/css/theme-default.css" class="template-customizer-theme-css">
+    <link rel="stylesheet" href="/assets/css/demo.css">
 
     <!-- Vendors CSS -->
-    <link rel="stylesheet" href="../assets/vendor/libs/perfect-scrollbar/perfect-scrollbar.css">
-    
+    <link rel="stylesheet" href="/assets/vendor/libs/perfect-scrollbar/perfect-scrollbar.css">
+     <!-- Vendors CSS -->
+    <link rel="stylesheet" href="/assets/vendor/libs/perfect-scrollbar/perfect-scrollbar.css">
+      <!-- Vendor CSS Files -->
+	  <link href="/vendor/fontawesome-free/css/all.min.css" rel="stylesheet">
+	  <link href="/vendor/animate.css/animate.min.css" rel="stylesheet">
+	  <link href="/vendor/bootstrap-icons/bootstrap-icons.css" rel="stylesheet">
+	  <link href="/vendor/boxicons/css/boxicons.min.css" rel="stylesheet">
+	  <link href="/vendor/glightbox/css/glightbox.min.css" rel="stylesheet">
+	  <link href="/vendor/remixicon/remixicon.css" rel="stylesheet">
+	  <link href="/vendor/swiper/swiper-bundle.min.css" rel="stylesheet">
+	
+	  <!-- Template Main CSS File -->
+	  <script src="/js/main.js"></script>
+	  <link href="/css/style.css" rel="stylesheet">
+	  <link href="/css/fonts.css" rel="stylesheet" type="text/css">
+	  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/js/bootstrap.bundle.min.js"></script>
     
 
     <!-- Page CSS -->
     
     <!-- Helpers -->
-    <script src="../assets/vendor/js/helpers.js"></script>
+    <script src="/assets/vendor/js/helpers.js"></script>
 	    <style type="text/css">
 		.layout-menu-fixed .layout-navbar-full .layout-menu,
 		.layout-page {
@@ -46,7 +61,7 @@
 		}
 		@font-face {
 		    	font-family: 'GODOM';
-		    	src: url('/vendor/bootstrap-icons/fonts/GODOM.ttf') format('truetype');
+		    	src: url('/fonts/GODOM.TTF') format('truetype');
 		}
 	
 		body,h1,h2,h3,h4,h5,h6,p,div p,a,div,span,small{
@@ -80,6 +95,7 @@
     
     <!-- Global site tag (gtag.js) - Google Analytics -->
     <script async="async" src="https://www.googletagmanager.com/gtag/js?id=GA_MEASUREMENT_ID"></script>
+	<script src="//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
     <script>
 	    window.dataLayer = window.dataLayer || [];
 	
@@ -88,6 +104,43 @@
 	    }
 	    gtag('js', new Date());
 	    gtag('config', 'GA_MEASUREMENT_ID');
+
+		const kakaoAddressAPI = () => {
+				new daum.Postcode({
+					oncomplete: function(data) {
+						// 팝업에서 검색결과 항목을 클릭했을때 실행할 코드를 작성하는 부분.
+
+						// 도로명 주소의 노출 규칙에 따라 주소를 표시한다.
+						// 내려오는 변수가 값이 없는 경우엔 공백('')값을 가지므로, 이를 참고하여 분기 한다.
+						var roadAddr = data.roadAddress; // 도로명 주소 변수
+						var extraRoadAddr = ''; // 참고 항목 변수
+
+						// 법정동명이 있을 경우 추가한다. (법정리는 제외)
+						// 법정동의 경우 마지막 문자가 "동/로/가"로 끝난다.
+						if(data.bname !== '' && /[동|로|가]$/g.test(data.bname)){
+							extraRoadAddr += data.bname;
+						}
+						// 건물명이 있고, 공동주택일 경우 추가한다.
+						if(data.buildingName !== '' && data.apartment === 'Y'){
+						   extraRoadAddr += (extraRoadAddr !== '' ? ', ' + data.buildingName : data.buildingName);
+						}
+						// 표시할 참고항목이 있을 경우, 괄호까지 추가한 최종 문자열을 만든다.
+						if(extraRoadAddr !== ''){
+							extraRoadAddr = ' (' + extraRoadAddr + ')';
+						}
+
+						// 우편번호와 주소 정보를 해당 필드에 넣는다.
+						document.getElementById('zipcode').value = data.zonecode;
+
+						// 참고항목 문자열이 있을 경우 해당 필드에 넣는다.
+						if(roadAddr !== ''){
+							document.getElementById("address").value = roadAddr + extraRoadAddr;
+						} else {
+							document.getElementById("address").value = roadAddr;
+						}
+					}
+				}).open();
+			}
     </script>
     <!-- Custom notification for demo -->
     <!-- beautify ignore:end -->
@@ -95,15 +148,21 @@
 	</head>
 
 	<body>
-	
-	  <!-- Layout wrapper -->
+	<th:block th:if="${session.email == null}">
+		<script>
+			alert("로그인이 필요합니다");
+			location.href="/kids/login";
+		</script>
+	</th:block>
+	<th:block th:unless ="${session.email == null}">
+		<!-- Layout wrapper -->
 	<div class="layout-wrapper layout-content-navbar  ">
 	  <div class="layout-container">
 		  <!-- Menu -->
 
         <aside id="layout-menu" class="layout-menu menu-vertical menu bg-menu-theme">
           <div class="app-brand demo">
-          	<br><a href="" style="font-weight:bold; font-size:30pt; color:black; margin-top:20%; margin-bottom:10%;">응애응애</a>
+          	<br><a th:href="@{/}" style="font-weight:bold; font-size:30pt; color:black; margin-top:20%; margin-bottom:10%;">응애응애</a>
           	
 
             <a href="javascript:void(0);" class="layout-menu-toggle menu-link text-large ms-auto d-block d-xl-none">
@@ -163,31 +222,8 @@
                   </a>
                 </li>
                 <li class="menu-item">
-                  <a href="pages-account-settings-connections.html" class="menu-link">
-                    <div data-i18n="Connections" style="color:black;">아기 수첩</div>
-                  </a>
-                </li>
-              </ul>
-            </li>
-            <li class="menu-item">
-              <a href="javascript:void(0);" class="menu-link menu-toggle">
-                <i class="menu-icon tf-icons bx bx-lock-open-alt"></i>
-                <div data-i18n="Authentications" style="color:black;">인증</div>
-              </a>
-              <ul class="menu-sub">
-                <li class="menu-item">
-                  <a th:href="@{/master/login}" class="menu-link">
-                    <div data-i18n="Basic" style="color:black;">로그인</div>
-                  </a>
-                </li>
-                <li class="menu-item">
-                  <a th:href="@{/master/signup}" class="menu-link">
-                    <div data-i18n="Basic" style="color:black;">회원 가입</div>
-                  </a>
-                </li>
-                <li class="menu-item">
-                  <a href="@{/master/searchIDPW}" class="menu-link">
-                    <div data-i18n="Basic" style="color:black;">ID / PW 찾기</div>
+                  <a th:href="@{/kids/myreceipt}" class="menu-link">
+                    <div data-i18n="Connections" style="color:black;">내 접수 관리/수정</div>
                   </a>
                 </li>
               </ul>
@@ -204,7 +240,7 @@
             </li>
 
             <li class="menu-item">
-              <a href="icons-boxicons.html" class="menu-link">
+              <a th:href="@{/kids/publicHealth}" class="menu-link">
                 <i class="menu-icon tf-icons bx bx-home-heart"></i>
                 <div data-i18n="Boxicons" style="color:black;">전국 보건소 찾기</div>
               </a>
@@ -243,75 +279,63 @@
         <!-- / Menu -->
 	    <!-- Layout container -->
 	    <div class="layout-page">
-	<!-- Navbar -->
-	<nav class="layout-navbar container-xxl navbar navbar-expand-xl navbar-detached align-items-center bg-navbar-theme" id="layout-navbar">
-	      
-	      <div class="layout-menu-toggle navbar-nav align-items-xl-center me-3 me-xl-0   d-xl-none ">
-	        <a class="nav-item nav-link px-0 me-xl-4" href="javascript:void(0)">
-	          <i class="bx bx-menu bx-sm"></i>
-	        </a>
-	      </div>
-	      
-	
-	      <div class="navbar-nav-right d-flex align-items-center" id="navbar-collapse">
-	        
-	        <!-- Search -->
-	        <div class="navbar-nav align-items-center">
-	          <div class="nav-item d-flex align-items-center">
-	            <i class="bx bx-search fs-4 lh-0"></i>
-	            <input type="text" class="form-control border-0 shadow-none" placeholder="Search..." aria-label="Search...">
-	          </div>
-	        </div>
-	        <!-- /Search -->
-	        
-	
-	        <ul class="navbar-nav flex-row align-items-center ms-auto">
-	          
-	
-	          
-	          <!-- Place this tag where you want the button to render. -->
-	          <li class="nav-item lh-1 me-3">
-	            <span></span>
-	          </li>
-	          
-	
-	
-	          <!-- User -->
+		<!-- Navbar -->
+		<nav class="layout-navbar container-xxl navbar navbar-expand-xl navbar-detached align-items-center bg-navbar-theme" id="layout-navbar">
+          	<div class="layout-menu-toggle navbar-nav align-items-xl-center me-3 me-xl-0  d-xl-none ">
+		        <a class="nav-item nav-link px-0 me-xl-4" href="javascript:void(0)">
+		          <i class="bx bx-menu bx-sm"></i>
+		        </a>
+		    </div>
+		    
+            <div class="navbar-nav-right d-flex align-items-center" id="navbar-collapse">
+		         <div class="navbar-nav align-items-center">
+		          <div class="nav-item d-flex align-items-center">
+		            <a href="javascript:searchPlaces()"><i class="bx bx-search fs-4 lh-0"></i></a>
+		            <input type="text" class="form-control w-100 border-0 shadow-0" placeholder="병원을 검색하세요" aria-label="Recipient's username" aria-describedby="button-addon2" value="" id="keyword">
+		          </div>
+		        </div>
+              <!-- Search -->
+              
+              <!-- /Search -->
+
+              <ul class="navbar-nav d-flex justify-content-start align-items-start ms-auto">
+
+                <!-- User -->
 	          <li class="nav-item navbar-dropdown dropdown-user dropdown">
 	            <a class="nav-link dropdown-toggle hide-arrow" href="javascript:void(0);" data-bs-toggle="dropdown">
-	              <div class="avatar avatar-online">
-	                
+	              <div class="avatar avatar-online  d-flex justify-content-center align-items-center">
+	                <th:block th:if="${session.role == 'USER'}">
+	                	<img th:src="|/profile/${member.stored_filename}|" style="width:100%;height:100%">
+	                </th:block>
 	              </div>
 	            </a>
-	            <ul class="dropdown-menu dropdown-menu-end">
+	            <ul class="dropdown-menu pt-0 pb-1 ps-1 pe-1">
 	              <li>
 	                <a class="dropdown-item" href="#">
-	                  <div class="d-flex">
-	                    <div class="flex-shrink-0 me-3">
-	                      <div class="avatar avatar-online">
+	                   <div class="d-flex">
+	                    <div class="flex-shrink-0 mt-0 me-3">
+	                      <div class="avatar avatar-online d-flex justify-content-center align-items-center">
+	                      	<img th:src="|/profile/${member.stored_filename}|" style="width:100%;height:100%">
 	                      </div>
 	                    </div>
-	                    <div class="flex-grow-1">
-	                      <span th:text="${email}" class="fw-semibold d-block"></span>
-	                      <small th:text= "${username}" class="text-muted"></small>
 	                    </div>
-	                  </div>
+	                    <div class="flex-grow-1">
+	                      <span th:text= "${session.username}" style="font-size:12pt; font-weight:bold; color:black;"></span>
+	                      <th:block th:if="${session.role == 'USER'}">
+	                      	<span style="font-size:10pt; font-weight:bold; color:#1977CC; text-align:end;">(사용자)</span>
+	                      </th:block>
+	                      <span th:text="${session.email}" class="fw-semibold d-block" style="font-size:11pt; font-weight:bold; color:#454545;"></span>
+	                    </div>
 	                </a>
 	              </li>
 	              <li>
-	                <div class="dropdown-divider"></div>
-	              </li>
-	              <li>
-	                <a class="dropdown-item" href="#">
+	                <a th:href="@{/kids/modifyInfo}" class="dropdown-item d-flex justify-content-start" href="#">
 	                  <i class="bx bx-user me-2"></i>
-	                  <span th:href="@{/kids/modifyInfo}" class="align-middle" style="color:#454545; font-size:10pt;"><b>내 정보 수정</b></span>
+	                  <span  class="align-middle" style="color:#454545; font-size:10pt;"><b>내 정보 수정</b></span>
 	                </a>
 	              </li>
 	              <li>
-	                <div class="dropdown-divider"></div>
-	              </li>
-	              <li>
-	                <a class="dropdown-item" th:href="@{/kids/logout}">
+	                <a class="dropdown-item d-flex justify-content-start" th:href="@{/kids/logout}">
 	                  <i class="bx bx-power-off me-2"></i>
 	                  <span class="align-middle" style="color:#454545; font-size:10pt;"><b>로그아웃</b></span>
 	                </a>
@@ -319,14 +343,9 @@
 	            </ul>
 	          </li>
 	          <!--/ User -->
-	          
-	
-	        </ul>
-	      </div>
-	
-	      
-	      
-	  </nav>
+              </ul>
+            </div>
+          </nav>
 	  
 	
 	  
@@ -350,68 +369,94 @@
 	  <div class="col-md-12">
 	    <ul class="nav nav-pills flex-column flex-md-row mb-3">
 	      <li class="nav-item"><a class="nav-link active" href="javascript:void(0);" style="font-weight:bold;"><i class="bx bx-user-circle me-1"></i>계정</a></li>
+	      <li class="nav-item"><a class="nav-link" href="pages-account-settings-notifications.html" style="font-weight:bold;"><i class="bx bx-bell me-1"></i> 공지사항</a></li>
+	    </ul>
+	    <form action="/kids/modifyInfo" method="POST" enctype="multipart/form-data">
 	    <div class="card mb-4">
 	      <h5 class="card-header" style="color:#454545;"><b>프로필</b></h5>
 	      <!-- Account -->
-	      <div class="card-body">
+	      
+	    	<div class="card-body">
 	        <div class="d-flex align-items-start align-items-sm-center gap-4">
-	          <img src="../assets/img/avatars/1.png" alt="user-avatar" class="d-block rounded" height="100" width="100" id="uploadedAvatar">
+	        
+	          <img th:src="|/profile/${member.stored_filename}|" alt="user-avatar" class="d-block rounded" height="100" width="100" id="uploadedAvatar">
 	          <div class="button-wrapper">
-	            <label for="upload" class="btn btn-primary me-2 mb-4" tabindex="0">
+	          
+	            <label for="fileUpload" class="btn btn-primary me-2 mb-4" tabindex="0">
 	              <span class="d-none d-sm-block">프로필 사진 업로드</span>
 	              <i class="bx bx-upload d-block d-sm-none"></i>
-	              <input type="file" id="upload" class="account-file-input" hidden="" accept="image/png, image/jpeg">
+	              <input type="file" id="fileUpload" name="fileUpload" class="account-file-input" hidden="" accept="image/png, image/jpeg">
 	            </label>
 	            <button type="button" class="btn btn-outline-secondary account-image-reset mb-4">
 	              <i class="bx bx-reset d-block d-sm-none"></i>
 	              <span class="d-none d-sm-block">취소</span>
 	            </button>
-	
 	            <p class="text-muted mb-0" style="color:black;">이미지 파일 800K 이하 JPG, GIF, PNG</p>
 	          </div>
 	        </div>
 	      </div>
+	    
+	    </div>
+	      
 	      <hr class="my-0">
 	      <div class="card-body">
-	        <form id="formAccountSettings" action="/kids/modifyInfo" method="POST">
-	          <div class="row">
-	            <div class="mb-3 col-md-6">
+	      	<div class="row">
+	      		<div class="mb-3 col-md-4">
 	              <label for="email" class="form-label" style="font-size:12pt;color:#454545;"><b>아이디</b></label>
-	              <input class="form-control" type="text" id="email" name="email" th:text="${userid}" readonly>
+	              <input class="form-control" type="text" th:value="${session.email}" readonly style="color:gray; font-weight:bold;">
 	            </div>
-	            <div class="mb-3 col-md-6">
+	            <div class="mb-3 col-md-4">
 	              <label for="username" class="form-label" style="font-size:12pt;color:#454545;"><b>이름</b></label>
-	              <input class="form-control" type="text" name="username" id="username" value="" th:text="${username}" readonly>
+	              <input class="form-control" type="text" name="username" id="username" th:value="${session.username}" readonly style="color:gray; font-weight:bold;">
 	            </div>
-	            <div class="mb-3 col-md-6">
+	            <div class="mb-3 col-md-4">
 	              <label for="email" class="form-label" style="font-size:12pt;color:#454545;"><b>이메일</b></label>
-	              <input class="form-control" type="text" id="email" name="email" value="" placeholder="" th:text="${email}">
+	              <input class="form-control" type="text" id="email" name="email" th:value="${session.email}" placeholder="" style="color:#454545; font-weight:bold;">
 	            </div>
-	            <div class="mb-3 col-md-6">
+	      	</div>
+	      	
+	      	<div class="row"> 
+	            <div class="mb-3 col-md-4">
 	              <label for="nickname" class="form-label" style="font-size:12pt;color:#454545;"><b>별명</b></label>
-	              <input type="text" class="form-control" id="nickname" name="nickname" value="" th:text="${nickname}">
+	              <input type="text" class="form-control" id="nickname" name="nickname" th:value="${member.nickname}">
 	            </div>
-	            <div class="mb-3 col-md-6">
+	            <div class="mb-3 col-md-4">
 	              <label class="form-label" for="telno" style="font-size:12pt;color:#454545;"><b>전화번호</b></label>
 	              <div class="input-group input-group-merge">
 	                <span class="input-group-text"></span>
-	                <input type="text" id="telno" name="telno" class="form-control" placeholder="" th:text="${telno}">
+	                <input type="text" id="telno" name="telno" class="form-control" th:value="${member.telno}">
 	              </div>
 	            </div>
-	            <div class="mb-3 col-md-6">
+	            <div class="mb-3 col-md-4">
+					<label for="addrSearch" class="form-label" style="color:black; font-size: 10pt;">주소 검색</label>
+					<div class="input-group mb-3">
+					  <input type="text" id="addrSearch" class="form-control"> 
+					   <button class="btn btn-primary d-grid" type="button" onclick="kakaoAddressAPI()" style="text-align:center; font-size:10pt;">검색</button>
+					</div>
+				</div>
+	      	</div>
+	       	<div class="row">
+	       		<div class="mb-3 col-md-4">
 	              <label for="zipcode" class="form-label" style="font-size:12pt;color:#454545;"><b>우편번호</b></label>
-	              <input type="text" class="form-control" id="zipcode" name="zipcode" placeholder="">
+	              <input type="text" class="form-control" id="zipcode" name="zipcode" placeholder="" th:value="${member.zipcode}">
 	            </div>
-	            <div class="mb-3 col-md-12">
+	            <div class="mb-3 col-md-4">
 	              <label for="address" class="form-label" style="font-size:12pt;color:#454545;"><b>주소</b></label>
-	              <input type="text" class="form-control" id="address" name="address" placeholder="" th:text="${address}">
+	              <input type="text" class="form-control" id="address" name="address" placeholder="" th:value="${member.address}">
 	            </div>
-	          <div class="mt-2">
-	            <button type="submit" class="btn btn-primary me-2" style="font-size:12pt;">저장</button>
-	            <button type="reset" class="btn btn-outline-secondary" style="font-size:12pt;">취소</button>
-	          </div>
+	            <div class="mt-3 col-md-4 d-flex justify-content-center align-items-center">
+	              <button type="submit" class="btn btn-primary me-2" style="font-size:12pt;">저장</button>
+	            	<a th:href="@{/kids/pediatric}" class="btn btn-outline-secondary" style="font-size:12pt;">취소</a>
+	            </div>
+	       	</div>
+	       	<div class="row ">
+	            <div class="col-md-12 mt-2 ">
+	            	
+	          	</div>
+	       	</div>
+	      </div> 
+	      </form>
 	         </div>
-	        </form>
 	      </div>
 	      <!-- /Account -->
 	    </div>
@@ -462,6 +507,12 @@
 	  
 	  <!-- Place this tag in your head or just before your close body tag. -->
 	  <script async="" defer="" src="https://buttons.github.io/buttons.js"></script>
+	  
+	
+	</th:block>
+	
+	
+	
 	  
 	
 	

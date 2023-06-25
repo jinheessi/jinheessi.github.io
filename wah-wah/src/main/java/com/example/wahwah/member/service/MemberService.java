@@ -10,6 +10,7 @@ import com.example.wahwah.member.dto.ArticleAndFile;
 import com.example.wahwah.member.dto.ArticleDTO;
 import com.example.wahwah.member.dto.FileDTO;
 import com.example.wahwah.member.dto.MemberDTO;
+import com.example.wahwah.member.dto.MemberInterface;
 import com.example.wahwah.member.entity.AddressEntity;
 import com.example.wahwah.member.entity.ArticleEntity;
 
@@ -25,7 +26,7 @@ public interface MemberService {
 	public void memberInfoUpdate(MemberDTO member);
 	
 	//사용자 정보 보기
-	public MemberDTO memberInfoView(String userid);
+	public MemberInterface memberInfoView(String userid);
 	
 	//주소 검색
 	public Page<AddressEntity> addrSearch(int pageNum, int postNum, String addrSearch);

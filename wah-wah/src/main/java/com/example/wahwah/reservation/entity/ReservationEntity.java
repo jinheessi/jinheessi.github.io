@@ -40,8 +40,8 @@ import lombok.Setter;
     @Column(name="hpid")
     String hpid;
 
-    @Column(name="reserve_start")
-    String reserve_start;
+    @Column(name="reservestart")
+    String reservestart;
 
     @Column(name="birth")
     String birth;
@@ -55,15 +55,18 @@ import lombok.Setter;
     @Column(name="height")
     String height;
 
-    @Column(name="user_info")
-    String user_info;
+    @Column(name="userinfo")
+    String userinfo;
 
     @Column(name="regdate")
     String regdate;
 
-    @Column(name="month")
-    String month;
+    // @Column(name="month")
+    // String month;
 
-    @Column(name="day")
-    String day;
+    // @Column(name="day")
+    // String day;
+    
+    @Column(name="dutyname")
+    String dutyName;
 }

@@ -13,6 +13,7 @@ import com.example.wahwah.member.dto.ArticleAndFile;
 import com.example.wahwah.member.dto.ArticleDTO;
 import com.example.wahwah.member.dto.FileDTO;
 import com.example.wahwah.member.dto.MemberDTO;
+import com.example.wahwah.member.dto.MemberInterface;
 import com.example.wahwah.member.entity.AddressEntity;
 import com.example.wahwah.member.entity.ArticleEntity;
 import com.example.wahwah.member.entity.FileEntity;
@@ -60,8 +61,8 @@ public class MemberServiceImpl implements MemberService {
 
 	@Override
 	// 사용자 정보 보기
-	public MemberDTO memberInfoView(String email) {
-		return memberRepository.findById(email).map(member -> new MemberDTO(member)).get();
+	public MemberInterface memberInfoView(String email) {
+		return memberRepository.memberView(email);
 	}
 
 	@Override

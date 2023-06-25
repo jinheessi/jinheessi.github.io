@@ -9,7 +9,7 @@ import com.example.wahwah.Review.entity.ReviewEntity;
 public interface ReviewService {
      
     // 댓글 달기
-    public void write(ReviewInterface reviewInterface);
+    public void write(ReviewDTO reviewDTO);
 
     // 댓글 수정
     public void modify(ReviewInterface reviewInterface);
@@ -18,7 +18,7 @@ public interface ReviewService {
     public void delete(ReviewInterface reviewInterface);
     
     // 댓글 목록
-    public List<ReviewInterface> list(ReviewInterface reviewInterface);
+    public List<ReviewInterface> list(String hospitalid);
 
     // 별점 다 가져오기
     public List<ReviewEntity> allCountReview(String hospitalid);

@@ -37,6 +37,7 @@ public class MemberOAuth2UserDetailsService extends DefaultOAuth2UserService{
 		String provider = userRequest.getClientRegistration().getRegistrationId();
 		String providerId = oAuth2User.getAttribute("sub");
 		String email = oAuth2User.getAttribute("email");
+		String username = oAuth2User.getAttribute("name");
 		
 		System.out.println("***************** provider =" + provider);
 		System.out.println("***************** providerId =" + providerId);
@@ -47,15 +48,19 @@ public class MemberOAuth2UserDetailsService extends DefaultOAuth2UserService{
 		
 		if("naver".equals(provider)) { //네이버 로그인
 			email = attributesResponse.get("email").toString();
+			username = attributesResponse.get("name").toString();
         }
         else if("kakao".equals(provider)){ //카카오 로그인
 			String e = (String) ((Map) attributes.get("kakao_account")).get("email");
 			email = e.toString();
+			username = e.toString();
+
         }else{ // 구글 로그인
 			email = oAuth2User.getAttribute("email");
+			username = oAuth2User.getAttribute("name");
 		}
 
-		MemberEntity memberEntity = saveSocialMember(email);
+		MemberEntity memberEntity = saveSocialMember(email, username);
 		
 		//회원 role 값을 가져와서 유저 객체에 저장
 		List<SimpleGrantedAuthority> grantedAuthorities = new ArrayList<>(); 
@@ -79,7 +84,7 @@ public class MemberOAuth2UserDetailsService extends DefaultOAuth2UserService{
 	//인증 통과 후에 tbl_member에 존재하는 회원이면 
 	//tbl_member에서 회원정보를 읽어서 리턴하고 
 	//존재하지 않는 구글 회원이면 임시회원 등록
-	private MemberEntity saveSocialMember(String email) {
+	private MemberEntity saveSocialMember(String email, String username) {
 		
 		Optional<MemberEntity> result = memberRepository.findById(email);
 		if(result.isPresent()) { //아이디가 email인 회원이 존재하면..
@@ -89,7 +94,7 @@ public class MemberOAuth2UserDetailsService extends DefaultOAuth2UserService{
 		//아이디가 email인 회원이 존재하지않으면..
 		MemberEntity memberEntity = MemberEntity.builder()
 									.email(email)
-									.username(email)
+									.username(username)
 									.role("USER")
 									.build();
 		
@@ -99,7 +104,6 @@ public class MemberOAuth2UserDetailsService extends DefaultOAuth2UserService{
 	}
 
 }
-
 
 
 

@@ -7,30 +7,35 @@ import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
+import lombok.ToString;
 
 @Setter
 @Getter
 @Builder
 @AllArgsConstructor
 @NoArgsConstructor
+@ToString
 public class ReservationDTO {
 
     private int seqno;
     private String allow;
     private String email;
     private String hpid;
-    private String reserve_start;
+    private String reservestart;
     private String birth;
     private String gender;
     private String weight;
     private String height;
-    private String user_info;
+    private String userinfo;
     private String regdate;
-    private String month;
-    private String day;
+    // private String month;
+    // private String day;
     private String rdate;
     private String rtime;
-    private String year;
+    
+    // private String dutyName;
+    private String dutyname;
+    // private String year;
 
 
 
@@ -39,14 +44,15 @@ public class ReservationDTO {
         this.allow = entity.getAllow();
         this.email = entity.getEmail();
         this.hpid = entity.getHpid();
-        this.reserve_start = entity.getReserve_start();
+        this.reservestart = entity.getReservestart();
         this.birth = entity.getBirth();
         this.gender = entity.getGender();
         this.weight = entity.getWeight();
         this.height = entity.getHeight();
-        this.user_info = entity.getUser_info();
+        this.userinfo = entity.getUserinfo();
         this.regdate = entity.getRegdate();
-        this.day = entity.getDay();
+        this.dutyname = entity.getDutyName();
+        // this.day = entity.getDay();
 	}
 	
 	public ReservationEntity dtoToEntity(ReservationDTO dto) {
@@ -56,14 +62,15 @@ public class ReservationDTO {
                                             .allow(dto.getAllow())
 											.email(dto.getEmail())
 											.hpid(dto.getHpid())
-											.reserve_start(dto.getReserve_start())
+											.reservestart(dto.getReservestart())
                                             .birth(dto.getBirth())
                                             .gender(dto.getGender())
                                             .weight(dto.getWeight())
                                             .height(dto.getHeight())
-                                            .user_info(dto.getUser_info())
+                                            .userinfo(dto.getUserinfo())
                                             .regdate(dto.getRegdate())
-                                            .day(dto.getDay())
+                                            .dutyName(dto.getDutyname())
+                                            // .day(dto.getDay())
                                             .build();
 		return entity;
 	}

@@ -19,15 +19,16 @@ public class ReviewServiceImpl implements ReviewService {
     
     // 댓글등록
     @Override
-    public void write(ReviewInterface review) {
+    public void write(ReviewDTO review) {
 
         ReviewEntity reviewEntity = new ReviewEntity().builder()
-        .seqno(review.getSeqno())
-        .content(review.getContent())
-        .email(review.getEmail())
-        .hospitalid(review.getHospitalid())
-        .ranking(review.getRanking())                                    
-        .build();
+								        .seqno(review.getSeqno())
+								        .content(review.getContent())
+								        .email(review.getEmail())
+								        .hospitalid(review.getHospitalid())
+								        .ranking(review.getRanking())
+								        .build();
+        
         repository.save(reviewEntity);
     }
 
@@ -48,9 +49,7 @@ public class ReviewServiceImpl implements ReviewService {
     }
 
     @Override
-    public List<ReviewInterface> list(ReviewInterface reviewInterface) {
-        String hospitalid;
-        hospitalid = reviewInterface.getHospitalid();
+    public List<ReviewInterface> list(String hospitalid) {
         return repository.reviewAll(hospitalid);
     }
 

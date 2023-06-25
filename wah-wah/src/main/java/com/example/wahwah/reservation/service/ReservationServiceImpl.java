@@ -21,8 +21,8 @@ public class ReservationServiceImpl implements ReservationService {
 
     // 월+일 예약 조회하기
     @Override
-    public List<ReservationInterface> resList(String year, String day, String month) {
-        return repository.resList(year, day, month);        
+    public List<ReservationInterface> resList(String rdate) {
+        return repository.resList(rdate);        
     }
 
     // 월+일 예약 조회하기
@@ -47,17 +47,31 @@ public class ReservationServiceImpl implements ReservationService {
 
     // 예약 정보 수정
     @Override
-    public void reviceReservInfo(ReservationDTO dto) {
-        repository.reviceReservInfo(dto.getUser_info(), dto.getWeight(), dto.getHeight(), dto.getReserve_start(), dto.getBirth(), dto.getSeqno());
+    public void reviceReservInfo(String reservestart, int seqno) {
+        System.out.println("seqno = " + seqno);
+        System.out.println("reservestart = " + reservestart);
+        repository.reviceReservInfo(reservestart, seqno);
+    }
+
+    // 나의 예약 정보들 가져오기
+    @Override
+    public List<ReservationEntity> getMyrservationList(String email) {
+        return repository.getMyrservationList(email);
     }
 
     // 나의 예약 정보 가져오기
     @Override
-    public List<ReservationInterface> getMyrservationList(String email) {
-        return repository.getMyrservationList(email);
+    public ReservationDTO findBySeqno(int seqno) {
+        return repository.findBySeqno(seqno);
     }
 
 
 
     
 }
+
+
+
+
+
+

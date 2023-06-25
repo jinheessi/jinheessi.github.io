@@ -32,7 +32,6 @@ public class HospitalUserEntity {
     private String hpid;
 
     @Column(name = "hospitalPassword")
-
     private String password;
 
     @Column(name = "hospitalUserTelno")

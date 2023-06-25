@@ -47,7 +47,7 @@
 		}
 	    @font-face {
 	    	font-family: 'GODOM';
-	    	src: url('/vendor/bootstrap-icons/fonts/GODOM.ttf') format('truetype');
+	    	src: url('/fonts/GODOM.TTF') format('truetype');
 		}
 		
 		body,h1,h2,h3,h4,h5,h6,p,div p,a,div,span,small{
@@ -236,36 +236,13 @@
                   </a>
                 </li>
                 <li class="menu-item">
-                  <a href="pages-account-settings-connections.html" class="menu-link">
-                    <div data-i18n="Connections" style="color:black;">아기 수첩</div>
+                  <a th:href="@{/kids/myreceipt}" class="menu-link">
+                    <div data-i18n="Connections" style="color:black;">내 접수 관리/수정</div>
                   </a>
                 </li>
               </ul>
             </li>
-            <li class="menu-item">
-              <a href="javascript:void(0);" class="menu-link menu-toggle">
-                <i class="menu-icon tf-icons bx bx-lock-open-alt"></i>
-                <div data-i18n="Authentications" style="color:black;">인증</div>
-              </a>
-              <ul class="menu-sub">
-                <li class="menu-item">
-                  <a th:href="@{/master/login}" class="menu-link">
-                    <div data-i18n="Basic" style="color:black;">로그인</div>
-                  </a>
-                </li>
-                <li class="menu-item">
-                  <a th:href="@{/master/signup}" class="menu-link">
-                    <div data-i18n="Basic" style="color:black;">회원 가입</div>
-                  </a>
-                </li>
-                <li class="menu-item">
-                  <a href="@{/master/searchIDPW}" class="menu-link">
-                    <div data-i18n="Basic" style="color:black;">ID / PW 찾기</div>
-                  </a>
-                </li>
-              </ul>
-            </li>
-            
+           
             <!-- Components -->
             <li class="menu-header small text-uppercase"><span class="menu-header-text" style="color:black;">유용한 정보</span></li>
             <!-- Cards -->
@@ -338,48 +315,46 @@
 		            <span></span>
 		          </li>
 		          <!-- User -->
-	          <li class="nav-item navbar-dropdown dropdown-user dropdown">
+	         <li class="nav-item navbar-dropdown dropdown-user dropdown">
 	            <a class="nav-link dropdown-toggle hide-arrow" href="javascript:void(0);" data-bs-toggle="dropdown">
-	              <div class="avatar avatar-online">
-	                
+	              <div class="avatar avatar-online  d-flex justify-content-center align-items-center">
+	                <th:block th:if="${session.role == 'USER'}">
+	                	<img th:src="|/profile/${member.stored_filename}|" style="width:100%;height:100%">
+	                </th:block>
 	              </div>
 	            </a>
-	            <ul class="dropdown-menu dropdown-menu-end">
+	            <ul class="dropdown-menu pt-0 pb-1 ps-1 pe-1">
 	              <li>
 	                <a class="dropdown-item" href="#">
-	                  <div class="d-flex">
-	                    <div class="flex-shrink-0 me-3">
-	                      <div class="avatar avatar-online">
+	                   <div class="d-flex">
+	                    <div class="flex-shrink-0 mt-0 me-3">
+	                      <div class="avatar avatar-online d-flex justify-content-center align-items-center">
+	                      	<img th:src="|/profile/${member.stored_filename}|" style="width:100%;height:100%">
 	                      </div>
 	                    </div>
 	                    <div class="flex-grow-1">
-	                      <span th:text="${email}" class="fw-semibold d-block"></span>
-	                      <small th:text= "${username}" class="text-muted"></small>
+	                      <span th:text= "${session.username}" style="font-size:12pt; font-weight:bold; color:black;"></span>
+	                      <th:block th:if="${session.role == 'USER'}">
+	                      	<span style="font-size:10pt; font-weight:bold; color:#1977CC; text-align:end;">(사용자)</span>
+	                      </th:block>
+	                      <span th:text="${session.email}" class="fw-semibold d-block" style="font-size:11pt; font-weight:bold; color:#454545;"></span>
 	                    </div>
-	                  </div>
 	                </a>
 	              </li>
 	              <li>
-	                <div class="dropdown-divider"></div>
-	              </li>
-	              <li>
-	                <a class="dropdown-item" href="#">
+	                <a th:href="@{/kids/modifyInfo}" class="dropdown-item d-flex justify-content-start" href="#">
 	                  <i class="bx bx-user me-2"></i>
-	                  <span th:href="@{/kids/modifyInfo}" class="align-middle" style="color:#454545; font-size:10pt;"><b>내 정보 수정</b></span>
+	                  <span  class="align-middle" style="color:#454545; font-size:10pt;"><b>내 정보 수정</b></span>
 	                </a>
 	              </li>
 	              <li>
-	                <div class="dropdown-divider"></div>
-	              </li>
-	              <li>
-	                <a class="dropdown-item" th:href="@{/kids/logout}">
+	                <a class="dropdown-item d-flex justify-content-start" th:href="@{/kids/logout}">
 	                  <i class="bx bx-power-off me-2"></i>
 	                  <span class="align-middle" style="color:#454545; font-size:10pt;"><b>로그아웃</b></span>
 	                </a>
 	              </li>
 	            </ul>
 	          </li>
-	          <!--/ User -->
 		        </ul>
 		      </div>
 		  </nav>
@@ -392,37 +367,46 @@
 				<hr>
 				<div class="card">
 			  <div class="table-responsive text-nowrap">
+
 			    <table class="table">
-			      <thead>
-			        <tr>
-			          <th style="text-align: center;font-size: 12pt; color:#454545;">번호</th>
-			          <th style="text-align: center;font-size: 12pt; color:#454545;">병원</th>
-			          <th style="text-align: center;font-size: 12pt; color:#454545;">예약일</th>
-			          <th style="text-align: center;font-size: 12pt; color:#454545;">생년월일</th>
-			          <th style="text-align: center;font-size: 12pt; color:#454545;">성별</th>
-			          <th style="text-align: center;font-size: 12pt; color:#454545;">예약 수정 / 취소</th>
-			        </tr>
-			      </thead>
-			      <tbody class="table-border-bottom-0">
-					<th:block th:if="${reservationList == null}">
+					<thead>
 						<tr>
-			          		<td colspan="6"><p style="text-align: center;font-size: 11pt; color:#454545;"><br><b>예약이 존재하지 않습니다.</b></p></td>
-			        	</tr>
+							<th style="text-align: center;font-size: 12pt; color:#454545;">번호</th>
+							<th style="text-align: center;font-size: 12pt; color:#454545;">병원</th>
+							<th style="text-align: center;font-size: 12pt; color:#454545;">예약일</th>
+							<th style="text-align: center;font-size: 12pt; color:#454545;">생년월일</th>
+							<th style="text-align: center;font-size: 12pt; color:#454545;">성별</th>
+							<th style="text-align: center;font-size: 12pt; color:#454545;">예약 수정 / 취소</th>
+						  </tr>
+					</thead>
+
+					<tbody>
+						<tr th:if="${reservationList == NULL}">
+							<td colspan="6">
+								<p style="text-align: center;font-size: 11pt; color:#454545;"><br><b>예약이 존재하지 않습니다.</b></p>
+							</td>
+						</tr>
+
+						<!-- <div th:if="${reservationList.allow == 'Y'}"> -->
+							<tr th:each="list : ${reservationList}">
+								<div th:if="${list.allow == 'Y'}">
+								<td th:text="${list.seqno}"></td>
+								<td th:text="${list.hpid}"></td>
+								<td th:text="${list.reservestart}"></td>
+								<td th:text="${list.birth}"></td>
+								<td th:text="${list.gender}"></td>
+								<td>
+									<a th:href="@{/kids/modifyReservation(seqno=${list.seqno})}" class="btn btn-outline-success">수정</a>
+									<a th:href="@{/kids/deleteReservation(seqno=${list.seqno})}" class="btn btn-outline-danger">삭제</a>
+								</td>
+								</div>
+							</tr>
+						<!-- </div> -->
 						
-					</th:block>
-			        <tr th:each="reservation : ${reservationList}">
-			          <td th:text="${reservation.seqno}"></td>
-			          <td th:text="${reservation.hpid}"></td>
-			          <td th:text="${reservation.reserve_start}"></td>
-			          <td th:text="${reservation.birth}"></td>
-			          <td th:text="${reservation.gender}"></td>
-			          <td>
-						  <a th:href="@{/kids/myreservation}" class="btn btn-outline-success">수정</a>
-						  <a th:href="@{/kids/myreservation}" class="btn btn-outline-danger">삭제</a>
-					  </td>
-			        </tr>
-			      </tbody>
-			    </table>
+
+					</tbody>
+				</table>
+
 			  </div>
 			</div>
 	        <!-- Content wrapper -->

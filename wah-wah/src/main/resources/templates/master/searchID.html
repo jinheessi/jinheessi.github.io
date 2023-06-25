@@ -1,0 +1,232 @@
+<!DOCTYPE html>
+<html xmlns:th="www.thymeleaf.org" lang="en" class="light-style  customizer-hide" dir="ltr" data-theme="theme-default" data-assets-path="../assets/" data-template="vertical-menu-template-free">
+	<head>
+	    <meta charset="utf-8">
+	    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0">
+	
+	    <title>응애응애 - 관리자 아이디 찾기</title>
+	    
+	    <meta name="description" content="Most Powerful &amp; Comprehensive Bootstrap 5 HTML Admin Dashboard Template built for developers!">
+	    <meta name="keywords" content="dashboard, bootstrap 5 dashboard, bootstrap 5 design, bootstrap 5">
+	    <!-- Canonical SEO -->
+	    <link rel="canonical" href="https://themeselection.com/products/sneat-bootstrap-html-admin-template/">
+	    
+	    <!-- Favicon -->
+	    <link rel="icon" type="image/x-icon" href="../assets/img/favicon/favicon.ico">
+	
+	    <!-- Fonts -->
+	    <link rel="preconnect" href="https://fonts.googleapis.com">
+	    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
+	
+	    <!-- Icons. Uncomment required icon fonts -->
+	    <link rel="stylesheet" href="../assets/vendor/fonts/boxicons.css">
+	    
+	    
+	
+	    <!-- Core CSS -->
+	    <link rel="stylesheet" href="../assets/vendor/css/core.css" class="template-customizer-core-css">
+	    <link rel="stylesheet" href="../assets/vendor/css/theme-default.css" class="template-customizer-theme-css">
+	    <link rel="stylesheet" href="../assets/css/demo.css">
+	
+	    <!-- Vendors CSS -->
+	    <link rel="stylesheet" href="../assets/vendor/libs/perfect-scrollbar/perfect-scrollbar.css">
+	    
+	    
+	
+	    <!-- Page CSS -->
+	    <!-- Page -->
+		<link rel="stylesheet" href="../assets/vendor/css/pages/page-auth.css">
+		    <!-- Helpers -->
+		<script src="../assets/vendor/js/helpers.js"></script>
+		<script src="http://code.jquery.com/jquery-1.11.3.js"></script>
+		<script>
+		
+		const IDSearchCheck = async () => {
+		
+			if(document.getElementById("hospitalUserEmail") === "") {
+				alert("이메일을 입력하세요."); 
+				document.getElementById("username").focus();
+				return false; 
+			}
+			if(document.getElementById.value === "") { 
+				alert("전화번호를 입력하세요."); 
+				document.getElementById("hospitalUserTelno").focus(); 
+				return false; 
+			}
+			
+			let payload = new FormData(searchIDForm);
+
+			await fetch("/master/searchID", {
+				method: "post",
+				body: payload
+			  })
+				.then(response => response.json())
+				.then(data => {
+				  if (data.message == "success") {
+						alert("당신의 아이디는 " + data.id + "입니다.");
+				  } else if (data.message == "None") {
+					message.innerHTML= "아이디를 찾을 수 없습니다.";
+				  }
+				})
+				.catch(e => console.log(e));
+		}
+		
+		const press = () => {
+			
+			if(event.keyCode == 13){
+				pwSearchCheck(); 
+			}
+			
+		}
+	
+	</script>
+	<style>
+	      .bd-placeholder-img {
+	        font-size: 1.125rem;
+	        text-anchor: middle;
+	        -webkit-user-select: none;
+	        -moz-user-select: none;
+	        user-select: none;
+	      }
+	
+	      @media (min-width: 768px) {
+	        .bd-placeholder-img-lg {
+	          font-size: 3.5rem;
+	        }
+	      }
+	
+	      .b-example-divider {
+	        width: 100%;
+	        height: 3rem;
+	        background-color: rgba(0, 0, 0, .1);
+	        border: solid rgba(0, 0, 0, .15);
+	        border-width: 1px 0;
+	        box-shadow: inset 0 .5em 1.5em rgba(0, 0, 0, .1), inset 0 .125em .5em rgba(0, 0, 0, .15);
+	      }
+	
+	      .b-example-vr {
+	        flex-shrink: 0;
+	        width: 1.5rem;
+	        height: 100vh;
+	      }
+	
+	      .bi {
+	        vertical-align: -.125em;
+	        fill: currentColor;
+	      }
+	
+	      .nav-scroller {
+	        position: relative;
+	        z-index: 2;
+	        height: 2.75rem;
+	        overflow-y: hidden;
+	      }
+	
+	      .nav-scroller .nav {
+	        display: flex;
+	        flex-wrap: nowrap;
+	        padding-bottom: 1rem;
+	        margin-top: -1px;
+	        overflow-x: auto;
+	        text-align: center;
+	        white-space: nowrap;
+	        -webkit-overflow-scrolling: touch;
+	      }
+	
+	      .btn-bd-primary {
+	        --bd-violet-bg: #712cf9;
+	        --bd-violet-rgb: 112.520718, 44.062154, 249.437846;
+	
+	        --bs-btn-font-weight: 600;
+	        --bs-btn-color: var(--bs-white);
+	        --bs-btn-bg: var(--bd-violet-bg);
+	        --bs-btn-border-color: var(--bd-violet-bg);
+	        --bs-btn-hover-color: var(--bs-white);
+	        --bs-btn-hover-bg: #6528e0;
+	        --bs-btn-hover-border-color: #6528e0;
+	        --bs-btn-focus-shadow-rgb: var(--bd-violet-rgb);
+	        --bs-btn-active-color: var(--bs-btn-hover-color);
+	        --bs-btn-active-bg: #5a23c8;
+	        --bs-btn-active-border-color: #5a23c8;
+	      }
+	      .bd-mode-toggle {
+	        z-index: 1500;
+	      }
+	      layout-menu-fixed .layout-navbar-full .layout-menu,
+			.layout-page {
+			  padding-top: 0px !important;
+			}
+			.content-wrapper {
+			  padding-bottom: 0px !important;
+			}
+		 	@font-face {
+		    	font-family: 'GODOM';
+		    	src: url('/vendor/bootstrap-icons/fonts/GODOM.ttf') format('truetype');
+			}
+		
+			body,h1,h2,h3,h4,h5,h6,p,div p,a,div,span,small{
+				font-family: 'GODOM';
+			}
+	      	.form-control::placeholder{
+				  
+				  font-weight:bold;
+			  }
+	      
+	    </style>
+		<link href="/css/sign-in.css" rel="stylesheet">
+	</head>
+	
+	<body class="text-center">
+		
+		<!-- Content -->
+		<div class="container-xxl">
+		  <div class="authentication-wrapper authentication-basic container-p-y">
+		    <div class="authentication-inner">
+		      <!-- Register -->
+		      <div class="card">
+		        <div class="card-body">
+		          <p class="mb-2" style="text-align: center; color:black; font-size: 20pt;"><b>관리자 아이디 찾기</b></p>
+
+		          <form id="searchIDForm" onsubmit="return false">
+					  <div class="row">
+						  <div class="col-12 col-md-12">
+							  
+				            <div class="mb-3">
+				              <label for="hospitalEmail" class="form-label" style="text-align: center; color:black; font-size:10pt;"></label>
+				              <input type="text" class="form-control" id="hospitalEmail" name="hospitalEmail" placeholder="병원 이메일 입력" autofocus="">
+				            </div>
+						  </div>						  
+					  </div>
+					  <div class="row">
+						  <div class="col-12 col-md-12">
+							  
+				            <div class="mb-3 form-password-toggle">
+				              <div class="input-group input-group-merge">
+				                <input type="text" id="hospitalUserTelno" class="form-control" name="hospitalUserTelno" placeholder="병원 전화번호 입력">
+				              </div>
+				            </div>
+						  </div>						  
+					  </div>
+		            
+		            <div class="mb-3">
+		              	<button type="submit" class="btn btn-outline-primary" onclick="IDSearchCheck();"><b>아이디 찾기</b></button>
+					    &nbsp;
+					    <a class="btn btn-outline-secondary" th:href="@{/master/login}"><b>취소</b></a>
+		            </div>
+		          </form>
+
+		          <p class="text-center">
+		            <span style="text-align: center; color:black; font-size:11pt;"><b>처음 방문하셨나요?</b></span>
+		            <a th:href="@{/master/signup}">
+		              <span style="font-size:11pt;"><b>회원 가입</b></span>
+		            </a>
+		          </p>
+        		</div>
+      		  </div>
+     		<!-- /Register -->
+    		</div>
+ 		</div>
+	</div>
+	<!-- / Content -->
+	</body>
+</html>

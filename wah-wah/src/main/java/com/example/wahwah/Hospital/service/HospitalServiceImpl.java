@@ -5,6 +5,7 @@ import java.util.*;
 import org.springframework.stereotype.Service;
 
 import com.example.wahwah.Hospital.dto.HospitalDTO;
+import com.example.wahwah.Hospital.dto.HospitalSummaryDTO;
 import com.example.wahwah.Hospital.entity.HospitalEntity;
 import com.example.wahwah.Hospital.entity.repository.HospitalRepository;
 
@@ -19,20 +20,19 @@ public class HospitalServiceImpl implements HospitalService {
     // 병원 정보 조회
     @Override
     public HospitalDTO info(String hpid) {
-        HospitalEntity hospitalEntity = hospitalRepository.findById(hpid).get();
+        Optional<HospitalEntity> hospitalEntity = hospitalRepository.findById(hpid);
 
-        if (hospitalEntity.equals(null)) {
+        if (hospitalEntity.isEmpty()) {
             return null;
         } else {
             return hospitalRepository.findById(hpid).get().entityToDto();
-
         }
     }
 
     // 병원 정보 수정
     @Override
     public void modify(HospitalDTO hospitalDTO) {
-        hospitalRepository.save(hospitalDTO.dtoToEntity(hospitalDTO));
+        hospitalRepository.save(hospitalDTO.dtoToEntity());
     }
 
     @Override
@@ -50,5 +50,16 @@ public class HospitalServiceImpl implements HospitalService {
         }
 
         return hospitalDTOList;
+    }
+
+    @Override
+    public void putHospitalInfo(HospitalSummaryDTO hospitalSummaryDTO) {
+        hospitalRepository.save(hospitalSummaryDTO.dtoToEntity());
+    }
+
+    @Override
+    public HospitalDTO getHospitalInfo(String hpid) {
+        // TODO Auto-generated method stub
+        return hospitalRepository.findById(hpid).get().entityToDto();
     }
 }

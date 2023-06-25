@@ -19,6 +19,8 @@ import lombok.Setter;
 @Data
 @Table(name = "hospital")
 @Builder
+@NoArgsConstructor
+@AllArgsConstructor
 public class HospitalEntity {
 
     @Id

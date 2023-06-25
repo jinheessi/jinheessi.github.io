@@ -8,94 +8,24 @@ import org.springframework.security.config.annotation.web.configuration.EnableWe
 import org.springframework.security.config.annotation.web.configuration.WebSecurityCustomizer;
 import org.springframework.security.web.SecurityFilterChain;
 import com.example.wahwah.WebSecurityConfig;
-import com.example.wahwah.hospitaluser.AuthFailureHandler;
-import com.example.wahwah.hospitaluser.AuthSuccessHandler;
-import com.example.wahwah.hospitaluser.service.UserDetailsServiceImpl;
 
 import lombok.RequiredArgsConstructor;
 
 @RequiredArgsConstructor
 @EnableWebSecurity
 @Configuration
+@Order(1)
 public class MemberWebSecurityConfig extends WebSecurityConfig {
 
 	private final OAuth2FailureHandler oAuth2FailureHandler;
 	private final OAuth2SuccessHandler oAuth2SuccessHandler;
 
-	// 스프링 시큐리티 로그인, 권한부여, 로그아웃 등의 설정 작업하는 스프링빈 등록
-
-	private final AuthSuccessHandler authSuccessHandler;
-
-	// 생성자 생성 방식으로 의존성 주입
-	// 생성자 생성 방식으로 의존성 주입
-
-	private final AuthFailureHandler authFailureHandler;
-	private final UserDetailsServiceImpl userDetailsService;
-
-	// 스프링시큐리티에서 암호화 스프링빈 등록
-
 	// 스프링시큐리티 적용 제외 대상 설정 스프링빈 등록
 	@Bean
 	WebSecurityCustomizer webSecurityCustomizer() {
-		return (web) -> web.ignoring().requestMatchers("/assets/**", "/js/**", "/vendor/**","/images/**", "/css/**", "/profile/**");
+		return (web) -> web.ignoring().requestMatchers("/kids/login", "/assets/**" ,"/fonts/**", "/js/**", "/vendor/**","/images/**", "/css/**", "/profile/**");
 	}
 
-	@Order(2)
-	@Bean
-	public SecurityFilterChain MasterfilterChain(HttpSecurity http) throws Exception {
-		http
-				.formLogin(login -> login
-						.usernameParameter("hospitalUserId")
-						.loginPage("/master/login")
-						.successHandler(authSuccessHandler)
-						.failureHandler(authFailureHandler));
-		http
-				.rememberMe(me -> me
-						.key("diamond")
-						.alwaysRemember(false)
-						.tokenValiditySeconds(3600 * 24 * 7)
-						.rememberMeParameter("remember-me")
-						.userDetailsService(userDetailsService)
-						.authenticationSuccessHandler(authSuccessHandler));
-
-		// 		 				http
-		// 		 .authorizeHttpRequests(auth -> auth
-		// 		 		.requestMatchers("/kids/login").permitAll()
-		// 		// 		// .requestMatchers("/master/**").permitAll()
-		// 		// 		// .requestMatchers("**").permitAll()
-		// 		// 		// .requestMatchers("/board/**").hasAnyAuthority("USER","MASTER")
-		// 		// 		// .requestMatchers("/master/**").hasAnyAuthority("MASTER")
-		// 		 		.anyRequest().authenticated());
-		// // 접근권한 설정(권한 부여 : Authorization)
-		http
-				.authorizeHttpRequests(auth -> auth.requestMatchers("/master/**").permitAll().requestMatchers("/kids/login").permitAll().anyRequest().authenticated());
-				// .requestMatchers("/master/**").permitAll()
-				// .requestMatchers("/kids/**").permitAll();
-				
-		http
-				.sessionManagement(management -> management
-						.maximumSessions(1)
-						.maxSessionsPreventsLogin(false)
-						.expiredUrl("/master/login"));
-
-		http
-				.logout(logout -> logout
-						.logoutUrl("/master/logout")
-						.logoutSuccessUrl("/master/login")
-						.invalidateHttpSession(true)
-						.deleteCookies("JSESSIONID", "remember-me")
-						.permitAll());
-
-		// CSRF, CORS 공격 방어 비활성화
-		http
-				.csrf((csrf) -> csrf.disable())
-				.cors((cors) -> cors.disable());
-
-		System.out.println("스프링 시큐리티 설정 완료 니니즈");
-		return http.build(); // SecurityFilterChain 객체를 반환합니다.
-	}
-
-	@Order(1)
 	@Bean
 	public SecurityFilterChain MemberFilterChain(HttpSecurity http) throws Exception {
 
@@ -113,12 +43,8 @@ public class MemberWebSecurityConfig extends WebSecurityConfig {
 		// 접근권한 설정(권한 부여 : Authorization)
 		http
 				.authorizeHttpRequests(auth -> auth
-						.requestMatchers("/kids/**").permitAll()
-						.requestMatchers("/master/login").permitAll()
-						// .requestMatchers("/master/**").permitAll()
-						// .requestMatchers("**").permitAll()
-						// .requestMatchers("/board/**").hasAnyAuthority("USER","MASTER")
-						// .requestMatchers("/master/**").hasAnyAuthority("MASTER")
+						.requestMatchers("/kids/**", "/", "/**", "/fonts/**","/css/**","/assets/**","/vendor/**", "/js/**","/images/**").permitAll()
+						.requestMatchers("/oauth2/authorization/**").permitAll()
 						.anyRequest().authenticated());
 
 		// 세션관리

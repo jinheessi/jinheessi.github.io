@@ -1,0 +1,762 @@
+<!DOCTYPE html>
+
+<!-- =========================================================
+* Sneat - Bootstrap 5 HTML Admin Template - Pro | v1.0.0
+==============================================================
+
+* Product Page: https://themeselection.com/products/sneat-bootstrap-html-admin-template/
+* Created by: ThemeSelection
+* License: You must have a valid license purchased in order to legally use the theme for your project.
+* Copyright ThemeSelection (https://themeselection.com)
+
+=========================================================
+ -->
+<!-- beautify ignore:start -->
+<html
+  lang="en"
+  class="light-style layout-menu-fixed"
+  dir="ltr"
+  data-theme="theme-default"
+  data-assets-path="../assets/"
+  data-template="vertical-menu-template-free"
+  xmlns:th="http://www.thymeleaf.org"
+>
+  <head>
+    <meta charset="utf-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1.0, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0"
+    />
+
+    <title>응애응애 - 접수하기</title>
+
+    <meta name="description" content="" />
+    <!-- Icons. Uncomment required icon fonts -->
+    <link rel="stylesheet" href="/assets/vendor/fonts/boxicons.css" />
+
+    <!-- Core CSS -->
+    <link rel="stylesheet" href="/assets/vendor/css/core.css" class="template-customizer-core-css" />
+    <link rel="stylesheet" href="/assets/vendor/css/theme-default.css" class="template-customizer-theme-css" />
+    <link rel="stylesheet" href="/assets/css/demo.css" />
+
+
+    <link rel="stylesheet" href="/assets/vendor/libs/apex-charts/apex-charts.css" />
+   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.9.0/css/bootstrap-datepicker.css">
+   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/2.3.2/css/bootstrap-responsive.css">
+   
+    <!-- Vendors CSS -->
+    <link rel="stylesheet" href="../assets/vendor/libs/perfect-scrollbar/perfect-scrollbar.css">
+      <!-- Vendor CSS Files -->
+	  <link href="/vendor/fontawesome-free/css/all.min.css" rel="stylesheet">
+	  <link href="/vendor/animate.css/animate.min.css" rel="stylesheet">
+	  <link href="/vendor/bootstrap-icons/bootstrap-icons.css" rel="stylesheet">
+	  <link href="/vendor/boxicons/css/boxicons.min.css" rel="stylesheet">
+	  <link href="/vendor/glightbox/css/glightbox.min.css" rel="stylesheet">
+	  <link href="/vendor/remixicon/remixicon.css" rel="stylesheet">
+	  <link href="/vendor/swiper/swiper-bundle.min.css" rel="stylesheet">
+	
+	  <!-- Template Main CSS File -->
+	  <script src="/js/main.js"></script>
+	  <link href="/css/style.css" rel="stylesheet">
+	  <link href="/css/fonts.css" rel="stylesheet" type="text/css">
+   <!-- Helpers -->
+    <script src="/assets/vendor/js/helpers.js"></script>
+    <!--! Template customizer & Theme config files MUST be included after core stylesheets and helpers.js in the <head> section -->
+    <!--? Config:  Mandatory theme config file contain global vars & default theme options, Set your preferred theme option in this file.  -->
+    <script src="/assets/js/config.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.9.0/css/bootstrap-datepicker.css">
+   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/2.3.2/css/bootstrap-responsive.css">
+   <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.js"></script>
+   <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.9.0/js/bootstrap-datepicker.js"></script>
+   <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.4.1/js/bootstrap.js"></script>
+    
+
+    <!--! Template customizer & Theme config files MUST be included after core stylesheets and helpers.js in the <head> section -->
+    <!--? Config:  Mandatory theme config file contain global vars & default theme options, Set your preferred theme option in this file.  -->
+    <script src="/assets/js/config.js"></script>
+    <style>
+	    @font-face {
+	    	font-family: 'GODOM';
+	    	src: url('/fonts/GODOM.TTF') format('truetype');
+		}
+		
+		body,h1,h2,h3,h4,h5,h6,p,div p,a,div,span,small{
+			font-family: 'GODOM';
+		}
+		.map_wrap, .map_wrap * {margin:0;padding:0;font-family:'Malgun Gothic',dotum,'돋움',sans-serif;font-size:12px;}
+		.map_wrap a, .map_wrap a:hover, .map_wrap a:active{color:#000;text-decoration: none;}
+		.map_wrap {position:relative;width:100%;height:500px;display:block;}
+		#menu_wrap {width:100%;margin:10px 0 30px 10px;padding:5px;overflow-y:auto;background:rgba(255, 255, 255, 0.7);z-index: 1;font-size:12px;border-radius: 10px;}
+		.bg_white {background:#fff;}
+		#menu_wrap hr {display: block; height: 1px;border: 0; border-top: 2px solid #5F5F5F;margin:3px 0;}
+		#menu_wrap .option{text-align: center;}
+		#menu_wrap .option p {margin:10px 0;}  
+		#menu_wrap .option button {margin-left:5px;}
+		.map_wrap2, .map_wrap2 * {margin:0;padding:0;font-family:'Malgun Gothic',dotum,'돋움',sans-serif;font-size:12px;}
+		.map_wrap2 a, .map_wrap2 a:hover, .map_wrap2 a:active{color:#000;text-decoration: none;}
+		.map_wrap2 {position:relative;width:100%;height:500px;display:block;}
+		#menu_wrap2 {width:100%;margin:10px 0 30px 10px;padding:5px;overflow-y:auto;background:rgba(255, 255, 255, 0.7);z-index: 1;font-size:12px;border-radius: 10px;}
+		.bg_white {background:#fff;}
+		#menu_wrap2 hr {display: block; height: 1px;border: 0; border-top: 2px solid #5F5F5F;margin:3px 0;}
+		#menu_wrap2 .option{text-align: center;}
+		#menu_wrap2 .option p {margin:10px 0;}  
+		#menu_wrap2 .option button {margin-left:5px;}
+		
+		#placesList li {list-style: none;}
+		#placesList .item {position:relative;border-bottom:1px solid #888;overflow: hidden;cursor: pointer;min-height: 65px;}
+		#placesList .item span {display: block;margin-top:4px;}
+		#placesList .item h5, #placesList .item .info {text-overflow: ellipsis;overflow: hidden;white-space: nowrap;}
+		#placesList .item .info{padding:10px 0 10px 55px;}
+		#placesList .info .gray {color:#8a8a8a;}
+		#placesList .info .jibun {padding-left:26px;background:url(https://t1.daumcdn.net/localimg/localimages/07/mapapidoc/places_jibun.png) no-repeat;}
+		#placesList .info .tel {color:#009900;}
+		#placesList .item .markerbg {float:left;position:absolute;width:36px; height:37px;margin:10px 0 0 10px;background:url(https://t1.daumcdn.net/localimg/localimages/07/mapapidoc/marker_number_blue.png) no-repeat;}
+		#placesList .item .marker_1 {background-position: 0 -10px;}
+		#placesList .item .marker_2 {background-position: 0 -56px;}
+		#placesList .item .marker_3 {background-position: 0 -102px}
+		#placesList .item .marker_4 {background-position: 0 -148px;}
+		#placesList .item .marker_5 {background-position: 0 -194px;}
+		#placesList .item .marker_6 {background-position: 0 -240px;}
+		#placesList .item .marker_7 {background-position: 0 -286px;}
+		#placesList .item .marker_8 {background-position: 0 -332px;}
+		#placesList .item .marker_9 {background-position: 0 -378px;}
+		#placesList .item .marker_10 {background-position: 0 -423px;}
+		#placesList .item .marker_11 {background-position: 0 -470px;}
+		#placesList .item .marker_12 {background-position: 0 -516px;}
+		#placesList .item .marker_13 {background-position: 0 -562px;}
+		#placesList .item .marker_14 {background-position: 0 -608px;}
+		#placesList .item .marker_15 {background-position: 0 -654px;}
+		#pagination {margin:10px auto;text-align: center;}
+		#pagination a {display:inline-block;margin-right:10px;}
+		#pagination .on {font-weight: bold; cursor: default;color:#777;}
+	    .title {font-weight:bold;display:block;}
+	    .hAddr {position:absolute;left:10px;top:10px;border-radius: 2px;background:#fff;background:rgba(255,255,255,0.8);z-index:1;padding:5px;}
+	    #centerAddr {display:block;margin-top:2px;font-weight: normal;}
+	    .bAddr {padding:5px;text-overflow: ellipsis;overflow: hidden;white-space: nowrap;}
+	    .info {position:relative;top:5px;left:5px;border-radius:6px;border: 1px solid #ccc;border-bottom:2px solid #ddd;font-size:12px;padding:5px;background:#fff;list-style:none;margin:0;} 
+		.info:nth-of-type(n) {border:0; box-shadow:0px 1px 2px #888;}    
+		.info .label {display:inline-block;width:50px;}
+		.number {font-weight:bold;color:#00a0e9;}
+		table{
+			table-layout:fixed;
+		}
+		th, td{
+			word-break:keep-all;
+			text-align:center;
+			padding:5px;
+		}
+		.menu-inner{
+			font-weight:bold;
+			font-size:14pt;
+			color:#454545;
+		}
+		select, option{
+			font-weight:bold;
+			color:#454545;
+		}
+		i{
+			color:#1977CC;
+			font-weight:bold;
+		}
+		  @font-face {
+		    	font-family: 'GODOM';
+		    	src: url('/vendor/bootstrap-icons/fonts/GODOM.ttf') format('truetype');
+			}
+			
+			body,h1,h2,h3,h4,h5,h6,p,div p,a,div,span,small{
+				font-family: 'GODOM';
+			}
+			body {
+			    color: black;
+			    overflow-x: hidden;
+			    background-repeat: no-repeat;
+			    padding: 0px !important;
+			    background-color:#FFFFFF;
+			}
+			input {
+			    border-radius: 10px;
+			    color: #000;
+			    font-size: 16px;
+			    font-weight: bold;
+			}
+			
+			input:focus {
+				color:#000;
+			    -moz-box-shadow: none !important;
+			    -webkit-box-shadow: none !important;
+			    
+			    
+			}
+			
+			::placeholder {
+			    color: #000;
+			    font-size:15pt;
+			    font-weight:bold;
+			    opacity: 1;
+			}
+			
+			:-ms-input-placeholder {
+			    color: #000;
+			    font-weight:bold;
+			}
+			
+			::-ms-input-placeholder {
+			    color: #000;
+			    font-weight:bold;
+			}
+			
+			button:focus {
+			    -moz-box-shadow: none !important;
+			    -webkit-box-shadow: none !important;
+			    box-shadow: none !important;
+			    outline-width: 0;
+			}
+			
+			.datepicker {
+			  background-color: rgba(25,119,204,0.2);
+			  color: #000;
+			  border: none;
+			  border-radius:5px;
+			  padding: 10px !important;
+			}
+			
+			.datepicker-dropdown{
+			  background-color: #fff;
+			  border-radius:5px;
+			}
+			
+			thead tr:nth-child(3) th {
+			  color: #000 !important;
+			  font-weight: bold;
+			  padding-top: 20px;
+			  padding-bottom: 10px;
+			}
+			
+			.dow, .old-day, .day, .new-day {
+			  width: 40px !important;
+			  height: 40px !important;
+			  border-radius: 0px !important;
+			}
+			
+			.old-day:hover, .day:hover, .new-day:hover, .month:hover, .year:hover, .decade:hover, .century:hover {
+			  border-radius: 6px !important; 
+			  color: #000;
+			}
+			
+			.active {
+			  border-radius: 6px !important;
+			  color: #000 !important;
+			}
+			
+			.disabled {
+			  color: gray !important;
+			}
+			
+			.prev, .next, .datepicker-switch {
+			  border-radius: 0 !important;
+			  padding: 20px 10px !important;
+			  text-transform: uppercase;
+			  font-size: 20px;
+			  color: #000 !important;
+			  
+			}
+			
+			.prev:hover, .next:hover, .datepicker-switch:hover {
+			  background-color: inherit !important;
+			  opacity: 1;
+			}
+			
+			.cell {
+			  border:none;
+			  cursor: pointer;
+			}
+			
+			.cell:hover {
+			  border: 1px solid rgba(25,119,204,0.5);
+			  border-radius:5px;
+			}
+			
+			.cell.select {
+			  background-color:  rgba(25, 119, 204, 0.2);
+			  border-radius:5px;
+			  color: #000;
+			}
+			
+			.fa-calendar {
+			  color: #000;
+			  font-size: 30px;
+			  padding-top: 8px;
+			  padding-left: 5px;
+			  cursor: pointer;
+			}
+			.menu-inner{
+				font-weight:bold;
+				color:#454545;
+			}
+			table{
+			table-layout:fixed;
+			}
+			th, td{
+				word-wrap: break-word;
+				text-align:center;
+				padding:5px;
+			}
+			.menu-inner{
+				font-weight:bold;
+				font-size:14pt;
+				color:#454545;
+			}
+			select, option{
+				font-weight:bold;
+				color:#454545;
+			}
+			i{
+				color:#1977CC;
+				font-weight:bold;
+			}
+    </style>
+	
+	
+  </head>
+
+  <body style="background-color:white;">
+  	<script>
+			$(document).ready(function(){
+				var rdate;
+				var rtime;
+				var email;
+				var birth;
+				// var gender1;
+				// var gender2;
+				var dutyName;
+				var gender;
+				var height;
+				var weight;
+				var userinfo;
+				var hpid;
+				var regdate;
+				// var user_info;
+				var hpid;
+				var regdate;
+				var reservestart;
+				$('.datepicker').datepicker({
+				    format: 'yyyy년 mm월 dd일',
+				    autoclose: true,
+				    startDate: '0d'
+				});
+				
+				$('.cell').click(function(){
+				    $('.cell').removeClass('select');
+				    $(this).addClass('select');
+				    rdate = $('#rdate').val();
+				    rtime = $(this).text();
+				    	    
+				    reservestart= rdate + ' ' + rtime;
+					email = $('#email').val();
+					birth = $('#birth').val();
+					// gender1 = $('#gender1').val();
+					// gender2 = $('#gender2').val();
+
+
+					dutyname = $('#dutyName').val();
+					height = $('#height').val();
+					weight = $('#weight').val();
+					userinfo = $('#userinfo').val();
+					user_info = $('#user_info').val();
+					hpid = $('#hpid').val();
+					regdate = $('#regdate').val();
+
+					$('#reservationdatetime').html('예약한 날짜는 ' + rdate +'이고, 시간은 '+ rtime + ' 입니다.');
+				    
+				});
+				
+				$('#rbtn').click(async function(){
+					const gender = $('input[name=gender]:checked');
+					console.log(gender);
+					$('#modalbodytext').html('예약한 날짜는 ' + rdate +'이고, 시간은 '+ rtime + ' 입니다. 정말로 예약하시겠습니까?');
+					var url = '/kids/reservation';
+					var formData = new FormData();
+					formData.append("rdate", rdate);
+					formData.append("dutyname", dutyname);
+					formData.append("rtime", rtime);
+					formData.append("email", email);
+					formData.append("birth", birth);
+					formData.append("gender", gender.val());
+					formData.append("height", height);
+					formData.append("weight", weight);
+					formData.append("userinfo", userinfo);
+					formData.append("hpid", hpid);
+					formData.append("regdate", regdate);
+					
+					await fetch(url, {
+						method: 'POST',
+						body: formData
+					}).then((response) => response.json())
+					  .then((data) => {
+						if(data.msg == 'GOOD') {document.location.href='/kids/myreservation'};
+							// alert('다시 예약해 주세요.')
+					}).catch((error) => {
+						 console.log(error); 
+					  });
+				});
+				$("#confirm1").click(function(){
+					$('#modal2bodytext').html(rdate +'<br>'+ rtime + '<br>예약완료 되었습니다');
+				});
+			
+			});
+		
+		</script>    
+		
+    <!-- Layout wrapper -->
+    <div class="layout-wrapper layout-content-navbar">
+      <div class="layout-container">
+        <!-- Menu -->
+
+        <aside id="layout-menu" class="layout-menu menu-vertical menu bg-menu-theme">
+          <div class="app-brand demo">
+          	<br>
+          	<p style="font-weight:bold; font-size:30pt; color:black; margin-top:20%; margin-bottom:10%;">응애응애</p>
+
+            <a href="javascript:void(0);" class="layout-menu-toggle menu-link text-large ms-auto d-block d-xl-none">
+              <i class="bx bx-chevron-left bx-sm align-middle"></i>
+            </a>
+          </div>
+
+          <div class="menu-inner-shadow"></div>
+		  <br><br>
+          <ul class="menu-inner py-1">
+            <!-- Dashboard -->
+            <li class="menu-item">
+              <a th:href="@{/kids/home}" class="menu-link">
+                <i class="menu-icon tf-icons bx bx-home-circle"></i>
+                <div data-i18n="Analytics" style="color:black;">홈 페이지</div>
+              </a>
+            </li>
+
+            <!-- Layouts -->
+            <li class="menu-item ">
+              <a href="javascript:void(0);" class="menu-link menu-toggle">
+                <i class="menu-icon tf-icons bx bx-layout"></i>
+                <div data-i18n="Layouts" style="color:black;">예약</div>
+              </a>
+
+              <ul class="menu-sub">
+                <li class="menu-item">
+                  <a th:href="@{/kids/pediatric}" class="menu-link">
+                    <div data-i18n="Without menu" style="color:black;">소아과</div>
+                  </a>
+                  <ul class="menu-sub">
+					  <li class="menu-item">
+						  <a href="javascript:void(0)" class="menu-link">
+							  <div data-i18n="Without menu" style="color:black;">접수하기</div>
+						  </a>
+					  </li>
+				  </ul>
+                </li>
+                <li class="menu-item">
+                  <a th:href="@{/kids/emergency}" class="menu-link">
+                    <div data-i18n="Without navbar" style="color:black;">응급실</div>
+                  </a>
+                </li>
+              </ul>
+            </li>
+
+            <li class="menu-header small text-uppercase">
+              <span class="menu-header-text" style="color:black;">회원 정보 관리 & 회원 인증</span>
+            </li>
+            <li class="menu-item">
+              <a href="javascript:void(0);" class="menu-link menu-toggle">
+                <i class="menu-icon tf-icons bx bx-dock-top"></i>
+                <div data-i18n="Account Settings" style="color:black;">마이 페이지</div>
+              </a>
+              <ul class="menu-sub">
+                <li class="menu-item">
+                  <a th:href="@{/kids/modifyInfo}" class="menu-link">
+                    <div data-i18n="Account" style="color:black;">내 정보 관리/수정</div>
+                  </a>
+                </li>
+                <li class="menu-item">
+                  <a th:href="@{/kids/myreservation}" class="menu-link">
+                    <div data-i18n="Notifications" style="color:black;">내 예약 관리/수정</div>
+                  </a>
+                </li>
+                <li class="menu-item active">
+                  <a th:href="@{/kids/myreceipt}" class="menu-link">
+                    <div data-i18n="Connections" style="color:black;">내 접수 관리/수정</div>
+                  </a>
+                </li>
+              </ul>
+            </li>
+            
+            
+            <!-- Components -->
+            <li class="menu-header small text-uppercase"><span class="menu-header-text" style="color:black;">유용한 정보</span></li>
+            <!-- Cards -->
+            <li class="menu-item">
+              <a th:href="@{/kids/healthInfo}" class="menu-link">
+                <i class="menu-icon tf-icons bx bx-collection"></i>
+                <div data-i18n="Basic" style="color:black;">건강 정보</div>
+              </a>
+            </li>
+
+            <li class="menu-item">
+              <a th:href="@{/kids/publicHealth}" class="menu-link">
+                <i class="menu-icon tf-icons bx bx-home-heart"></i>
+                <div data-i18n="Boxicons" style="color:black;">전국 보건소 찾기</div>
+              </a>
+            </li>
+            <!-- Misc -->
+            <li class="menu-header small text-uppercase"><span class="menu-header-text" style="color:black;">기타</span></li>
+            
+            <li class="menu-item">
+              <a th:href="@{/kids/notice}" class="menu-link">
+                <i class="menu-icon tf-icons bx bx-file"></i>
+                <div data-i18n="Documentation" style="color:black;">공지사항</div>
+              </a>
+            </li>
+            <li class="menu-item">
+              <a
+                href="https://github.com/themeselection/sneat-html-admin-template-free/issues"
+                target="_blank"
+                class="menu-link"
+              >
+                <i class="menu-icon tf-icons bx bx-support"></i>
+                <div data-i18n="Support" style="color:black;">고객 지원</div>
+              </a>
+            </li>
+            <li class="menu-item">
+              <a
+                href="https://themeselection.com/demo/sneat-bootstrap-html-admin-template/documentation/"
+                target="_blank"
+                class="menu-link"
+              >
+                <i class="menu-icon tf-icons bx bx-file"></i>
+                <div data-i18n="Documentation" style="color:black;">이용 약관</div>
+              </a>
+            </li>
+          </ul>
+        </aside>
+        <!-- / Menu -->
+
+        <!-- Layout container -->
+        <div class="layout-page">
+          <!-- Navbar -->
+
+          <nav
+            class="layout-navbar container-xxl navbar navbar-expand-xl navbar-detached align-items-center bg-navbar-theme"
+            id="layout-navbar"
+          >
+          	<div class="layout-menu-toggle navbar-nav align-items-xl-center me-3 me-xl-0  d-xl-none ">
+		        <a class="nav-item nav-link px-0 me-xl-4" href="javascript:void(0)">
+		          <i class="bx bx-menu bx-sm"></i>
+		        </a>
+		    </div>
+		    
+            <div class="navbar-nav-right d-flex align-items-center" id="navbar-collapse">
+		         <div class="navbar-nav align-items-center">
+		          <div class="nav-item d-flex align-items-center">
+		            <a href="javascript:searchPlaces()"><i class="bx bx-search fs-4 lh-0"></i></a>
+		            <input type="text" class="form-control w-100 border-0 shadow-0" placeholder="병원을 검색하세요" aria-label="Recipient's username" aria-describedby="button-addon2" value="" id="keyword">
+		          </div>
+		        </div>
+              <!-- Search -->
+              
+              <!-- /Search -->
+
+              <ul class="navbar-nav d-flex justify-content-start align-items-start ms-auto">
+
+                                <!-- User -->
+	          <li class="nav-item navbar-dropdown dropdown-user dropdown">
+	            <a class="nav-link dropdown-toggle hide-arrow" href="javascript:void(0);" data-bs-toggle="dropdown">
+	              <div class="avatar avatar-online  d-flex justify-content-center align-items-center">
+	                <th:block th:if="${session.role == 'USER'}">
+	                	<img th:src="|/profile/${member.stored_filename}|" style="width:100%;height:100%">
+	                </th:block>
+	              </div>
+	            </a>
+	            <ul class="dropdown-menu pt-0 pb-1 ps-1 pe-1">
+	              <li>
+	                <a class="dropdown-item" href="#">
+	                   <div class="d-flex">
+	                    <div class="flex-shrink-0 mt-0 me-3">
+	                      <div class="avatar avatar-online d-flex justify-content-center align-items-center">
+	                      	<img th:src="|/profile/${member.stored_filename}|" style="width:100%;height:100%">
+	                      </div>
+	                    </div>
+	                    <div class="flex-grow-1">
+	                      <span th:text= "${session.username}" style="font-size:12pt; font-weight:bold; color:black;"></span>
+	                      <th:block th:if="${session.role == 'USER'}">
+	                      	<span style="font-size:10pt; font-weight:bold; color:#1977CC; text-align:end;">(사용자)</span>
+	                      </th:block>
+	                      <span th:text="${session.email}" class="fw-semibold d-block" style="font-size:11pt; font-weight:bold; color:#454545;"></span>
+	                    </div>
+	                </a>
+	              </li>
+	              <li>
+	                <a th:href="@{/kids/modifyInfo}" class="dropdown-item d-flex justify-content-start" href="#">
+	                  <i class="bx bx-user me-2"></i>
+	                  <span  class="align-middle" style="color:#454545; font-size:10pt;"><b>내 정보 수정</b></span>
+	                </a>
+	              </li>
+	              <li>
+	                <a class="dropdown-item d-flex justify-content-start" th:href="@{/kids/logout}">
+	                  <i class="bx bx-power-off me-2"></i>
+	                  <span class="align-middle" style="color:#454545; font-size:10pt;"><b>로그아웃</b></span>
+	                </a>
+	              </li>
+	            </ul>
+	          </li>
+	          <!--/ User -->
+
+              </ul>
+            </div>
+          </nav>
+
+          <!-- / Navbar -->
+
+          <!-- Content wrapper -->
+          <div class="content-wrapper">
+            <!-- Content -->
+            <div class="container-xxl flex-grow-1 container-p-y">
+              <div class="row">
+	              <div class="col-12">
+	              	<p th:text="|${receiptList.dutyName} (${receiptList.hpid}) 접수 수정|" style="font-size:23pt; color:black; font-weight:bold;"></p>
+          	      </div>
+          	      <hr>
+              </div>
+              <br><br><br>
+              
+            <div class="row d-flex justify-content-center">
+            	<div class="col-md-5">
+            		<div class="card mb-4">
+            		<p style="font-size:18pt;"><b>접수 수정</b></p>
+				      <div class="card-body">
+				        <form action="/kids/modifyReceipt" method="POST">
+				          <div class="row mb-3">
+				            <label class="col-md-2 col-form-label" for="regdate"  style="color:#454545; font-size:11pt;"><b>신청일</b></label>
+				            <div class="col-md-10">
+				              <input type="text" class="form-control" id="regdate" name="regdate" style="color:#454545; font-size:11pt; font-weight: bold;" readonly th:value="${#calendars.format(#calendars.createNow(), 'yyyy-MM-dd')}">
+				            </div>
+				          </div>
+				          <div class="row mb-3">
+				            <label class="col-sm-2 col-form-label" for="rname" style="color:#454545; font-size:11pt;"><b>신청자</b></label>
+				            <div class="col-md-10">
+								<input type="text" class="form-control" id="rname" name="rname" style="color:#454545; font-size:11pt; font-weight: bold;" th:value="${session.username}" readonly>
+				            </div>
+				          </div>
+				          <div class="row mb-3">
+				            <label class="col-sm-2 col-form-label" for="pname" style="color:#454545; font-size:11pt;"><b>환자 이름</b></label>
+				            <div class="col-md-10">
+								<input type="text" class="form-control" id="pname" name="pname" style="color:#454545; font-size:11pt; font-weight: bold;">
+				            </div>
+				          </div>
+				          <div class="row mb-3">
+				            <label class="col-sm-2 col-form-label" for="birth" style="color:#454545; font-size:11pt;"><b>생년월일</b></label>
+				            <div class="col-sm-10">
+				              <input type="text" class="form-control" id="birth" name="birth" style="color:#454545; font-size:11pt; font-weight: bold;">
+				            </div>
+				          </div>
+				           <div class="row mb-3">
+				           	<label class="col-sm-2 col-form-label" for="gender" style="color:#454545; font-size:11pt;"><b>성별</b></label>
+				            <div class="col-sm-10">
+				              <input type="text" class="form-control" id="gender" name="gender" style="color:#454545; font-size:11pt; font-weight: bold;">
+				            </div>
+				           </div>
+
+				          
+				          <div class="row mb-3">
+				            <label class="col-sm-2 col-form-label" for="symptom" style="color:#454545; font-size:11pt;"><b>증상</b></label>
+				            <div class="col-sm-10">
+				              <textarea id="symptom" name="symptom" class="form-control" style="color:#454545; font-size:11pt; font-weight: bold;"></textarea>
+				            </div>
+				          </div>
+				          
+				          <div class="row mb-3">
+				            <label class="col-sm-2 col-form-label" for="weight" style="color:#454545; font-size:11pt;"><b>접수 상태</b></label>
+				            <div class="col-sm-10">
+								<input type="text" class="form-control" id="state" name="state" value="대기" style="color:#454545; font-size:11pt; font-weight: bold;" readonly>
+				            </div>
+				          </div>
+				          
+				          <input type="hidden" class="form-control" id="dutyName" name="dutyName" th:value="${receiptList.dutyName}">
+				          <input type="hidden" class="form-control" id="hpid" name="hpid" th:value="${receiptList.hpid}">
+				          <div class="row d-flex justify-content-center align-items">
+							  <div class="col-md-10">
+				          		<input id="btn" name="btn" type="submit" class="btn btn-outline-primary" value="접수하기">
+							  </div>
+				          </div>
+			          </form>
+			      </div>
+			    </div>
+            	
+            </div>
+                       </div>
+                      </div>
+                    </div>
+                 </div>
+            </div>
+            	
+			
+            
+            </div>
+            <!-- / Content -->
+           
+            <!-- / Footer -->
+
+            <div class="content-backdrop fade"></div>
+          </div>
+          <!-- Content wrapper -->
+        </div>
+        <!-- / Layout page -->
+      </div>
+
+      <!-- Overlay -->
+      <div class="layout-overlay layout-menu-toggle"></div>
+      
+    </div>
+       <!-- endbuild -->
+
+    <!-- Vendors JS -->
+    <script src="/assets/vendor/libs/apex-charts/apexcharts.js"></script>
+    <!-- Vendor JS Files -->
+	<script src="/vendor/purecounter/purecounter_vanilla.js"></script>
+	<script src="/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+	<script src="/vendor/glightbox/js/glightbox.min.js"></script>
+	<script src="/vendor/swiper/swiper-bundle.min.js"></script>
+	<script src="/vendor/php-email-form/validate.js"></script>
+	
+	<!-- / Layout wrapper -->
+	  <!-- Core JS -->
+	  <!-- build:js assets/vendor/js/core.js -->
+	  <script src="/assets/vendor/libs/jquery/jquery.js"></script>
+	  <script src="/assets/vendor/libs/popper/popper.js"></script>
+	  <script src="/assets/vendor/js/bootstrap.js"></script>
+	  <script src="/assets/vendor/libs/perfect-scrollbar/perfect-scrollbar.js"></script>
+	  
+	  <script src="/assets/vendor/js/menu.js"></script>
+	  <!-- endbuild -->
+	
+	  <!-- Vendors JS -->
+	  
+	  
+	
+	  <!-- Main JS -->
+	  <script src="/assets/js/main.js"></script>
+	
+	  <!-- Page JS -->
+	  <script src="/assets/js/pages-account-settings-account.js"></script>
+	  
+	  <!-- Place this tag in your head or just before your close body tag. -->
+	  <script async="" defer="" src="https://buttons.github.io/buttons.js"></script>
+     <!-- Helpers -->
+    <script src="/assets/vendor/js/helpers.js"></script>
+    <!--! Template customizer & Theme config files MUST be included after core stylesheets and helpers.js in the <head> section -->
+    <!--? Config:  Mandatory theme config file contain global vars & default theme options, Set your preferred theme option in this file.  -->
+    <script src="/assets/js/config.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.9.0/css/bootstrap-datepicker.css">
+   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/2.3.2/css/bootstrap-responsive.css">
+   <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.js"></script>
+   <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.9.0/js/bootstrap-datepicker.js"></script>
+   <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.4.1/js/bootstrap.js"></script>
+  </body>
+</html>

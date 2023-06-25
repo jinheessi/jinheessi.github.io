@@ -28,7 +28,7 @@ public class HospitalUserDTO {
     private String files;  //파일 이름 
     private String verified; //
     
-	//생성자를 이용해서 Entity를 DTO로 이동
+	//생성자를 이용해서 Entity를 this로 이동
     public HospitalUserDTO(HospitalUserEntity hospitalUserEntity) {
 		
 		this.hospitalUserId = hospitalUserEntity.getHospitalUserId();
@@ -44,18 +44,20 @@ public class HospitalUserDTO {
 	}
 
 
-    //DTO --> Entity로 이동
-    public HospitalUserEntity dtoToEntity(HospitalUserDTO dto) {
+    //this --> Entity로 이동
+    public HospitalUserEntity dtoToEntity() {
             
         HospitalUserEntity hospitalUserEntity = HospitalUserEntity.builder()
-                                        .hospitalUserId(dto.getHospitalUserId())
-                                        .hospitalName(dto.getHospitalName())
-                                        .hpid(dto.getHpid())
-                                        .password(dto.getPassword())
-                                        .hospitalEmail(dto.getHospitalEmail())
-                                        .hospitalUserTelno(dto.getHospitalUserTelno())
-                                        .supervisor(dto.getSupervisor())
-                                        .hosptial_file(dto.getFiles())
+                                        .hospitalUserId(this.getHospitalUserId())
+                                        .hospitalName(this.getHospitalName())
+                                        .hpid(this.getHpid())
+                                        .password(this.getPassword())
+                                        .hospitalAddr(this.getHospitalAddr())
+                                        .hospitalEmail(this.getHospitalEmail())
+                                        .hospitalUserTelno(this.getHospitalUserTelno())
+                                        .supervisor(this.getSupervisor())
+                                        .verified(this.getVerified())
+                                        .hosptial_file(this.getFiles())
                                         .build();
         return hospitalUserEntity;
     }

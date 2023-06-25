@@ -28,22 +28,36 @@
       content="width=device-width, initial-scale=1.0, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0"
     />
 
-    <title>응애응애 - 전국 보건소 찾기</title>
+    <title>응애응애 - 소아과</title>
 
     <meta name="description" content="" />
 
     <!-- Icons. Uncomment required icon fonts -->
-    <link rel="stylesheet" href="/assets/vendor/fonts/boxicons.css" />
+    <link rel="stylesheet" href="../assets/vendor/fonts/boxicons.css" />
 
     <!-- Core CSS -->
-    <link rel="stylesheet" href="/assets/vendor/css/core.css" class="template-customizer-core-css" />
-    <link rel="stylesheet" href="/assets/vendor/css/theme-default.css" class="template-customizer-theme-css" />
-    <link rel="stylesheet" href="/assets/css/demo.css" />
+    <link rel="stylesheet" href="../assets/vendor/css/core.css" class="template-customizer-core-css" />
+    <link rel="stylesheet" href="../assets/vendor/css/theme-default.css" class="template-customizer-theme-css" />
+    <link rel="stylesheet" href="../assets/css/demo.css" />
 
     <!-- Vendors CSS -->
-    <link rel="stylesheet" href="/assets/vendor/libs/perfect-scrollbar/perfect-scrollbar.css" />
+    <link rel="stylesheet" href="../assets/vendor/libs/perfect-scrollbar/perfect-scrollbar.css" />
 
-    <link rel="stylesheet" href="/assets/vendor/libs/apex-charts/apex-charts.css" />
+    <link rel="stylesheet" href="../assets/vendor/libs/apex-charts/apex-charts.css" />
+    <!-- Vendor CSS Files -->
+	  <link href="/vendor/fontawesome-free/css/all.min.css" rel="stylesheet">
+	  <link href="/vendor/animate.css/animate.min.css" rel="stylesheet">
+	  <link href="/vendor/bootstrap-icons/bootstrap-icons.css" rel="stylesheet">
+	  <link href="/vendor/boxicons/css/boxicons.min.css" rel="stylesheet">
+	  <link href="/vendor/glightbox/css/glightbox.min.css" rel="stylesheet">
+	  <link href="/vendor/remixicon/remixicon.css" rel="stylesheet">
+	  <link href="/vendor/swiper/swiper-bundle.min.css" rel="stylesheet">
+	
+	  <!-- Template Main CSS File -->
+	  <script src="/js/main.js"></script>
+	  <link href="/css/style.css" rel="stylesheet">
+	  <link href="/css/fonts.css" rel="stylesheet" type="text/css">
+	  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/js/bootstrap.bundle.min.js"></script>
 
     <!-- Page CSS -->
 
@@ -56,7 +70,7 @@
     <style>
 	    @font-face {
 	    	font-family: 'GODOM';
-	    	src: url('/vendor/bootstrap-icons/fonts/GODOM.ttf') format('truetype');
+	    	src: url('/fonts/GODOM.TTF') format('truetype');
 		}
 		
 		body,h1,h2,h3,h4,h5,h6,p,div p,a,div,span,small{
@@ -120,7 +134,7 @@
 			table-layout:fixed;
 		}
 		th, td{
-			word-wrap: break-word;
+			word-break:keep-all;
 			text-align:center;
 			padding:5px;
 		}
@@ -137,6 +151,8 @@
 			color:#1977CC;
 			font-weight:bold;
 		}
+		
+		
     </style>
     
   </head>
@@ -209,35 +225,13 @@
                   </a>
                 </li>
                 <li class="menu-item">
-                  <a href="pages-account-settings-connections.html" class="menu-link">
-                    <div data-i18n="Connections" style="color:black;">아기 수첩</div>
+                  <a th:href="@{/kids/myreceipt}" class="menu-link">
+                    <div data-i18n="Connections" style="color:black;">내 접수 관리/수정</div>
                   </a>
                 </li>
               </ul>
             </li>
-            <li class="menu-item">
-              <a href="javascript:void(0);" class="menu-link menu-toggle">
-                <i class="menu-icon tf-icons bx bx-lock-open-alt"></i>
-                <div data-i18n="Authentications" style="color:black;">인증</div>
-              </a>
-              <ul class="menu-sub">
-                <li class="menu-item">
-                  <a th:href="@{/master/login}" class="menu-link">
-                    <div data-i18n="Basic" style="color:black;">로그인</div>
-                  </a>
-                </li>
-                <li class="menu-item">
-                  <a th:href="@{/master/signup}" class="menu-link">
-                    <div data-i18n="Basic" style="color:black;">회원 가입</div>
-                  </a>
-                </li>
-                <li class="menu-item">
-                  <a href="@{/master/searchIDPW}" class="menu-link">
-                    <div data-i18n="Basic" style="color:black;">ID / PW 찾기</div>
-                  </a>
-                </li>
-              </ul>
-            </li>
+            
             
             <!-- Components -->
             <li class="menu-header small text-uppercase"><span class="menu-header-text" style="color:black;">유용한 정보</span></li>
@@ -313,44 +307,43 @@
               
               <!-- /Search -->
 
-              <ul class="navbar-nav flex-row align-items-center ms-auto">
+              <ul class="navbar-nav d-flex justify-content-start align-items-start ms-auto">
 
-                <!-- User -->
+                                <!-- User -->
 	          <li class="nav-item navbar-dropdown dropdown-user dropdown">
 	            <a class="nav-link dropdown-toggle hide-arrow" href="javascript:void(0);" data-bs-toggle="dropdown">
-	              <div class="avatar avatar-online">
-	                
+	              <div class="avatar avatar-online  d-flex justify-content-center align-items-center">
+	                <th:block th:if="${session.role == 'USER'}">
+	                	<img th:src="|/profile/${member.stored_filename}|" style="width:100%;height:100%">
+	                </th:block>
 	              </div>
 	            </a>
-	            <ul class="dropdown-menu dropdown-menu-end">
+	            <ul class="dropdown-menu pt-0 pb-1 ps-1 pe-1">
 	              <li>
 	                <a class="dropdown-item" href="#">
-	                  <div class="d-flex">
-	                    <div class="flex-shrink-0 me-3">
-	                      <div class="avatar avatar-online">
+	                   <div class="d-flex">
+	                    <div class="flex-shrink-0 mt-0 me-3">
+	                      <div class="avatar avatar-online d-flex justify-content-center align-items-center">
+	                      	<img th:src="|/profile/${member.stored_filename}|" style="width:100%;height:100%">
 	                      </div>
 	                    </div>
 	                    <div class="flex-grow-1">
-	                      <span th:text="${email}" class="fw-semibold d-block"></span>
-	                      <small th:text= "${username}" class="text-muted"></small>
+	                      <span th:text= "${session.username}" style="font-size:12pt; font-weight:bold; color:black;"></span>
+	                      <th:block th:if="${session.role == 'USER'}">
+	                      	<span style="font-size:10pt; font-weight:bold; color:#1977CC; text-align:end;">(사용자)</span>
+	                      </th:block>
+	                      <span th:text="${session.email}" class="fw-semibold d-block" style="font-size:11pt; font-weight:bold; color:#454545;"></span>
 	                    </div>
-	                  </div>
 	                </a>
 	              </li>
 	              <li>
-	                <div class="dropdown-divider"></div>
-	              </li>
-	              <li>
-	                <a class="dropdown-item" href="#">
+	                <a th:href="@{/kids/modifyInfo}" class="dropdown-item d-flex justify-content-start" href="#">
 	                  <i class="bx bx-user me-2"></i>
-	                  <span th:href="@{/kids/modifyInfo}" class="align-middle" style="color:#454545; font-size:10pt;"><b>내 정보 수정</b></span>
+	                  <span  class="align-middle" style="color:#454545; font-size:10pt;"><b>내 정보 수정</b></span>
 	                </a>
 	              </li>
 	              <li>
-	                <div class="dropdown-divider"></div>
-	              </li>
-	              <li>
-	                <a class="dropdown-item" th:href="@{/kids/logout}">
+	                <a class="dropdown-item d-flex justify-content-start" th:href="@{/kids/logout}">
 	                  <i class="bx bx-power-off me-2"></i>
 	                  <span class="align-middle" style="color:#454545; font-size:10pt;"><b>로그아웃</b></span>
 	                </a>
@@ -358,6 +351,7 @@
 	            </ul>
 	          </li>
 	          <!--/ User -->
+
               </ul>
             </div>
           </nav>
@@ -370,7 +364,7 @@
             <div class="container-xxl flex-grow-1 container-p-y">
               <div class="row">
 	              <div class="col-md-5 col-12">
-	              	<p style="font-size:20pt; color:black;"><b>전국 보건소 찾기</b></p>
+	              	<p style="font-size:20pt; color:black;"><b>내 주변 보건소</b></p>
           	      </div>
           	      <div class="col-md-7 col-12">
 			  	   <form id="form1" name="form1" method="post" onsubmit="geocoder.addressSearch(this.value)">
@@ -438,11 +432,17 @@
             </div>
             <br>
             <div class="row d-flex justify-content-center">
-				    
-					<div class="col-md-12 col-12">
-				        <div class="card">
+				        <div id="card_table" class="card">
 						  <p class="card-header" style="font-size:20pt; color:#454545"><b>보건소 리스트</b></p>
-						    <table class="table">
+						    <table id="pediatricList" class="table">
+						      <colgroup>
+						      	<col width="20%"></col>
+						      	<col width="20%"></col>
+						      	<col width="20%"></col>
+						      	<col width="20%"></col>
+						      	<col width="20%"></col>
+						      	<col width="20%"></col>
+						      </colgroup>
 						      <thead>
 						        <tr>
 						          <th style="font-size:14pt; color:#454545">보건소</th>
@@ -462,7 +462,6 @@
 				        
 				        </div>
 				 	
-					</div>
 			</div>
             	
             
@@ -493,6 +492,10 @@
 			var value;
 			var lat;
 			var lon;
+			
+			var lati;
+			var longi;
+			
 			var lat2;
 			var lon2;
 			var locPosition;
@@ -543,8 +546,8 @@
 					
 				    // 정상적으로 검색이 완료됐으면 
 				     if (status === kakao.maps.services.Status.OK) {
-						var lati = result[0].y;
-						var longi = result[0].x;
+						lati = result[0].y;
+						longi = result[0].x;
 				        var centerLocation = new kakao.maps.LatLng(lati, longi);
 				        // 지도의 중심을 결과값으로 받은 위치로 이동시킵니다
 				        map.setCenter(centerLocation);
@@ -557,11 +560,8 @@
 				formData.append("city1", city1);
 				formData.append("county1", county1);
 				
-				fetch('/kids/pediatric', {
+				fetch('/kids/publicHealth', {
 					method:'post',
-					headers:{
-						'Accept': 'application/json'
-					},
 					body: formData
 				}).then((response) => response.json())
 				  .then((data) => {
@@ -752,18 +752,18 @@
 			            };
 			        })(marker, arr[i][1].dutyName);
 					
-			        var row = '<tr><td style="font-size:11pt; color:#454545"><i class="fab fa-angular fa-lg text-danger me-3"></i><b>'
+			        var row = '<tr><td style="font-size:11pt; color:#454545"><i class="bx bx-plus-medical" style="color:red;font-size:10pt;"></i><b> '
 			        + arr[i][1].dutyName + '</b></td><td style="font-size:11pt; color:#454545"><b>' + arr[i][1].dutyAddr + '<b></td><td style="font-size:11pt; color:#454545;"><b>' + 
-			        arr[i][1].dutyTel1 + '</b></td><td style="font-size:11pt; color:#454545"><b>' + arr[i][2] + 'km</b></td><td><ul style="list-style-type:none;"><br><li style="font-size:11pt; color:#454545"><b>월: ' + arr[i][1].dutyTime1s + ' ~ ' + arr[i][1].dutyTime1c + '</b></li>'+
-			        '<li style="font-size:11pt; color:#454545"><b>화: ' + arr[i][1].dutyTime2s + ' ~ ' + arr[i][1].dutyTime2c + '</b></li>' + '<li style="font-size:11pt; color:#454545"><b>수: ' + arr[i][1].dutyTime3s + ' ~ ' + arr[i][1].dutyTime3c + '</b></li>' + 
-			        '<li style="font-size:11pt; color:#454545"><b>목: ' + arr[i][1].dutyTime4s + ' ~ ' + arr[i][1].dutyTime4c + '</b></li>' + '<li style="font-size:11pt; color:#454545"><b>금: ' + arr[i][1].dutyTime5s + ' ~ ' + arr[i][1].dutyTime5c + '</b></li>' + 
-			        '<li style="font-size:11pt; color:#454545"><b>토: ' + arr[i][1].dutyTime6s + ' ~ ' + arr[i][1].dutyTime6c + '</b></li>' + '<li style="font-size:11pt; color:#454545"><b>일: ' + arr[i][1].dutyTime7s + ' ~ ' + arr[i][1].dutyTime7c + '</b></li></ul></td>' +
-			        '<td><input type="button" class="btn-primary" onclick="viewHospital(\'' + arr[i][0] + '\',\''  + arr[i][1].dutyName + '\',\'' + arr[i][1].dutyAddr + '\',\'' + arr[i][1].dutyTel1 +'\',\'' + arr[i][1].wgs84Lat + '\' , \'' + 
-			        arr[i][1].wgs84Lon +'\',\'' + arr[i][1].dutyDiv +  '\');" value="예약하기" style="font-size:12pt; border:none;border-radius:10px; padding:10px; color:#fff;"></td></tr>';
+			        arr[i][1].dutyTel1 + '</b></td><td style="font-size:11pt; color:#454545"><b>' + arr[i][2] + 'km</b></td><td><span style="font-size:11pt; color:#454545; display:inline-block"><b>월: ' + arr[i][1].dutyTime1s + ' ~ ' + arr[i][1].dutyTime1c +' </b></span> '+
+			        ' <span style="font-size:11pt; color:#454545; display:inline-block"><b>화: ' +  arr[i][1].dutyTime2s + ' ~ ' + arr[i][1].dutyTime2c + ' </b></span> ' + ' <span style="font-size:11pt; color:#454545; display:inline-block"><b>수: '+ arr[i][1].dutyTime3s + ' ~ ' + arr[i][1].dutyTime3c +' </b></span> '+ 
+			        ' <span style="font-size:11pt; color:#454545; display:inline-block"><b>목: ' + arr[i][1].dutyTime4s  + ' ~ ' + arr[i][1].dutyTime4c + ' </b></span> ' + ' <span style="font-size:11pt; color:#454545; display:inline-block"><b>금: ' + arr[i][1].dutyTime5s + ' ~ ' + arr[i][1].dutyTime5c +' </b></span> '+
+			        ' <span style="font-size:11pt; color:#454545; display:inline-block"><b>토: ' + arr[i][1].dutyTime6s + ' ~ ' + arr[i][1].dutyTime6c +' </b></span> '+ ' <span style="font-size:11pt; color:#454545; display:inline-block"><b>일: ' + arr[i][1].dutyTime7s + ' ~ ' + arr[i][1].dutyTime7c +' </b></span> '+
+			        '<td><input type="button" class="btn-primary" onclick="viewHospital(\'' + arr[i][0] + '\',\'' +  arr[i][1].dutyName + '\',\'' + arr[i][1].dutyTime1s+ '\',\'' + arr[i][1].dutyTime1c+ '\',\'' + arr[i][1].dutyTime2s+ '\',\'' + arr[i][1].dutyTime2c+ '\',\'' + arr[i][1].dutyTime3s+ '\',\'' + arr[i][1].dutyTime3c+ '\',\'' + arr[i][1].dutyTime4s+'\',\'' + arr[i][1].dutyTime4c
+			        + '\',\''+ arr[i][1].dutyTime5s+ '\',\'' + arr[i][1].dutyTime5c+ '\',\'' + arr[i][1].dutyTime6s+ '\',\'' + arr[i][1].dutyTime6c+ '\',\'' + arr[i][1].dutyTime7s+ '\',\'' + arr[i][1].dutyTime7c+ '\',\'' + arr[i][1].dutyTime8s+ '\',\'' + arr[i][1].dutyTime8c+ '\',\'' + arr[i][1].dutyAddr + '\',\'' + arr[i][1].dutyTel1 +'\',\'' + arr[i][1].wgs84Lat + '\' , \'' + 
+			        arr[i][1].wgs84Lon +'\',\'' + arr[i][1].dutyDiv + '\',\'' + arr[i][1].hpid + '\'' + ');" value="예약하기" style="font-size:12pt; border:none;border-radius:10px; padding:10px; color:#fff;"></td></tr>';
 			        hospital_table.innerHTML += row;
 			    }
 			    
-			    displayPagination(arr);
 			
 			    // 검색결과 항목들을 검색결과 목록 Element에 추가합니다
 			    menuEl.scrollTop = 0;
@@ -826,20 +826,10 @@
 			    markers = [];
 			}
 			
-			// 검색결과 목록 하단에 페이지번호를 표시는 함수입니다
-			function displayPagination(arr) {
-				var postNum = 5,
-				totalCount = arr.length;
-				
-			    for(var i = 0 ; i < totalCount; i++){
-			    	var pageNum = arr[i][0];
-			    	var startPoint = ((pageNum - 1) / (pageCountInSection)) * pageCountInSection + 1;
-			    	var endPoint = startPoint + pageCountInSection - 1;
-			    }
-			}
-			
-			function viewHospital(index, dutyName, dutyAddr, dutyTel1, wgs84Lat, wgs84Lon, dutyDiv){
-				location.href = "/kids/viewHospital?index="+ index + "&dutyName=" + dutyName + "&dutyAddr=" + dutyAddr + "&dutyTel1=" + dutyTel1 + "&wgs84Lat=" + wgs84Lat + "&wgs84Lon=" + wgs84Lon + "&dutyDiv=" + dutyDiv;
+			function viewHospital(index, dutyName, dutyTime1s, dutyTime1c, dutyTime2s, dutyTime2c, dutyTime3s, dutyTime3c, dutyTime4s, dutyTime4c, dutyTime5s, dutyTime5c, dutyTime6s, dutyTime6c, dutyTime7s, dutyTime7c, dutyTime8s, dutyTime8c, dutyAddr, dutyTel1, wgs84Lat, wgs84Lon, dutyDiv, hpid){
+				location.href = "/kids/viewHospital?index="+ index + "&dutyName=" +dutyName+ "&dutyTime1s=" + dutyTime1s +"&dutyTime1c=" + dutyTime1c +"&dutyTime2s=" + dutyTime2s +"&dutyTime2c=" + dutyTime2c +"&dutyTime3s=" + dutyTime3s +"&dutyTime3c=" + dutyTime3c +"&dutyTime4s=" + dutyTime4s +"&dutyTime4c=" + dutyTime4c +
+						"&dutyTime5s=" + dutyTime5s +"&dutyTime5c=" + dutyTime5c +"&dutyTime6s=" + dutyTime6s +"&dutyTime6c=" + dutyTime6c +"&dutyTime7s=" + dutyTime7s +"&dutyTime7c=" + dutyTime7c +"&dutyTime8s=" + dutyTime8s +
+						"&dutyTime8c=" + dutyTime8c + "&dutyAddr=" + dutyAddr + "&dutyTel1=" + dutyTel1 + "&wgs84Lat=" + wgs84Lat + "&wgs84Lon=" + wgs84Lon + "&dutyDiv=" + dutyDiv + "&hpid=" + hpid;
 			}
 			
 			// 검색결과 목록 또는 마커를 클릭했을 때 호출되는 함수입니다
@@ -851,6 +841,7 @@
 			    infowindow.open(map, marker);
 			}
 			
+
 			 // 검색결과 목록의 자식 Element를 제거하는 함수입니다
 			function removeAllChildNods(el) {   
 			    while (el.hasChildNodes()) {
@@ -876,7 +867,7 @@
 			        drawingFlag = true; 
 			       
 			        // 원이 그려질 중심좌표를 클릭한 위치로 설정합니다 
-			        centerPosition = new kakao.maps.LatLng(lat, lon);
+			        centerPosition = new kakao.maps.LatLng(lati, longi);
 			        // 그려지고 있는 원의 반경을 표시할 선 객체를 생성합니다
 			        if (!drawingLine) {
 			            drawingLine = new kakao.maps.Polyline({
@@ -1153,14 +1144,8 @@
 			
 		</script>
 
-    <!-- Core JS -->
-    <!-- build:js assets/vendor/js/core.js -->
-    <script src="/assets/vendor/libs/jquery/jquery.js"></script>
-    <script src="/assets/vendor/libs/popper/popper.js"></script>
-    <script src="/assets/vendor/js/bootstrap.js"></script>
-    <script src="/assets/vendor/libs/perfect-scrollbar/perfect-scrollbar.js"></script>
-    <script src="/assets/vendor/js/menu.js"></script>
    
+  
     
     <!-- endbuild -->
 
@@ -1172,16 +1157,33 @@
 	<script src="/vendor/glightbox/js/glightbox.min.js"></script>
 	<script src="/vendor/swiper/swiper-bundle.min.js"></script>
 	<script src="/vendor/php-email-form/validate.js"></script>
+	
+	<!-- / Layout wrapper -->
+	  <!-- Core JS -->
+	  <!-- build:js assets/vendor/js/core.js -->
+	  <script src="/assets/vendor/libs/jquery/jquery.js"></script>
+	  <script src="/assets/vendor/libs/popper/popper.js"></script>
+	  <script src="/assets/vendor/js/bootstrap.js"></script>
+	  <script src="/assets/vendor/libs/perfect-scrollbar/perfect-scrollbar.js"></script>
+	  
+	  <script src="/assets/vendor/js/menu.js"></script>
+	  <!-- endbuild -->
+	
+	  <!-- Vendors JS -->
+	  
+	  
+	
+	  <!-- Main JS -->
+	  <script src="/assets/js/main.js"></script>
+	
+	  <!-- Page JS -->
+	  <script src="/assets/js/pages-account-settings-account.js"></script>
+	  
+	  <!-- Place this tag in your head or just before your close body tag. -->
+	  <script async="" defer="" src="https://buttons.github.io/buttons.js"></script>
+	
 
-    <!-- Main JS -->
-    <script src="/assets/js/main.js"></script>
-
-    <!-- Page JS -->
-    <script src="/assets/js/dashboards-analytics.js"></script>
-
-    <!-- Place this tag in your head or just before your close body tag. -->
-    <script async defer src="https://buttons.github.io/buttons.js"></script>
-    
+   
     
   </body>
 </html>

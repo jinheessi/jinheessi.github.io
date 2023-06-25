@@ -73,8 +73,9 @@
 	    </script>
 	    <!-- Custom notification for demo -->
 	    <!-- beautify ignore:end -->
+		<!-- 세션에 userid 있으면 reservationView로 이동-->
 		<script th:inline="javascript">
-			if(/*[[${session.hospitalUserId}]]*/ null != null){
+			if([[${session.hospitalUserId}]] != null){
 				location.href="/master/reservationView";
 			}
 		</script>

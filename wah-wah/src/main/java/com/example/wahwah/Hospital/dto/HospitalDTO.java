@@ -45,40 +45,38 @@ public class HospitalDTO {
     
     
 
-    public HospitalEntity dtoToEntity(HospitalDTO dto) {
+    public HospitalEntity dtoToEntity() {
 
         HospitalEntity hospitalEntity = HospitalEntity.builder()
-                                .hpid(dto.getHpid())
-                                .dutyName(dto.getDutyName())
-                                .dutyAddr(dto.getDutyAddr())
-                                .dutyTel1(dto.getDutyTel1())
-                                .createdat(dto.getCreatedat())
-                                .dutyDiv(dto.getDutyDiv())
-                                .dutyInf(dto.getDutyInf())
-                                .dutyTel3(dto.getDutyTel3())
-                                .dutyTime1c(dto.getDutyTime1c())
-                                .dutyTime1s(dto.getDutyTime1s())
-                                .dutyTime2c(dto.getDutyTime2c())
-                                .dutyTime2c(dto.getDutyTime2s())
-                                .dutyTime3c(dto.getDutyTime3c())
-                                .dutyTime3c(dto.getDutyTime3s())
-                                .dutyTime4c(dto.getDutyTime4c())
-                                .dutyTime4c(dto.getDutyTime4c())
-                                .dutyTime5c(dto.getDutyTime5c())
-                                .dutyTime5c(dto.getDutyTime5s())
-                                .dutyTime6c(dto.getDutyTime6c())
-                                .dutyTime6c(dto.getDutyTime6s())
-                                .dutyTime7c(dto.getDutyTime7c())
-                                .dutyTime7c(dto.getDutyTime7s())
-                                .dutyTime8c(dto.getDutyTime8c())
-                                .dutyTime8c(dto.getDutyTime8s())
-                                .postCdn1(dto.getPostCdn1())
-                                .wgs84Lon(dto.getWgs84Lon())  
-                                .wgs84Lat(dto.getWgs84Lat())  
+                                .hpid(this.getHpid())
+                                .dutyName(this.getDutyName())
+                                .dutyAddr(this.getDutyAddr())
+                                .dutyTel1(this.getDutyTel1())
+                                .createdat(this.getCreatedat())
+                                .dutyDiv(this.getDutyDiv())
+                                .dutyInf(this.getDutyInf())
+                                .dutyTel3(this.getDutyTel3())
+                                .dutyTime1c(this.getDutyTime1c())
+                                .dutyTime1s(this.getDutyTime1s())
+                                .dutyTime2c(this.getDutyTime2c())
+                                .dutyTime2s(this.getDutyTime2s())
+                                .dutyTime3c(this.getDutyTime3c())
+                                .dutyTime3s(this.getDutyTime3s())
+                                .dutyTime4c(this.getDutyTime4c())
+                                .dutyTime4s(this.getDutyTime4s())
+                                .dutyTime5c(this.getDutyTime5c())
+                                .dutyTime5s(this.getDutyTime5s())
+                                .dutyTime6c(this.getDutyTime6c())
+                                .dutyTime6s(this.getDutyTime6s())
+                                .dutyTime7c(this.getDutyTime7c())
+                                .dutyTime7s(this.getDutyTime7s())
+                                .dutyTime8c(this.getDutyTime8c())
+                                .dutyTime8s(this.getDutyTime8s())
+                                .postCdn1(this.getPostCdn1())
+                                .wgs84Lon(this.getWgs84Lon())  
+                                .wgs84Lat(this.getWgs84Lat())  
                                 .build();
 
         return hospitalEntity;
     }
-
-
 }

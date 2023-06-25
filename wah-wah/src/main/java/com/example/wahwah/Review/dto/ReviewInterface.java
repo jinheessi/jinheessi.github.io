@@ -9,5 +9,6 @@ public interface ReviewInterface {
     Integer getLikecnt();
     Integer getDislikecnt();
     String getRanking();
+    String getRegdate();
 
 }

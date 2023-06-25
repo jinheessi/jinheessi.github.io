@@ -13,6 +13,7 @@ import java.util.stream.Collectors;
 import org.jdom2.Document;
 import org.jdom2.Element;
 import org.jdom2.input.SAXBuilder;
+import org.springframework.stereotype.Service;
 
 import com.example.wahwah.Hospital.dto.*;
 
@@ -20,6 +21,7 @@ import lombok.Data;
 
 import java.net.URI;
 
+@Service
 public class OpenAPI {
 
     // 시도/시구군로 필터링하여 병의원 목록 가져와주는 함수 => 자세한 정보 말고 가벼운 정보 정도. 진료 요일 + 오늘 진료 시간 정도만!
@@ -34,6 +36,58 @@ public class OpenAPI {
             sb.append("&" + URLEncoder.encode("Q0", "UTF-8") + "=" + URLEncoder.encode(city1, "UTF-8"));
             sb.append("&" + URLEncoder.encode("Q1", "UTF-8") + "=" + URLEncoder.encode(county1, "UTF-8"));
             sb.append("&" + URLEncoder.encode("QD", "UTF-8") + "=" + URLEncoder.encode(kidCode, "UTF-8"));
+            sb.append("&" + URLEncoder.encode("numOfRows", "UTF-8") + "=" + URLEncoder.encode("500", "UTF-8"));
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+
+        URL url;
+
+        // hospital 정보를 담온 hospitalDTOList 생성
+        List<HospitalSummaryDTO> hospitalSummaryDTOList = new ArrayList<>();
+
+        try {
+            // 직접 만들어준 parser 객체를 생성해준다.
+            url = new URL(sb.toString());
+            HttpURLConnection conn = (HttpURLConnection) url.openConnection();
+            conn.setRequestMethod("GET");
+            conn.setRequestProperty("Content-Type", "application/json");
+            conn.connect();
+
+            Document document = new SAXBuilder().build(conn.getInputStream());
+            Element root = document.getRootElement();
+            Element body = root.getChild("body");
+            Element items = body.getChild("items");
+            List<Element> item = items.getChildren("item");
+
+            for (Element element : item) {
+                HospitalSummaryDTO hospitalDTOParser = OpenAPIParser.transferXmlToParser(element);
+
+                // parser를 통해 만들어진 hospitalDTO 객체들을 hospitalDTOList에 담아준다.
+                hospitalSummaryDTOList.add(hospitalDTOParser);
+                System.out.println("apartXmlParser = " + hospitalDTOParser);
+            }
+
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return hospitalSummaryDTOList;
+    }
+
+    // 시도/시구군로 필터링하여 병의원 목록 가져와주는 함수 => 자세한 정보 말고 가벼운 정보 정도. 진료 요일 + 오늘 진료 시간 정도만!
+    public List<HospitalSummaryDTO> getHospitalListByAddressAndName(String city1, String county1, String hospitalName) {
+        StringBuilder sb = new StringBuilder(
+                "http://apis.data.go.kr/B552657/HsptlAsembySearchService/getHsptlMdcncListInfoInqire");
+        String kidCode = "D002";
+        // Append query parameters directly without the question mark
+        try {
+            sb.append("?" + URLEncoder.encode("serviceKey", "UTF-8")
+                    + "=Ef3rlLsHWZkeStwJGaJaQFaKsRI0sndf5kQ0V4aLcJy7uwPl0AKew5TSrlieUu9rWP7dpxTk0VOBrWMrzgSM3g%3D%3D");
+            sb.append("&" + URLEncoder.encode("Q0", "UTF-8") + "=" + URLEncoder.encode(city1, "UTF-8"));
+            sb.append("&" + URLEncoder.encode("Q1", "UTF-8") + "=" + URLEncoder.encode(county1, "UTF-8"));
+            sb.append("&" + URLEncoder.encode("QD", "UTF-8") + "=" + URLEncoder.encode(kidCode, "UTF-8"));
+            sb.append("&" + URLEncoder.encode("QN", "UTF-8") + "=" + URLEncoder.encode(hospitalName, "UTF-8"));
+
             sb.append("&" + URLEncoder.encode("numOfRows", "UTF-8") + "=" + URLEncoder.encode("500", "UTF-8"));
         } catch (Exception e) {
             e.printStackTrace();
@@ -163,7 +217,7 @@ public class OpenAPI {
     }
 
     // 응급실 데이터 목록을 뽑아와 주는 함수
-    public List<HospitalSummaryDTO> getEmemrgencyList(String addr1, String addr2) {
+    public List<HospitalSummaryDTO> getEmergencyList(String city1, String county1) {
         StringBuffer sb = new StringBuffer(
                 "http://apis.data.go.kr/B552657/HsptlAsembySearchService/getHsptlMdcncListInfoInqire");
         String EmergencyCode = "D024";
@@ -172,9 +226,10 @@ public class OpenAPI {
         try {
             sb.append("?serviceKey="
                     + "fflIVG4Jwejv9sdXgzfj8PPjv6NFFyGBzJgqb2gHGusYJN09on8GYuJp%2BD8TFPcSPwgw7%2BJqsx0O1r3YJqrrVA%3D%3D");
-            sb.append("&Q0=" + addr1);
-            sb.append("&Q1=" + addr2);
-            sb.append("&QD=" + EmergencyCode);
+            sb.append("&" + URLEncoder.encode("Q0", "UTF-8") + "=" + URLEncoder.encode(city1, "UTF-8"));
+            sb.append("&" + URLEncoder.encode("Q1", "UTF-8") + "=" + URLEncoder.encode(county1, "UTF-8"));
+            sb.append("&" + URLEncoder.encode("QD", "UTF-8") + "=" + URLEncoder.encode(EmergencyCode, "UTF-8"));
+            sb.append("&" + URLEncoder.encode("numOfRows", "UTF-8") + "=" + URLEncoder.encode("500", "UTF-8"));
         } catch (Exception e) {
             e.printStackTrace();
         }
@@ -188,8 +243,8 @@ public class OpenAPI {
             // 직접 만들어준 parser 객체를 생성해준다.
             url = new URL(sb.toString());
             HttpURLConnection conn = (HttpURLConnection) url.openConnection();
-            conn.setRequestProperty("Content-Type", "application/xml");
             conn.setRequestMethod("GET");
+            conn.setRequestProperty("Content-Type", "application/json");
             conn.connect();
 
             SAXBuilder builder = new SAXBuilder();
@@ -216,8 +271,7 @@ public class OpenAPI {
         return HospitalSummaryDTOList;
     }
 
-
-    //보건소 불러오는 함수 
+    // 보건소 불러오는 함수
     public List<HospitalSummaryDTO> getPublicHospitalList(String addr1, String addr2) {
         StringBuilder sb = new StringBuilder(
                 "http://apis.data.go.kr/B552657/HsptlAsembySearchService/getHsptlMdcncListInfoInqire");
@@ -255,7 +309,6 @@ public class OpenAPI {
 
             for (Element element : item) {
                 HospitalSummaryDTO hospitalDTOParser = OpenAPIParser.transferXmlToParser(element);
-
                 // parser를 통해 만들어진 hospitalDTO 객체들을 hospitalDTOList에 담아준다.
                 hospitalSummaryDTOList.add(hospitalDTOParser);
                 System.out.println("apartXmlParser = " + hospitalDTOParser);
@@ -264,7 +317,7 @@ public class OpenAPI {
         } catch (Exception e) {
             e.printStackTrace();
         }
-
+        System.out.println("hospitalSummaryDTOList = " + hospitalSummaryDTOList);
         return hospitalSummaryDTOList;
     }
 
