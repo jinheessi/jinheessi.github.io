@@ -23,29 +23,41 @@ import lombok.ToString;
 @ToString
 @Entity(name="tbl_review")
 @Table(name="tbl_review")
+@SequenceGenerator(
+	    name="REVIEW_SEQ_GENERATOR",
+	    sequenceName = "REVIEW_SEQ",
+	    initialValue = 1, allocationSize = 1
+)
 public class ReviewEntity {
     //
     @Id
-    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator="review_seqno")
-	@SequenceGenerator(name="review_seqno", sequenceName="review_seqno", initialValue=1, allocationSize=1)
+    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator="REVIEW_SEQ_GENERATOR")
     private Integer seqno;
-
-    @Column(name="hospitalid")
-    private String hospitalid;
+    
+    @Column(name="dutyName")
+    private String dutyName;
+    
+    @Column(name="hpid")
+    private String hpid;
+    
+    @Column(name="writer")
+    private String writer;
 
     @Column(name="email")
     private String email;
+    
+    @Column(name="regdate")
+    private String regdate;
+    
+    @Column(name="ranking")
+    private String ranking;
+    
+    @Column(name="title")
+    private String title;
 
     @Column(name="content")
     private String content;
-    
-    @Column(name="likecnt")
-    private Integer likecnt;
 
-    @Column(name="dislikecnt")
-    private Integer dislikecnt;
-
-    @Column(name="ranking")
-    private String ranking;
+   
 
 }

@@ -434,7 +434,7 @@
             </li>
 
             <!-- Layouts -->
-            <li class="menu-item ">
+            <li class="menu-item">
               <a href="javascript:void(0);" class="menu-link menu-toggle">
                 <i class="menu-icon tf-icons bx bx-layout"></i>
                 <div data-i18n="Layouts" style="color:black;">예약</div>
@@ -445,13 +445,6 @@
                   <a th:href="@{/kids/pediatric}" class="menu-link">
                     <div data-i18n="Without menu" style="color:black;">소아과</div>
                   </a>
-                  <ul class="menu-sub">
-					  <li class="menu-item">
-						  <a href="javascript:void(0)" class="menu-link">
-							  <div data-i18n="Without menu" style="color:black;">접수하기</div>
-						  </a>
-					  </li>
-				  </ul>
                 </li>
                 <li class="menu-item">
                   <a th:href="@{/kids/emergency}" class="menu-link">
@@ -482,10 +475,16 @@
                 </li>
                 <li class="menu-item active">
                   <a th:href="@{/kids/myreceipt}" class="menu-link">
-                    <div data-i18n="Connections" style="color:black;">내 접수 관리/수정</div>
+                    <div data-i18n="Notifications" style="color:black;">내 접수 관리/수정</div>
                   </a>
                 </li>
               </ul>
+	            <li class="menu-item">
+	              <a th:href="@{/kids/mybabycard}" class="menu-link">
+	                <i class="menu-icon tf-icons bx bx-dock-top"></i>
+	                <div data-i18n="Account Settings" style="color:black;">아기 수첩</div>
+	              </a>
+	            </li>
             </li>
             
             
@@ -537,6 +536,7 @@
           </ul>
         </aside>
         <!-- / Menu -->
+
 
         <!-- Layout container -->
         <div class="layout-page">
@@ -620,7 +620,7 @@
             <div class="container-xxl flex-grow-1 container-p-y">
               <div class="row">
 	              <div class="col-12">
-	              	<p th:text="|${receiptList.dutyName} (${receiptList.hpid}) 접수 수정|" style="font-size:23pt; color:black; font-weight:bold;"></p>
+	              	<p th:text="|${receiptList.duty_Name} (${receiptList.hpid}) 접수 수정|" style="font-size:23pt; color:black; font-weight:bold;"></p>
           	      </div>
           	      <hr>
               </div>
@@ -678,7 +678,7 @@
 				            </div>
 				          </div>
 				          
-				          <input type="hidden" class="form-control" id="dutyName" name="dutyName" th:value="${receiptList.dutyName}">
+				          <input type="hidden" class="form-control" id="duty_Name" name="duty_Name" th:value="${receiptList.duty_Name}">
 				          <input type="hidden" class="form-control" id="hpid" name="hpid" th:value="${receiptList.hpid}">
 				          <div class="row d-flex justify-content-center align-items">
 							  <div class="col-md-10">

@@ -35,7 +35,7 @@ public class PatientController {
 		
 		model.addAttribute("session", session);
 		model.addAttribute("member", member);
-		model.addAttribute("baby", pservice.myBabyCard(pname));
+		model.addAttribute("babies", pservice.myBabyCard(pname));
 	}
 	
 	@GetMapping("/kids/viewbabycard")
@@ -83,14 +83,50 @@ public class PatientController {
 	}
 	
 	@GetMapping("/kids/modifybabycard")
-	public void getModifybabycard(HttpSession session, Model model) {
+	public void getModifybabycard(@RequestParam("bname") String bname, HttpSession session, Model model) {
+		
+		MemberInterface member = mservice.memberInfoView((String)session.getAttribute("email"));
+		model.addAttribute("session", session);
+		model.addAttribute("member", member);
+		model.addAttribute("baby", pservice.viewBabyCard(bname));
+	}
+	
+	@PostMapping("/kids/modifybabycard")
+	public String postModifybabycard(PatientDTO patient, @RequestParam("photo") MultipartFile mpr) throws IllegalStateException, IOException {
+		
+		String path = "c:\\Repository\\profile\\"; 
+		
+		if(!mpr.isEmpty()) {
+
+			File targetFile = null; 
+			String org_filename = mpr.getOriginalFilename();	
+			String org_fileExtension = org_filename.substring(org_filename.lastIndexOf("."));	
+			String stored_filename = UUID.randomUUID().toString().replaceAll("-", "") + org_fileExtension;	
+			long filesize = mpr.getSize();
+				
+			targetFile = new File(path + stored_filename);
+			mpr.transferTo(targetFile);
+				
+			patient.setOrg_filename(org_filename);
+			patient.setStored_filename(stored_filename);
+			patient.setFilesize(filesize);
+		}
+        
+		pservice.modifyBabyCard(patient);
+		return "redirect:/kids/mybabycard";
+	}
+	
+	@GetMapping("/kids/deletebabycard")
+	public String getDeletebabycard(@RequestParam("bname") String bname, HttpSession session, Model model) {
 		
 		MemberInterface member = mservice.memberInfoView((String)session.getAttribute("email"));
 		
 		model.addAttribute("session", session);
 		model.addAttribute("member", member);
+		
+		pservice.deleteBabyCard(bname);
+		return "redirect:/kids/mybabycard";
 	}
-	
 	
 	
 	

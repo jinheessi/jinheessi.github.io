@@ -62,17 +62,19 @@ public class ReservationController {
         String a = Integer.toString(year);
         String b = Integer.toString(day);
         String c = Integer.toString(month);
-
+        
+        
+        String reservestart =rdate + " " + rtime;
         System.out.println(a);
         System.out.println(b);
         System.out.println(c);
-
+        
         System.out.println("***************************************************************");
         System.out.println("***************************************************************");
         System.out.println("***************************************************************");
         System.out.println("***************************************************************");
         
-        System.out.println("resList ================== "+service.resList(rdate));
+        System.out.println("resList ================== "+service.resList(rdate).toString());
 
         return service.resList(rdate);
         // return null;

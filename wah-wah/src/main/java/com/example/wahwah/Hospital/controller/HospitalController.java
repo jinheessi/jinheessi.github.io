@@ -14,6 +14,8 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import com.example.wahwah.Hospital.application.OpenAPI;
 import com.example.wahwah.Hospital.dto.HospitalSummaryDTO;
 import com.example.wahwah.Hospital.service.HospitalService;
+import com.example.wahwah.Review.entity.ReviewEntity;
+import com.example.wahwah.Review.service.ReviewService;
 import com.example.wahwah.hospitaluser.dto.HospitalUserDTO;
 import com.example.wahwah.hospitaluser.service.HospitalUserService;
 import com.example.wahwah.member.dto.MemberDTO;
@@ -35,6 +37,7 @@ public class HospitalController {
     OpenAPI openAPI = new OpenAPI();
 
     private final MemberService mservice;
+    private final ReviewService rservice;
     
     // 홈 페이지 컨트롤러
     @GetMapping("/kids/home")
@@ -114,10 +117,11 @@ public class HospitalController {
         model.addAttribute("isUser", "false");
         String email = (String) session.getAttribute("email");
         MemberInterface member = mservice.memberInfoView(email);
-       
+        List<ReviewEntity> review = rservice.allCountReview(dto.getHpid());
+        
         model.addAttribute("member", member);
         model.addAttribute("session", session);
-        
+        model.addAttribute("reviewList", review);
     }
     
     // 건강 정보 페이지 컨트롤러

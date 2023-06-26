@@ -46,7 +46,7 @@
     <style>
         @font-face {
              font-family: 'GODOM';
-             src: url('/vendor/bootstrap-icons/fonts/GODOM.ttf') format('truetype');
+             src: url('/fonts/GODOM.TTF') format('truetype');
          }
          
          body,h1,h2,h3,h4,h5,h6,p,div p,a,div,span,small{
@@ -210,7 +210,6 @@
          $(document).ready(function(){
 
             var rdate;
-            var rtime;
             
             
             $('.datepicker').datepicker({
@@ -219,16 +218,13 @@
                 startDate: '0d'
             });
             
-
             
             $('.cell').click(async function(){
-
-            //    $('#replyList').html('예약한 날짜는 ' + rdate +'이고, 시간은 '+ rtime + ' 입니다. 정말로 예약하시겠습니까?');
 			   $('.cell').removeClass('select');
                  $(this).addClass('select');
                  rdate = $('#rdate').val();
                  rtime = $(this).text();
-
+                 
                var url = '/master/reservationViewAll';
                var formData = new FormData();
                formData.append("rdate", rdate);
@@ -245,8 +241,8 @@
 
 
 
-//댓글 목록 보기
-const replyList = (data) => {
+	//댓글 목록 보기
+	const replyList = (data) => {
       
       const jsonInfo = data;
 	  var replyBody = document.querySelector("#replyBody"); 
@@ -339,7 +335,7 @@ const replyList = (data) => {
             <li class="menu-header small text-uppercase"><span class="menu-header-text" style="color:black;">유용한 정보</span></li>
             <!-- Cards -->
             <li class="menu-item">
-              <a th:href="@{/kids/healthInfo}" class="menu-link">
+              <a th:href="@{/master/healthInfo}" class="menu-link">
                 <i class="menu-icon tf-icons bx bx-collection"></i>
                 <div data-i18n="Basic" style="color:black;">건강 정보</div>
               </a>
@@ -348,7 +344,7 @@ const replyList = (data) => {
             <li class="menu-header small text-uppercase"><span class="menu-header-text" style="color:black;">기타</span></li>
             
             <li class="menu-item">
-              <a th:href="@{/kids/notice}" class="menu-link">
+              <a th:href="@{/master/notice}" class="menu-link">
                 <i class="menu-icon tf-icons bx bx-file"></i>
                 <div data-i18n="Documentation" style="color:black;">공지사항</div>
               </a>
@@ -539,18 +535,18 @@ const replyList = (data) => {
    
     <!-- Core JS -->
      <!-- build:js assets/vendor/js/core.js -->
-     <script src="../assets/vendor/libs/popper/popper.js"></script>
-     <script src="../assets/vendor/js/bootstrap.js"></script>
-     <script src="../assets/vendor/libs/perfect-scrollbar/perfect-scrollbar.js"></script>
+     <script src="/assets/vendor/libs/popper/popper.js"></script>
+     <script src="/assets/vendor/js/bootstrap.js"></script>
+     <script src="/assets/vendor/libs/perfect-scrollbar/perfect-scrollbar.js"></script>
      
-     <script src="../assets/vendor/js/menu.js"></script>
+     <script src="/assets/vendor/js/menu.js"></script>
      <!-- endbuild -->
    
      <!-- Vendors JS -->
-     <script src="../assets/vendor/libs/masonry/masonry.js"></script>
+     <script src="/assets/vendor/libs/masonry/masonry.js"></script>
    
      <!-- Main JS -->
-     <script src="../assets/js/main.js"></script>
+     <script src="/assets/js/main.js"></script>
    
      <!-- Page JS -->
      

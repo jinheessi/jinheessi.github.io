@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 
 import com.example.wahwah.Hospital.dto.HospitalDTO;
 import com.example.wahwah.Receipt.dto.ReceiptDTO;
+import com.example.wahwah.Receipt.entity.ReceiptEntity;
 import com.example.wahwah.Receipt.service.ReceiptService;
 import com.example.wahwah.member.dto.MemberDTO;
 import com.example.wahwah.member.dto.MemberInterface;
@@ -53,6 +54,7 @@ public class ReceiptController {
     	MemberInterface member = mservice.memberInfoView((String)session.getAttribute("email"));
     	List<ReceiptInterface> receiptList = rservice.receiptList((String) session.getAttribute("username"));
     	
+   
     	model.addAttribute("member", member);
     	model.addAttribute("session", session);
     	model.addAttribute("receiptList", receiptList);

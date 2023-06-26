@@ -159,7 +159,7 @@
         <aside id="layout-menu" class="layout-menu menu-vertical menu bg-menu-theme">
           <div class="app-brand demo">
           	<br>
-          	<a th:href="@{/}" style="font-weight:bold; font-size:30pt; color:black; margin-top:20%; margin-bottom:10%;">응애응애</a>
+          	<p style="font-weight:bold; font-size:30pt; color:black; margin-top:20%; margin-bottom:10%;">응애응애</p>
 
             <a href="javascript:void(0);" class="layout-menu-toggle menu-link text-large ms-auto d-block d-xl-none">
               <i class="bx bx-chevron-left bx-sm align-middle"></i>
@@ -217,8 +217,20 @@
                     <div data-i18n="Notifications" style="color:black;">내 예약 관리/수정</div>
                   </a>
                 </li>
+                <li class="menu-item">
+                  <a th:href="@{/kids/myreceipt}" class="menu-link">
+                    <div data-i18n="Notifications" style="color:black;">내 접수 관리/수정</div>
+                  </a>
+                </li>
               </ul>
+	            <li class="menu-item">
+	              <a th:href="@{/kids/mybabycard}" class="menu-link">
+	                <i class="menu-icon tf-icons bx bx-dock-top"></i>
+	                <div data-i18n="Account Settings" style="color:black;">아기 수첩</div>
+	              </a>
+	            </li>
             </li>
+            
             
             <!-- Components -->
             <li class="menu-header small text-uppercase"><span class="menu-header-text" style="color:black;">유용한 정보</span></li>
@@ -268,6 +280,7 @@
           </ul>
         </aside>
         <!-- / Menu -->
+
 
         <!-- Layout container -->
         <div class="layout-page">

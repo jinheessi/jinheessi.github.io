@@ -27,7 +27,7 @@ public class ReservationServiceImpl implements ReservationService {
 
     // 월+일 예약 조회하기
     @Override
-    public List<ReservationInterface> resMonthList(String year ,String month) {
+    public List<ReservationEntity> resMonthList(String year ,String month) {
         return repository.resMonthList(year,month);        
     }
 

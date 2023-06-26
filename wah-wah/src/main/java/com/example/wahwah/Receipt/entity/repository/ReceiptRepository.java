@@ -6,6 +6,7 @@ import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
 
+import com.example.wahwah.Receipt.dto.ReceiptDTO;
 import com.example.wahwah.Receipt.dto.ReceiptInterface;
 import com.example.wahwah.Receipt.entity.ReceiptEntity;
 
@@ -18,5 +19,8 @@ public interface ReceiptRepository extends JpaRepository<ReceiptEntity, String> 
 	
 	
 	@Query(value="select * from tbl_receipt where seqno = :seqno", nativeQuery=true)
-	public ReceiptInterface viewReceipt(@Param("seqno") int seqno) ;
+	public ReceiptInterface viewoneReceipt(@Param("seqno") int seqno) ;
+	
+	@Query(value="update tbl_receipt set pname=:#{#entity.pname},  where seqno = :#{#entity.seqno}", nativeQuery=true)
+	public ReceiptInterface modifyReceipt(@Param("entity") ReceiptEntity entity) ;
 }

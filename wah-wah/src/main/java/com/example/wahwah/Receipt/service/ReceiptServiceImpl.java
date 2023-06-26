@@ -43,7 +43,7 @@ public class ReceiptServiceImpl implements ReceiptService{
 		// 내 접수 목록 확인
 		@Override
 		public List<ReceiptInterface> receiptList(String rname){
-		     List<ReceiptInterface> receiptInterfaceList = receiptRepository.viewReceipt(rname);
+		     List<ReceiptInterface> receiptInterfaceList =receiptRepository.viewReceipt(rname);
 		     return receiptInterfaceList;
 			
 		}
@@ -51,7 +51,7 @@ public class ReceiptServiceImpl implements ReceiptService{
 		// 내 접수 하나 확인
 		@Override
 		public ReceiptInterface receiptView(int seqno) {
-			ReceiptInterface receiptInterface = receiptRepository.viewReceipt(seqno);
+			ReceiptInterface receiptInterface = receiptRepository.viewoneReceipt(seqno);
 			return receiptInterface;
 			
 			
@@ -60,10 +60,8 @@ public class ReceiptServiceImpl implements ReceiptService{
 		// 내 접수 수정하기
 		@Override
 		public void receiptUpdate(ReceiptDTO receiptDTO) {
-			 ReceiptEntity entity = receiptRepository
-		                .findById((String)receiptDTO.getHpid()).get();
-		        
-		        receiptRepository.save(entity);
+			 ReceiptEntity entity = receiptDTO.dtoToEntity(receiptDTO);
+			 
 		}
 		
 		// 내 접수 취소하기

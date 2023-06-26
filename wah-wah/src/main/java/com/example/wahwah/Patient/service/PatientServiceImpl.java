@@ -20,12 +20,12 @@ public class PatientServiceImpl implements PatientService{
 	private final PatientRepository patientRepository;
 	
 	@Override
-	public List<PatientDTO> myBabyCard(String pname){
+	public List<PatientEntity> myBabyCard(String pname){
 		return patientRepository.myBabyCard(pname);
 	}
 	
 	@Override
-	public PatientDTO viewBabyCard(String bname) {
+	public PatientEntity viewBabyCard(String bname) {
 		return patientRepository.viewBabyCard(bname);
 	}
 	
@@ -33,5 +33,15 @@ public class PatientServiceImpl implements PatientService{
 	public void writeBabyCard(PatientDTO dto) {
 		PatientEntity patientEntity = dto.dtoToEntity(dto);
 		patientRepository.save(patientEntity);
+	}
+	@Override
+	public void modifyBabyCard(PatientDTO dto) {
+		PatientEntity patientEntity = dto.dtoToEntity(dto);
+		patientRepository.modifyBabyCard(patientEntity, dto.getBname());
+	}
+	
+	@Override
+	public void deleteBabyCard(String bname) {
+		patientRepository.deleteBabyCard(bname);
 	}
 }

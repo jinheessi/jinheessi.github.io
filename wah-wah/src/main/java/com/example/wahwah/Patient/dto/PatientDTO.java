@@ -12,6 +12,7 @@ import lombok.*;
 @Builder
 public class PatientDTO {
 	
+	private int seqno;
 	private String pname;
 	private String bname;
 	private String birth;
@@ -25,7 +26,7 @@ public class PatientDTO {
 	private String baby_info;
 	
 	public PatientDTO(PatientEntity patientEntity) {
-		
+		this.seqno = patientEntity.getSeqno();
 		this.pname = patientEntity.getPname();
 		this.bname = patientEntity.getBname();
 		this.birth = patientEntity.getBirth();
@@ -43,6 +44,7 @@ public class PatientDTO {
 	public PatientEntity dtoToEntity(PatientDTO patientDTO) {
 		
 		PatientEntity patientEntity = PatientEntity.builder()
+											.seqno(patientDTO.getSeqno())
 											.pname(patientDTO.getPname())
 											.bname(patientDTO.getBname())
 											.birth(patientDTO.getBirth())

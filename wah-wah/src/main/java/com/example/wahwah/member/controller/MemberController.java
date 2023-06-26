@@ -74,7 +74,7 @@ public class MemberController {
 	@PostMapping("/kids/modifyInfo")
 	public String postMemberInfoModify(MemberDTO member, @RequestParam("fileUpload") MultipartFile mpr) throws IllegalStateException, IOException {
 
-		String path = "c:\\Repository\\profile\\"; 
+		String path = "c:\\repository\\profile\\"; 
 		
 		if(!mpr.isEmpty()) {
 

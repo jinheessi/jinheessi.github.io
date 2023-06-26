@@ -21,7 +21,7 @@ public interface ReviewService {
     public List<ReviewInterface> list(String hospitalid);
 
     // 별점 다 가져오기
-    public List<ReviewEntity> allCountReview(String hospitalid);
+    public List<ReviewEntity> allCountReview(String hpid);
 
     // // 별점 한개 늘리기
     // public ReviewEntity plusRank(int seqno, int likecnt);

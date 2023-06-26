@@ -197,12 +197,12 @@
 	 	<!-- Layout wrapper -->
 		<div class="layout-wrapper layout-content-navbar  ">
 	  		<div class="layout-container">
-				<!-- Menu -->
+				 <!-- Menu -->
 
         <aside id="layout-menu" class="layout-menu menu-vertical menu bg-menu-theme">
           <div class="app-brand demo">
           	<br>
-          	<a th:href="@{/}" style="font-weight:bold; font-size:30pt; color:black; margin-top:20%; margin-bottom:10%;">응애응애</a>
+          	<p style="font-weight:bold; font-size:30pt; color:black; margin-top:20%; margin-bottom:10%;">응애응애</p>
 
             <a href="javascript:void(0);" class="layout-menu-toggle menu-link text-large ms-auto d-block d-xl-none">
               <i class="bx bx-chevron-left bx-sm align-middle"></i>
@@ -221,7 +221,7 @@
             </li>
 
             <!-- Layouts -->
-            <li class="menu-item">
+            <li class="menu-item active">
               <a href="javascript:void(0);" class="menu-link menu-toggle">
                 <i class="menu-icon tf-icons bx bx-layout"></i>
                 <div data-i18n="Layouts" style="color:black;">예약</div>
@@ -262,16 +262,23 @@
                 </li>
                 <li class="menu-item">
                   <a th:href="@{/kids/myreceipt}" class="menu-link">
-                    <div data-i18n="Connections" style="color:black;">내 접수 관리/수정</div>
+                    <div data-i18n="Notifications" style="color:black;">내 접수 관리/수정</div>
                   </a>
                 </li>
               </ul>
+	            <li class="menu-item">
+	              <a th:href="@{/kids/mybabycard}" class="menu-link">
+	                <i class="menu-icon tf-icons bx bx-dock-top"></i>
+	                <div data-i18n="Account Settings" style="color:black;">아기 수첩</div>
+	              </a>
+	            </li>
             </li>
+            
             
             <!-- Components -->
             <li class="menu-header small text-uppercase"><span class="menu-header-text" style="color:black;">유용한 정보</span></li>
             <!-- Cards -->
-            <li class="menu-item active">
+            <li class="menu-item">
               <a th:href="@{/kids/healthInfo}" class="menu-link">
                 <i class="menu-icon tf-icons bx bx-collection"></i>
                 <div data-i18n="Basic" style="color:black;">건강 정보</div>
@@ -316,6 +323,7 @@
           </ul>
         </aside>
         <!-- / Menu -->
+
 	    <!-- Layout container -->
 	    <div class="layout-page">
 			<!-- Navbar -->
@@ -398,6 +406,7 @@
 				 <div class="container d-flex justify-content-center align-items-center">
 				      <div class="card" style="width:70%">
 					      <div class="card-body">
+					      
 					        <form action="/kids/writeReview" method="post">
 								<div class="row">
 									<div class="col-md-6">
@@ -416,9 +425,9 @@
 					          	<br>
 					          	<div class="row">
 									<div class="col-md-2">
-							            <label class="form-label" for="username" style="color:#454545; font-weight:bold; font-size:14pt;">작성자</label>
+							            <label class="form-label" for="writer" style="color:#454545; font-weight:bold; font-size:14pt;">작성자</label>
 							            <div class="input-group input-group-merge">
-							              <input type="text" id="username" name="username" class="form-control phone-mask" th:value="${session.username}" style="text-align:center; font-weight:bold;" readonly>
+							              <input type="text" id="writer" name="writer" class="form-control phone-mask" th:value="${session.username}" style="text-align:center; font-weight:bold;" readonly>
 							            </div>
 									</div>
 									<div class="col-md-4">
@@ -464,11 +473,10 @@
 									
 								</div>
 								<br>
-								<b><span id="ranking" class="ranking" style="text-align:center;"></span></b>
-								<input type="hidden" id="ranking" name="ranking">
-								<input type="hidden" id="hospitalid" name="hospitalid" th:value=${hospital.hpid}>
+								<input type="text" id="ranking" name="ranking" class="ranking" style="text-align:center;" value="">
 								<input type="submit" class="btn btn-outline-primary" style="width:10%; text-align:center" value="작성">
 					        </form>
+					        
 							</div>
 							<div class="row">
 								<div class="col-md-12  d-flex justify-content-center">
@@ -523,7 +531,7 @@
 			const star4 = document.querySelector(".star4");
 			const star5 = document.querySelector(".star5");
 			var rank = 0;
-			
+			var ranking = document.getElementById("ranking");
 			
 			function handleTitleClick(){
 				

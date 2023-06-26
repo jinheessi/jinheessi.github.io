@@ -49,8 +49,10 @@ public class ReviewController {
     
     @PostMapping("/kids/writeReview")
     public String postWriteReview(ReviewDTO reviewDTO) {
+    	
+    	System.out.println(reviewDTO);
     	rservice.write(reviewDTO);
-    	return "redirect:/kids/reviewView";
+    	return "redirect:/kids/pediatric";
     }
     
     @GetMapping("/kids/reviewView")

@@ -25,12 +25,12 @@ public interface ReservationRepository extends JpaRepository<ReservationEntity,I
 	// List<ReservationInterface> resList(@Param("rdate") String rdate);
 
     // 월+일 예약 조회하기
-	@Query(value="SELECT * FROM tbl_reservation WHERE reservestart LIKE '%' || :rdate || '%'",nativeQuery=true)
-	List<ReservationInterface> resList(@Param("rdate") String rdate);
+    @Query(value = "SELECT * FROM tbl_reservation WHERE reservestart LIKE CONCAT('%', :rdate, '%')", nativeQuery = true)
+    List<ReservationInterface> resList(@Param("rdate") String rdate);
 
     // 월 예약 조회하기
 	@Query(value="SELECT * FROM tbl_reservation WHERE TO_CHAR(TO_DATE(reservestart, 'YYYY-MM-DD HH24:MI:SS'), 'MM') = :month and TO_CHAR(TO_DATE(reservestart, 'YYYY-MM-DD HH24:MI:SS'), 'YYYY') = :year",nativeQuery=true)
-	List<ReservationInterface> resMonthList(@Param("year") String year , @Param("month") String month);
+	List<ReservationEntity> resMonthList(@Param("year") String year , @Param("month") String month);
 
     // 예약 정보 수정하기
     @Modifying

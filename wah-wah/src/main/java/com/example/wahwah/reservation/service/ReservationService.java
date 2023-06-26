@@ -14,7 +14,7 @@ public interface ReservationService {
 
 
     // 예약 월별 조회
-    public List<ReservationInterface> resMonthList(String yaer, String month);
+    public List<ReservationEntity> resMonthList(String yaer, String month);
 
     // 예약
     public void reserve(ReservationDTO dto);    

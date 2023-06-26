@@ -18,22 +18,26 @@ import lombok.ToString;
 public class ReviewDTO {
     //
     private Integer seqno;
-    private String hospitalid;
+    private String dutyName;
+    private String hpid;
+    private String writer;
     private String email;
-    private String content;
-    private Integer likecnt;
-    private Integer dislikecnt;
+    private String regdate;
     private String ranking;
-
+    private String title;
+    private String content;
+   
 
     public ReviewDTO(ReviewEntity entity) {
         this.seqno = entity.getSeqno();
-        this.hospitalid = entity.getHospitalid();
+        this.dutyName = entity.getDutyName();
+        this.hpid = entity.getHpid();
+        this.writer = entity.getWriter();
         this.email = entity.getEmail();
-        this.content = entity.getContent();
-        this.likecnt = entity.getLikecnt();
-        this.dislikecnt = entity.getDislikecnt();
+        this.regdate = entity.getRegdate();
         this.ranking = entity.getRanking();
+        this.title = entity.getTitle();
+        this.content = entity.getContent();
     }
 
 
@@ -43,12 +47,14 @@ public class ReviewDTO {
             
         ReviewEntity reviewEntity = ReviewEntity.builder()
                                         .seqno(dto.getSeqno())
-                                        .hospitalid(dto.getHospitalid())
+                                        .dutyName(dto.getDutyName())
+                                        .hpid(dto.getHpid())
+                                        .writer(dto.getWriter())
                                         .email(dto.getEmail())
-                                        .content(dto.getContent())
-                                        .likecnt(dto.getLikecnt())
-                                        .dislikecnt(dto.getDislikecnt())
+                                        .regdate(dto.getRegdate())
                                         .ranking(dto.getRanking())
+                                        .title(dto.getTitle())
+                                        .content(dto.getContent())                                        
                                         .build();
         return reviewEntity;
     }

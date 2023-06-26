@@ -4,6 +4,7 @@ import java.util.List;
 
 import com.example.wahwah.Receipt.dto.ReceiptDTO;
 import com.example.wahwah.Receipt.dto.ReceiptInterface;
+import com.example.wahwah.Receipt.entity.ReceiptEntity;
 
 public interface ReceiptService {
 

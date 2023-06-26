@@ -21,13 +21,7 @@ public class ReviewServiceImpl implements ReviewService {
     @Override
     public void write(ReviewDTO review) {
 
-        ReviewEntity reviewEntity = new ReviewEntity().builder()
-								        .seqno(review.getSeqno())
-								        .content(review.getContent())
-								        .email(review.getEmail())
-								        .hospitalid(review.getHospitalid())
-								        .ranking(review.getRanking())
-								        .build();
+        ReviewEntity reviewEntity = review.dtoToEntity(review);
         
         repository.save(reviewEntity);
     }
@@ -55,8 +49,8 @@ public class ReviewServiceImpl implements ReviewService {
 
     // 별점 다 가져오기
     @Override
-    public List<ReviewEntity> allCountReview(String hospitalid) {
-        return repository.allCountReview(hospitalid);
+    public List<ReviewEntity> allCountReview(String hpid) {
+        return repository.allCountReview(hpid);
     }
 
     // // 별점 한개 늘리기
