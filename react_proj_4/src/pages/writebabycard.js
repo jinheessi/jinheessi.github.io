@@ -4,7 +4,7 @@ import axios from 'axios';
 
 const WriteBabyCard = () => {
     
-    const [session, setSession] = useState([]);
+    const [session, setSession] = useState(null);
     
     useEffect(() => {
         axios.get('/kids/writebabycard')

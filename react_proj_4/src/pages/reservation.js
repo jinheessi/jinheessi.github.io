@@ -1,6 +1,10 @@
 import {useState, useEffect} from 'react';
 import Frame from '../components/Frame';
 import axios from 'axios';
+import DatePicker from 'react-datepicker';
+import "../../node_modules/react-datepicker/dist/react-datepicker.css";
+import styled from 'styled-components';
+import { ko } from "date-fns/esm/locale";
 
 const Reservation = () => {
     const [hospital, setHospital] = useState(null);
@@ -22,7 +26,35 @@ const Reservation = () => {
         .then((data) => setEmail(data.email))
         .catch((error) => console.log(error));
     }, []);
+	
+	
 
+	const Datepicker = () => {
+		const [selectedDateTime, setSelectedDateTime] = useState(new Date());
+		
+		
+
+		return (
+			<div>
+				<DatePicker
+					showIcon
+					locale={ko}
+					selected={selectedDateTime} 
+					onChange={date => setSelectedDateTime(date)}
+					showTimeSelect
+					timeFormat="HH:mm"
+					timeIntervals={30}
+					timeCaption="시간"
+					dateFormat="yyyy년 MM월 dd일 HH:mm"
+					className="react-datepicker"
+				/>
+				<p>{selectedDateTime.toLocaleString()}</p>
+			</div>
+		  
+		);
+	};
+
+	
     return (
         <div>
             <Frame>
@@ -64,11 +96,7 @@ const Reservation = () => {
 							  <label className="form-check-label" for="gender2" style={{color:'#454545'}}><b>여성</b></label>
 							</div>
 				           </div>
-				           
 				          </div>
-				          
-				          	
-
 				          <div className="row mb-3">
 				            <label className="col-sm-2 col-form-label" for="weight" style={{color:'#454545', fontSize:'11pt'}}><b>키/체중</b></label>
 				            <div className="col-sm-10">
@@ -94,36 +122,8 @@ const Reservation = () => {
                     <div className="d-flex justify-content-center">
                       <div className="col-md-12 col-12">
                       <p style={{fontSize:'18pt'}}><b>날짜 선택</b></p>
-                      <form autocomplete="off">
-				          <div className="card-header" style={{backgroundColor:'#fff', border:'0'}}>
-				            <div className="mx-0 mb-0 row justify-content-sm-center px-1">
-				              <input type="text" id="rdate" className="datepicker" placeholder="날짜를 선택하세요(여기를 클릭)" name="date" readonly />
-                              <span className="fa fa-calendar"></span>
-				            </div>
-				          </div>
-				          <div className="card-body p-3 p-sm-5" style={{backgroundColor:'#fff', border:'none'}}>
-				            <div className="row text-center mx-0">
-				              <div className="col-md-4 col-12 my-1 px-2"><div className="cell py-1">오전 9:00</div></div>
-				              <div className="col-md-4 col-12 my-1 px-2"><div className="cell py-1">오전 10:00</div></div>
-				              <div className="col-md-4 col-12 my-1 px-2"><div className="cell py-1">오전 11:00</div></div>
-				            </div>
-				            <div className="row text-center mx-0">
-				              <div className="col-md-4 col-12 my-1 px-2"><div className="cell py-1">오후 1:00</div></div>
-				              <div className="col-md-4 col-12 my-1 px-2"><div className="cell py-1">오후 2:00</div></div>
-				              <div className="col-md-4 col-12 my-1 px-2"><div className="cell py-1">오후 3:00</div></div>
-				            </div>
-				            <div className="row text-center mx-0">
-				              <div className="col-md-4 col-12 my-1 px-2"><div className="cell py-1">오후 4:00</div></div>
-				              <div className="col-md-4 col-12 my-1 px-2"><div className="cell py-1">오후 5:00</div></div>
-				              <div className="col-md-4 col-12 my-1 px-2"><div className="cell py-1">오후 6:00</div></div>
-				            </div>
-				          </div>
-				          <div className="row" >
-							 <div className="col-md-12" style={{textAlign: 'center', fontSize:'15pt'}}>
-							 	<br/><br/>
-							 	<b><span id="rtime" name="rtime"></span></b>
-							 </div>
-					      </div>
+                      	<form autocomplete="off">
+							<Datepicker/>
 				    	</form>
                        </div>
                       </div>

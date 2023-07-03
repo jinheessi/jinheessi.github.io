@@ -2,6 +2,7 @@ import styled from 'styled-components';
 import naver from '../static/images/btnG_아이콘원형.png';
 import kakao from '../static/images/kakao_login_medium.png';
 import google from '../static/images/google_login.png';
+import {useState, useEffect} from 'react';
 import '../static/vendor/boxicons/css/boxicons.css';
 import '../static/assets/vendor/css/core.css';
 import '../static/assets/vendor/css/theme-default.css';
@@ -23,6 +24,15 @@ const Linkstyle = styled.a`
 `;
 
 const Login = () => {
+    const [message, setMessage] = useState(null);
+  useEffect(() => {
+    fetch('/test/hello')
+        .then(response => response.text())
+        .then(message => {
+            setMessage(message);
+            console.log(message);
+        });
+  },[])
 	return (
         <div>
             <div variant="bootstrap.container-xxl">

@@ -1,3 +1,5 @@
+import {useState, useEffect} from 'react';
+import axios from 'axios';
 import React from 'react';
 import Login from './pages/login';
 import Home from './pages/home';
@@ -8,11 +10,13 @@ import ModifyInfo from './pages/modifyInfo';
 import HealthInfo from './pages/healthInfo';
 import Reservation from './pages/reservation';
 import Receipt from './pages/receipt';
-import Babycard from './pages/babycard';
+import MyReceipt from './pages/myreceipt';
 import ViewHospital from './pages/viewhospital';
-
-import { BrowserRouter, Routes, Route } from 'react-router-dom';
+import Babycard from './pages/babycard';
+import ViewBabyCard from './pages/viewbabycard';
 import WriteBabyCard from './pages/writebabycard';
+import ModifyBabyCard from './pages/modifybabycard';
+import { BrowserRouter, Routes, Route } from 'react-router-dom';
 
 
 import './static/vendor/fontawesome-free/css/all.min.css';
@@ -37,14 +41,13 @@ import './static/assets/js/menu.js';
 import 'https://buttons.github.io/buttons.js';
 
 
-
-
-
 const App = () => {
+  
+
   return (
     <BrowserRouter>
       <Routes>
-        <Route path="/" element ={<Home/>} />
+        <Route path="/kids/home" element ={<Home/>} />
         <Route path="/kids/login" element={<Login />}/>
         <Route path="/kids/pediatric" element={<Pediatric />} />
         <Route path="/kids/emergency" element={<Emergency />} />
@@ -52,10 +55,13 @@ const App = () => {
         <Route path="/kids/modifyInfo" element={<ModifyInfo />} />
         <Route path="/kids/reservation" element={<Reservation />} />
         <Route path="/kids/receipt" element={<Receipt />} />
+        <Route path="/kids/myreceipt" element={<MyReceipt />} />
         <Route path="/kids/viewHospital" element={<ViewHospital />} />
         <Route path="/kids/healthInfo" element={<HealthInfo/>} />
         <Route path="/kids/mybabycard" element={<Babycard />} />
+        <Route path="/kids/viewbabycard" element={<ViewBabyCard />} />
         <Route path="/kids/writebabycard" element={<WriteBabyCard />} />
+        <Route path="/kids/modifybabycard" element={<ModifyBabyCard />} />
       </Routes>
     </BrowserRouter>
   );
