@@ -26,7 +26,7 @@ const Linkstyle = styled.a`
 const Login = () => {
     const [message, setMessage] = useState(null);
   useEffect(() => {
-    fetch('/test/hello')
+    fetch('/api/hello')
         .then(response => response.text())
         .then(message => {
             setMessage(message);
@@ -46,7 +46,7 @@ const Login = () => {
                                 <br></br>
                                 <div className="row d-flex justify-content-center">		       
                                     <div className="col-md-3">
-                                        <Linkstyle href="/oauth2/authorization/naver"><ImgSize src={naver} /></Linkstyle>
+                                        <Linkstyle href="http://localhost/oauth2/authorization/naver"><ImgSize src={naver} /></Linkstyle>
                                     </div>
                                     <div className="col-md-5">
                                         <Linkstyle href="/oauth2/authorization/kakao"><ImgSize src={kakao} /></Linkstyle>

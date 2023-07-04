@@ -18,25 +18,22 @@ import WriteBabyCard from './pages/writebabycard';
 import ModifyBabyCard from './pages/modifybabycard';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 
-
-import './static/vendor/fontawesome-free/css/all.min.css';
-import './static/vendor/animate.css/animate.min.css';
-import './static/vendor/bootstrap/css/bootstrap.min.css';
-import './static/vendor/bootstrap-icons/bootstrap-icons.css';
-import './static/vendor/boxicons/css/boxicons.min.css';
-import './static/vendor/glightbox/css/glightbox.min.css';
-import './static/vendor/remixicon/remixicon.css';
-import './static/vendor/swiper/swiper-bundle.min.css';
-import './static/css/style.css';
+import './static/assets/img/favicon/favicon.ico';
+import './static/assets/vendor/fonts/boxicons.css';
+import './static/assets/vendor/css/core.css';
+import './static/assets/vendor/css/theme-default.css';
+import './static/assets/css/demo.css';
+import './static/assets/vendor/libs/perfect-scrollbar/perfect-scrollbar.css';
 
 
-
-
-import './static/assets/vendor/libs/jquery/jquery.js';
-import './static/assets/vendor/js/helpers.js';
-import './static/assets/vendor/js/bootstrap.js';
-import './static/assets/vendor/libs/popper/popper.js';
-import './static/assets/js/menu.js';
+import './static/assets/vendor/libs/jquery/jquery';
+import './static/assets/vendor/libs/popper/popper';
+import './static/assets/vendor/js/bootstrap';
+import './static/assets/vendor/js/helpers';
+import './static/assets/js/config';
+import './static/assets/js/menu';
+import './static/assets/js/pages-account-settings-account';
+import './static/js/main';
 
 import 'https://buttons.github.io/buttons.js';
 
@@ -47,21 +44,22 @@ const App = () => {
   return (
     <BrowserRouter>
       <Routes>
-        <Route path="/kids/home" element ={<Home/>} />
-        <Route path="/kids/login" element={<Login />}/>
-        <Route path="/kids/pediatric" element={<Pediatric />} />
-        <Route path="/kids/emergency" element={<Emergency />} />
-        <Route path="/kids/publicHealth" element={<PublicHealth/>} />
-        <Route path="/kids/modifyInfo" element={<ModifyInfo />} />
-        <Route path="/kids/reservation" element={<Reservation />} />
-        <Route path="/kids/receipt" element={<Receipt />} />
-        <Route path="/kids/myreceipt" element={<MyReceipt />} />
-        <Route path="/kids/viewHospital" element={<ViewHospital />} />
-        <Route path="/kids/healthInfo" element={<HealthInfo/>} />
-        <Route path="/kids/mybabycard" element={<Babycard />} />
-        <Route path="/kids/viewbabycard" element={<ViewBabyCard />} />
-        <Route path="/kids/writebabycard" element={<WriteBabyCard />} />
-        <Route path="/kids/modifybabycard" element={<ModifyBabyCard />} />
+        <Route path="/home" element ={<Home/>} />
+        <Route path="/" element={<Login />}/>
+        <Route path="/login" element={<Login />}/>
+        <Route path="/pediatric" element={<Pediatric />} />
+        <Route path="/emergency" element={<Emergency />} />
+        <Route path="/publicHealth" element={<PublicHealth/>} />
+        <Route path="/modifyInfo" element={<ModifyInfo />} />
+        <Route path="/reservation" element={<Reservation />} />
+        <Route path="/receipt" element={<Receipt />} />
+        <Route path="/myreceipt" element={<MyReceipt />} />
+        <Route path="/viewHospital" element={<ViewHospital />} />
+        <Route path="/healthInfo" element={<HealthInfo/>} />
+        <Route path="/mybabycard" element={<Babycard />} />
+        <Route path="/viewbabycard" element={<ViewBabyCard />} />
+        <Route path="/writebabycard" element={<WriteBabyCard />} />
+        <Route path="/modifybabycard" element={<ModifyBabyCard />} />
       </Routes>
     </BrowserRouter>
   );

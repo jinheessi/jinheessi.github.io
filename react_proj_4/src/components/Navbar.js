@@ -28,31 +28,19 @@ const ImgSize = styled.img`
 
 
 const Navbar = () => {
-    const Session = () => {
-        const [session, setSession] = useState(null);
-        useEffect(() => {
-            axios.get('/api/user/session').then(response =>{
-                setSession(response.data);
-            }).catch(error => {
-                console.log(error);
-            });
-        }, []);
-        return session;
-    };
-
-    const Member = () => {
-        const [member, setMember] = useState(null);
-        useEffect(() => {
-            axios.get('/api/user/member').then(response=>{
-                setMember(response.data);
-            }).catch(error => {
-                console.log(error);
-            });
-        }, []);
-    };
-
-
-    const session = Session();
+	const [session, setSession] = useState([]);
+	const [member, setMember] = useState([]);
+	
+	useEffect(() => {
+		axios.get('/api/session')
+		.then(response => setSession(response.data))
+		.catch(error => console.log(error))
+	}, []);
+        
+	useEffect(() => {
+		axios.get('/api/member')
+		.then(response=> setMember(response.data))
+		.catch(error => console.log(error))},[]);
     return (
         <nav
             className="layout-navbar container-xxl navbar navbar-expand-xl navbar-detached align-items-center bg-navbar-theme"
@@ -66,18 +54,18 @@ const Navbar = () => {
 		    
             <div className="navbar-nav-right d-flex align-items-center" id="navbar-collapse">
 		         <div className="navbar-nav align-items-center">
-		          <div classNameName="nav-item d-flex align-items-center">
-		            <a href="javascript:searchPlaces()"><i classNameName="bx bx-search fs-4 lh-0"></i></a>
+		          <div className="nav-item d-flex align-items-center">
+		            <a href="javascript:searchPlaces()"><i className="bx bx-search fs-4 lh-0"></i></a>
 		            <input type="text" className="form-control w-100 border-0 shadow-0" placeholder="병원을 검색하세요" aria-label="Recipient's username" aria-describedby="button-addon2" value="" id="keyword"></input>
 		          </div>
 		        </div>
 
-              <ul classNameName="navbar-nav d-flex justify-content-start align-items-start ms-auto">
+              <ul className="navbar-nav d-flex justify-content-start align-items-start ms-auto">
 
 	          <li className="nav-item navbar-dropdown dropdown-user dropdown">
 	            <a className="nav-link dropdown-toggle hide-arrow" href="javascript:void(0);" data-bs-toggle="dropdown">
 	              <div className="avatar avatar-online  d-flex justify-content-center align-items-center">
-	                {/*session.role === 'USER' && (<ImgSize src="/profile/member.stored_filename"></ImgSize>)*/}
+	                {member.role === 'USER' && (<ImgSize src="/profile/member.stored_filename"></ImgSize>)}
 	              </div>
 	            </a>
 	            <ul className="dropdown-menu pt-0 pb-1 ps-1 pe-1">
@@ -90,9 +78,9 @@ const Navbar = () => {
 	                      </div>
 	                    </div>
 	                    <div className="flex-grow-1">
-	                      <SpanColor2>{/*session.username*/}</SpanColor2>
-	                      {/*session.role === 'USER' && (<SpanColor3>(사용자)</SpanColor3>)*/}
-	                      <SpanColor className="fw-semibold d-block">{/*session.email*/}</SpanColor>
+	                      <SpanColor2>{session.username}</SpanColor2>
+	                      {member.role === 'USER' && (<SpanColor3>(사용자)</SpanColor3>)}
+	                      <SpanColor className="fw-semibold d-block">{session.email}</SpanColor>
 	                    </div>
                         </div>
 	                </a>

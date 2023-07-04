@@ -1,12 +1,6 @@
-/**
-* Template Name: Medilab
-* Updated: May 30 2023 with Bootstrap v5.3.0
-* Template URL: https://bootstrapmade.com/medilab-free-medical-bootstrap-theme/
-* Author: BootstrapMade.com
-* License: https://bootstrapmade.com/license/
-*/
+import { PureCounter } from "@srexi/purecounterjs";
+import { Swiper } from 'swiper';
 (function() {
-  "use strict";
 
   /**
    * Easy selector helper function
@@ -172,19 +166,6 @@
     });
   }
 
-  /**
-   * Initiate glightbox 
-   */
-  const glightbox = GLightbox({
-    selector: '.glightbox'
-  });
-
-  /**
-   * Initiate Gallery Lightbox 
-   */
-  const galelryLightbox = GLightbox({
-    selector: '.galelry-lightbox'
-  });
 
   /**
    * Testimonials slider
@@ -215,9 +196,6 @@
     }
   });
 
-  /**
-   * Initiate Pure Counter 
-   */
-  new PureCounter();
+  
 
 })()

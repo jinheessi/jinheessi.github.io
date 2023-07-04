@@ -5,15 +5,14 @@ const Topbar = () => {
     const [session, setSession] = useState([]);
     
     useEffect(() => {
-        axios.get('/kids/home')
-        .then((response) => response.json())
-        .then((data) => setSession(data))
+        axios.get('/api/session')
+        .then((response) => setSession(response.data))
         .catch((error) => console.log(error));
     }, []);
 
     return(
         <div id="topbar" className="d-flex align-items-center fixed-top">
-                {session.supervisor === null && session.email === null &&
+                {session.supervisor === null &&
 	                <div className="container d-flex justify-content-end">
                         <br />
                         <a className="nav-link scrollto active" data-bs-toggle="modal" data-bs-target="#exampleModal"  href="/kids/login" style={{color:'#454545', fontSize:'13pt'}}><b>로그인</b></a>&emsp;
@@ -21,16 +20,12 @@ const Topbar = () => {
                         <i className="bi mobile-nav-toggle"></i>
                     </div>
                 }
-                {session.username !== null &&
+                {session.username !== null &&   
                     <div className="container d-flex justify-content-end">
-                        <p className="mt-2" style={{color:'black', fontWeight:'bold'}}>{session.username}({session.email})님 접속을 환영합니다."</p>
+                        <p className="mt-2" style={{color:'black', fontWeight:'bold'}}>{session.username}({session.email})님 접속을 환영합니다.</p>
                     </div>
                 }
-                {session.supervisor !== null &&
-                <div className="container d-flex justify-content-end">
-                    <p className="mt-2" style={{color:'black', fontWeight:'bold'}}>{session.supervisor}({session.hospitalUserId}, {session.hospitalName})님 접속을 환영합니다."</p>
-                </div>
-                }
+
 	    </div>
     );
 };
