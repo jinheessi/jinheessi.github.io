@@ -141,6 +141,10 @@
 					}
 				}).open();
 			}
+		function submit() {
+			alert('수정이 완료되었습니다.');
+			location.href= '/kids/pediatric';
+		}
     </script>
     <!-- Custom notification for demo -->
     <!-- beautify ignore:end -->
@@ -436,7 +440,7 @@
 	              </div>
 	            </div>
 	            <div class="mb-3 col-md-4">
-					<label for="addrSearch" class="form-label" style="color:black; font-size: 10pt;">주소 검색</label>
+					<label for="addrSearch" class="form-label" style="color:#454545; font-size: 12pt;"><b>주소 검색</b></label>
 					<div class="input-group mb-3">
 					  <input type="text" id="addrSearch" class="form-control"> 
 					   <button class="btn btn-primary d-grid" type="button" onclick="kakaoAddressAPI()" style="text-align:center; font-size:10pt;">검색</button>
@@ -453,7 +457,7 @@
 	              <input type="text" class="form-control" id="address" name="address" placeholder="" th:value="${member.address}">
 	            </div>
 	            <div class="mt-3 col-md-4 d-flex justify-content-center align-items-center">
-	              <button type="submit" class="btn btn-primary me-2" style="font-size:12pt;">저장</button>
+	              <button type="submit" class="btn btn-primary me-2" style="font-size:12pt;" onsubmit="submit()">저장</button>
 	            	<a th:href="@{/kids/pediatric}" class="btn btn-outline-secondary" style="font-size:12pt;">취소</a>
 	            </div>
 	       	</div>

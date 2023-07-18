@@ -35,7 +35,8 @@ public class MemberWebSecurityConfig extends WebSecurityConfig {
 				.cors((cors) -> cors.disable());
 
 		// OAuth2 인증설정 -> 외부 사이트 로그인 기능을 이용하기 위한 API
-		http.oauth2Login((login) -> login
+		http	
+				.oauth2Login((login) -> login
 				.loginPage("/kids/login") // 인증에 실패했을때 이동하는 페이지
 				.successHandler(oAuth2SuccessHandler)
 				.failureHandler(oAuth2FailureHandler));

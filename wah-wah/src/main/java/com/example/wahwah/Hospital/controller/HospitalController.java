@@ -61,7 +61,6 @@ public class HospitalController {
         
        
      }
-
     @ResponseBody
     @PostMapping("/kids/pediatric")
     public List<HospitalSummaryDTO> postPediatricListByAddress(@RequestParam Map<String, String> map, Model model)
